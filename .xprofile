@@ -1,0 +1,69 @@
+#!/usr/bin/env sh
+# Adds `~/.local/bin` to $PATH
+export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCALE_FACTOR=1
+export QT_STYLE_OVERRIDE=gtk
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+export $EDITOR="/usr/bin/nvim"
+export TERMINAL="urxvt"
+export BROWSER="/usr/bin/google-chrome-stable"
+export READER="/usr/bin/zathura"
+export FILE="/usr/bin/thunar"
+export VISUAL="$EDITOR"
+
+# XDG ------------------------------------------------------------------------
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+#setbg &   	# Set the background
+#sxhkd &	# Bind keys
+#autocutsel -selection PRIMARY -fork &
+xset r rate 300 50 &	# Speed xrate up
+# Switch to US international with Caps as Mod/Escape
+# setxkbmap -option caps:super -variant altgr-intl && killall xcape 2>/dev/null ; xcape -e 'Super_L=Escape' &
+#xautolock -time 5 -locker fuzzy_lock -notify 20 -notifier 'xset dpms force off' &
+#xautolock -detectsleep -time 3 -corners +00- -locker "betterlockscreen -l" -notify 20 -notifier 'xset dpms force off' &
+#xset 180 120 &
+#xss-lock -- i3lock -b -i /home/eorus/Pictures/wallpaper.png &
+xset dpms 300 600 0 &
+#xautolock -detectsleep -time 10 -corners +00- -locker "xset s activate; xset dpms force off" &
+#xautolock -detectsleep  -time 10 -corners +00- -locker "~/.config/i3/scripts/lock-i3.sh" &
+xautolock -detectsleep -time 10 -corners +00- -locker "systemctl suspend" &
+xset b off &
+
+#xrandr --output DP2-3 --off
+
+#xrandr --output eDP1 --panning 1400x1050 --scale 1.023x1.023 &
+#xrandr --output eDP1 --panning 1600x900 --scale 1.17x1.17 &
+#xrandr --output eDP1 --panning 1920x1080 --scale 1.406x1.406 &
+
+# Properties button extra Mod/Escape
+#xss-lock -- i3lock -n -i .wallpaper.png &
+redshift-gtk &
+xsettingsd &
+#devmon --no-gui &
+#urxvtd -q -o -f &
+xmodmap -e 'keycode 135 = Super_R' &
+# MPD daemon start (if no other user instance exists)
+[ ! -s ~/.config/mpd/pid ] && mpd
+#mpd --no-daemon --stdout --verbose &
+#xset r rate 300 50 &	# Speed xrate up
+unclutter &		# Remove mouse when idle
+dunst &			# dunst for notifications
+caffeine-indicator &
+xclip &
+clipit &
+pasystray &
+picom -b &
+allow_rgb10_configs=false picom --config ~/.config/picom.conf &
+#xfce4-power-manager &
+udiskie --tray &
+numlockx &
+## mate-power-manager &
+# blueman-applet &
+#synapse &
+sleep 2 && nm-applet &
