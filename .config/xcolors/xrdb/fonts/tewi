@@ -1,0 +1,12 @@
+URxvt*font:\
+    xft:Source Code Pro:size=14:antialias=true,\
+    xft:xos4 Terminus:size=14:antialias=true,\
+    xft:size=12:Noto Sans Mono CJK TC:Thin:antialias=true
+URxvt*boldFont:\
+    xft:Source Code Pro:bold:size=14:antialias=true,\
+    xft:xos4 Terminus:bold:size=14:antialias=true,\
+    xft:size=14:Noto Sans Mono CJK TC:bold:antialias=true
+URxvt*italicFont:\
+    xft:Source Code Pro:italic:size=14:antialias=true,\
+    xft:xos4 Terminus:italic:size=14:antialias=true,\
+    xft:size=14:Noto Sans Mono CJK TC:italic:antialias=true

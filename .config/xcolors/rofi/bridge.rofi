@@ -1,0 +1,27 @@
+!-------------------------------------------------------------------------------
+! ROFI Color theme - Bridge
+!-------------------------------------------------------------------------------
+
+rofi.font: Tewi 9
+rofi.color-enabled: true
+rofi.fullscreen: false
+
+! -color-window background, border color, separator color
+!
+rofi.color-window: #2b4758, #2b4758, #2b4758
+
+
+! -color-normal background, foreground, background alt, highlight background, highlight foreground
+!
+rofi.color-normal: #2b4758, #e1d8cb, #2b4758, #48627a, #e1d8cb
+
+
+! -color-active background, foreground, background alt, highlight background, highlight foreground
+!
+rofi.color-active: #2b4758, #e1d8cb, #2b4758, #48627a, #e1d8cb
+
+
+! -color-urgent background, foreground, background alt, highlight background, highlight foreground
+!
+rofi.color-urgent: #fdf6e3, #dc322f, #eee8d5, #dc322f, #fdf6e3
+
