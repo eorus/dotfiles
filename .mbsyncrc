@@ -1,0 +1,98 @@
+# Global Channel configuration.
+Create Both
+Expunge Both
+Remove Both
+Sync All
+SyncState *
+
+################################
+####### alperor@gmail.com ######
+################################
+
+# IMAP setup
+IMAPAccount gmail
+Host imap.gmail.com
+User alperor@gmail.com 
+PassCmd "pass neomutt/alperor"
+SSLType IMAPS
+AuthMechs LOGIN
+
+# Remote storage setup
+IMAPStore gmail-remote
+Account gmail
+
+# Local storage setup
+MaildirStore gmail-local
+Path ~/Mail/gmail/
+Inbox ~/Mail/gmail/Inbox
+
+# Inbox
+Channel gmail-inbox
+Master :gmail-remote:
+Slave  :gmail-local:Inbox
+
+# Sent
+Channel gmail-sent
+Master :gmail-remote:"[Gmail]/Sent Mail"
+slave  :gmail-local:Sent
+
+# Drafts
+Channel gmail-drafts
+Master :gmail-remote:"[Gmail]/Drafts"
+slave  :gmail-local:Drafts
+
+# Trash
+Channel gmail-trash
+Master :gmail-remote:"[Gmail]/Trash"
+slave  :gmail-local:Trash
+
+# Spam
+Channel gmail-spam
+Master :gmail-remote:"[Gmail]/Spam"
+slave  :gmail-local:Spam
+
+Group alperor-gmail
+Channel gmail-Inbox
+Channel gmail-Sent
+Channel gmail-Drafts
+Channel gmail-Trash
+Channel gmail-Spam
+
+# IMAP setup
+IMAPAccount eorus
+Host mail.eorus.com
+User alper@eorus.com 
+PassCmd "pass neomutt/alper"
+SSLType IMAPS
+AuthMechs LOGIN
+CertificateFile ~/.cert/some.imap.server.pem #/etc/ssl/certs/ca-certificates.crt
+
+IMAPStore eorus-remote
+Account eorus
+
+MaildirStore eorus-local
+Path ~/Mail/eorus/
+Inbox ~/Mail/eorus/Inbox
+
+# Channels and Groups 
+# (so that we can rename local directories and flatten the hierarchy)
+
+Channel eorus-folders
+Master :eorus-remote:
+Slave :eorus-local:
+Patterns "INBOX"  "Drafts" "Sent*" "Trash" "Spam"
+Create Both
+Expunge Both
+SyncState *
+
+Group eorus
+Channel eorus-folders
+
+# Gmail mailboxes:
+# "All Mail"
+# "Drafts"
+# "Important"
+# "Sent Mail"
+# "Spam"
+# "Starred"
+# "Trash"

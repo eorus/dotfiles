@@ -1,0 +1,14 @@
+[Added Associations]
+text/plain=xed.desktop;nvim.desktop;
+application/x-shellscript=xed.desktop;
+image/png=sxiv.desktop;
+image/x-fuji-raf=darktable.desktop;nufraw.desktop;gimp.desktop;rawtherapee.desktop;
+application/pdf=org.pwmt.zathura-pdf-poppler.desktop;mupdf.desktop;
+application/json=xed.desktop;
+application/x-php=xed.desktop;
+
+[Default Applications]
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+image/jpeg=vimiv.desktop;
+image/png=vimiv.desktop;
