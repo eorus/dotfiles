@@ -6,15 +6,17 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-"Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'blindFS/vim-taskwarrior'
-Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround' " surrounding text objects with paranthesis, quotes, html tags...
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mbbill/undotree'
-Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/nerdcommenter'
+" navigation
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight' 
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'mattn/calendar-vim'
 "Plug 'pangloss/vim-javascript'
@@ -33,7 +35,8 @@ Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
-
+Plug 'ap/vim-css-color' " Display the hexadecimal colors - useful for css and color config
+Plug 'khzaw/vim-conceal'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -107,6 +110,7 @@ set go=a
 set mouse=a
 set nohlsearch
 set filetype=html
+setlocal conceallevel=3
 
 " Split to the right, to the bottom
 set splitright splitbelow
@@ -125,6 +129,7 @@ map <leader>frl :s///g<left><left>
 nmap <Leader>f :Files<CR>
 "nnoremap <silent> <leader>f :FZF<cr>
 nnoremap <silent> <leader>F :FZF ~<cr>
+nnoremap <C-g> :Rg<Cr>
 " highlight last inserted text
 nnoremap gV `[v`]
 "Loc List
@@ -165,6 +170,7 @@ let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeQuitOnOpen = 1
 " Nerd tree
 map <leader>n :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<cr>
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -310,5 +316,33 @@ endif
 set backupdir=~/.config/nvim/backup
 let g:python3_host_prog='/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python2'
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
+
+" Coc extensions
+let g:coc_global_extensions = [
+    \ 'coc-snippets',
+    \ 'coc-json',
+    \ 'coc-css', 
+    \ 'coc-html',
+    \ 'coc-yaml',
+    \ 'coc-godot',
+    \]
+
+" \ 'coc-json', 
+" \ 'coc-markmap',
+" \ 'coc-sh',
+
+" use <tab> for trigger completion and navigate to the next complete item
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~ '\s'
+endfunction
+
+inoremap <silent><expr> <Tab>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<Tab>" :
+      \ coc#refresh()
+
+" loading the plugin
+let g:webdevicons_enable = 1
+" adding the flags to NERDTree
+let g:webdevicons_enable_nerdtree = 1

@@ -1,7 +1,10 @@
 #show-read-feeds no
 auto-reload yes
-
+reload-time 60
+keep-articles-days 30
 external-url-viewer "urlscan -dc -r 'linkhandler {}'"
+player "mpv --no-audio-display"
+download-path "~/Downloads/"
 
 bind-key j down
 bind-key k up
@@ -33,6 +36,8 @@ color article white default bold
 
 browser linkhandler
 macro , open-in-browser
+macro m set browser "/usr/bin/mpv %u"; open-in-browser ; set browser "/usr/bin/w3m %u"
+macro i set browser "/usr/bin/vimiv %u"; open-in-browser ; set browser "/usr/bin/w3m %u"
 macro t set browser "qndl"; open-in-browser ; set browser linkhandler
 macro a set browser "tsp youtube-dl --add-metadata -xic -f bestaudio/best"; open-in-browser ; set browser linkhandler
 macro v set browser "setsid nohup mpv"; open-in-browser ; set browser linkhandler
