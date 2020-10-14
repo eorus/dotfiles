@@ -28,7 +28,7 @@ application/pdf;zathura %s
 #image/pdf;zathura %s
 
 #text/html; lynx -assume_charset=%{charset} -display_charset=utf-8 -dump %s; nametemplate=%s.html; copiousoutput;
-image/*; openfile %s ;
+image/*; vimiv %s ;
 video/*; setsid mpv --quiet %s &; copiousoutput
 #application/pdf; xreader %s ;
 application/pgp-encrypted; gpg -d '%s'; copiousoutput;

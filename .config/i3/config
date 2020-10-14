@@ -177,12 +177,12 @@ bindsym $mod+Shift+XF86Forward	move container to workspace next
 
 
 # name the workspaces (icons require fontawesome)
-set $ws1  "1:  www"
-set $ws2  "2:  code"
-set $ws3  "3:  files"
-set $ws4  "4:  edit"
-set $ws5  "5:  notes"
-set $ws6  "6:  media"
+set $ws1  "1:  "
+set $ws2  "2:  "
+set $ws3  "3:  "
+set $ws4  "4:  "
+set $ws5  "5:  "
+set $ws6  "6:  "
 set $ws7  "7: seven"
 set $ws8  "8: eight"
 set $ws9  "9: nine"
@@ -413,7 +413,7 @@ bindsym $mod+m mode "$mode_display"
 #bindsym $mod+m move workspace to output right
 
 bar {
- font pango:Source Code Pro, FontAwesome 12
+ font pango:Source Code Pro, FontAwesome 11
         #font pango: Inconsolata, FontAwesome, Icons 14
 #       #font pango: Source Code Pro 12px # Inconsolata 14px
     position top

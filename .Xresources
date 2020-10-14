@@ -146,7 +146,7 @@ rofi.location: 0
 st.alpha: 0.92
 
 !! Set a default font and font size as below:
-st.font:Source Code Pro:size=14:antialias=true
+st.font:Source Code Pro:size=16:antialias=true
 st.termname: st-256color
 ! st.borderpx: 2
 
