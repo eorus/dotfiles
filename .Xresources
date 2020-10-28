@@ -143,10 +143,11 @@ rofi.terminal: urxvt
 rofi.location: 0
 
 !! Transparency (0-1):
-st.alpha: 0.92
-
+st.alpha: 0.95
+!*font = "roboto mono nerd font:pixelsize=18:antialias=true:autohint=true"
 !! Set a default font and font size as below:
-st.font:Source Code Pro:size=16:antialias=true
+st.font:Source Code Pro:size=14:antialias=true:autohint=false
+!st.font:Liberation Mono:pixelsize=16:antialias=true:autohint=true
 st.termname: st-256color
 ! st.borderpx: 2
 

@@ -1,4 +1,4 @@
-# set sendmail = "/usr/bin/msmtp -a gmail"
+set sendmail = "/usr/bin/msmtp -a dreamhost"
 # Configure Simple Mail Transfer Protocol for sending mail for Gmail
 #set smtp_url = "smtps://alperor@gmail.com@smtp.gmail.com:465/"
 #set smtp_url = "smtps://alperor@gmail.com@smtp.gmail.com:587"
@@ -7,13 +7,13 @@
 
 set folder          = "~/Mail/eorus"
 set spoolfile       = "~/Mail/eorus/Inbox"
-set record          = "=Sent\ Items"
+set record          = "=Sent"
 set postponed       = "=Drafts"
 set trash           = "=Trash"
 set mbox_type       = Maildir
 
 #Mailboxes
-mailboxes =Inbox =Sent\ Items =Drafts =Spam =Trash
+mailboxes =Inbox =Sent =Drafts 
 #mailboxes +inbox +sent +drafts +trash +spam
 
 # Headers

@@ -51,7 +51,7 @@ Channel gmail-spam
 Master :gmail-remote:"[Gmail]/Spam"
 slave  :gmail-local:Spam
 
-Group alperor-gmail
+Group gmail
 Channel gmail-Inbox
 Channel gmail-Sent
 Channel gmail-Drafts
@@ -60,33 +60,48 @@ Channel gmail-Spam
 
 # IMAP setup
 IMAPAccount eorus
-Host mail.eorus.com
+Host imap.dreamhost.com
 User alper@eorus.com 
 PassCmd "pass neomutt/alper"
 SSLType IMAPS
 AuthMechs LOGIN
-CertificateFile ~/.cert/some.imap.server.pem #/etc/ssl/certs/ca-certificates.crt
+#CertificateFile ~/.cert/some.imap.server.pem #/etc/ssl/certs/ca-certificates.crt
 
 IMAPStore eorus-remote
 Account eorus
 
 MaildirStore eorus-local
+#SubFolders Legacy
 Path ~/Mail/eorus/
 Inbox ~/Mail/eorus/Inbox
 
 # Channels and Groups 
 # (so that we can rename local directories and flatten the hierarchy)
 
-Channel eorus-folders
+# Inbox
+Channel eorus-inbox
 Master :eorus-remote:
-Slave :eorus-local:
-Patterns "INBOX"  "Drafts" "Sent*" "Trash" "Spam"
+Slave  :eorus-local:Inbox
+
+# Sent
+Channel eorus-sent
+Master :eorus-remote:"INBOX/Sent"
+slave  :eorus-local:Sent
+
+# Draft
+Channel eorus-draft
+Master :eorus-remote:"INBOX/Drafts"
+slave  :eorus-local:Drafts
+
+#Patterns *
 Create Both
 Expunge Both
 SyncState *
 
 Group eorus
-Channel eorus-folders
+Channel eorus-Inbox
+Channel eorus-Sent
+Channel eorus-Drafts
 
 # Gmail mailboxes:
 # "All Mail"

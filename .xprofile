@@ -1,23 +1,23 @@
-o!/usr/bin/env sh
+!/usr/bin/env sh
 # Adds `~/.local/bin` to $PATH
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export QT_AUTO_SCREEN_SCALE_FACTOR=0
-export QT_SCALE_FACTOR=1
-export QT_STYLE_OVERRIDE=gtk
-export XDG_SESSION_TYPE=x11
-export GDK_BACKEND=x11
-export $EDITOR="/usr/bin/nvim"
-export TERMINAL="urxvt"
-export BROWSER="/usr/bin/google-chrome-stable"
-export READER="/usr/bin/zathura"
-export FILE="/usr/bin/thunar"
-export VISUAL="$EDITOR"
-
-# XDG ------------------------------------------------------------------------
-export XDG_CACHE_HOME="$HOME/.cache"
-export XDG_CONFIG_HOME="$HOME/.config"
-export XDG_DATA_HOME="$HOME/.local/share"
+#export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | paste -sd ':')"
+#export QT_QPA_PLATFORMTHEME="qt5ct"
+#export QT_AUTO_SCREEN_SCALE_FACTOR=0
+#export QT_SCALE_FACTOR=1
+#export QT_STYLE_OVERRIDE=gtk
+#export XDG_SESSION_TYPE=x11
+#export GDK_BACKEND=x11
+#export $EDITOR="/usr/bin/nvim"
+#export TERMINAL="st"
+#export BROWSER="/usr/bin/google-chrome-stable"
+#export READER="/usr/bin/zathura"
+#export FILE="/usr/bin/thunar"
+#export VISUAL="$EDITOR"
+#
+## XDG ------------------------------------------------------------------------
+#export XDG_CACHE_HOME="$HOME/.cache"
+#export XDG_CONFIG_HOME="$HOME/.config"
+#export XDG_DATA_HOME="$HOME/.local/share"
 
 #setbg &   	# Set the background
 #sxhkd &	# Bind keys
@@ -46,8 +46,6 @@ xset b off &
 #xss-lock -- i3lock -n -i .wallpaper.png &
 redshift-gtk &
 xsettingsd &
-#devmon --no-gui &
-#urxvtd -q -o -f &
 xmodmap -e 'keycode 135 = Super_R' &
 # MPD daemon start (if no other user instance exists)
 [ ! -s ~/.config/mpd/pid ] && mpd
@@ -61,10 +59,7 @@ clipit &
 pasystray &
 picom -b &
 allow_rgb10_configs=false picom --config ~/.config/picom.conf &
-#xfce4-power-manager &
 udiskie --tray &
 numlockx &
-## mate-power-manager &
 # blueman-applet &
-#synapse &
 sleep 2 && nm-applet &

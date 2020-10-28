@@ -7,6 +7,9 @@ application/pdf=org.pwmt.zathura-pdf-poppler.desktop;mupdf.desktop;
 application/json=xed.desktop;
 application/x-php=xed.desktop;
 inode/directory=thunar.desktop;
+text/html=xed.desktop;google-chrome.desktop;
+text/markdown=xed.desktop;
+image/jpeg=vimiv.desktop;
 
 [Default Applications]
 x-scheme-handler/https=google-chrome.desktop

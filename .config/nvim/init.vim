@@ -6,12 +6,11 @@ if ! filereadable(expand('~/.config/nvim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'blindFS/vim-taskwarrior'
 Plug 'tpope/vim-surround' " surrounding text objects with paranthesis, quotes, html tags...
 
-"Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mbbill/undotree'
 " navigation
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
@@ -28,9 +27,7 @@ Plug 'vimwiki/vimwiki'
 
 "Look and Feel
 Plug 'bling/vim-airline'
-Plug 'jacoborus/tender.vim'
 Plug 'w0ng/vim-hybrid'
-Plug 'cocopon/iceberg.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'junegunn/goyo.vim'
@@ -97,7 +94,7 @@ set scrolljump=1          " scroll 1 line at a time
 set scrolloff=5           " start scrolling 5 lines before bottom of pane
 set showcmd               " show command in bottom bar
 set smartcase             " only use case sensitive search when uppercase
-"set termguicolors        " Use true colors
+set termguicolors        " Use true colors
 let mapleader =","        " change the map leader
 
 if (has("nvim"))
@@ -132,9 +129,6 @@ nnoremap <silent> <leader>F :FZF ~<cr>
 nnoremap <C-g> :Rg<Cr>
 " highlight last inserted text
 nnoremap gV `[v`]
-"Loc List
-map <Leader>e :lopen<CR>
-map <Leader>w :lclose<CR>
 
 " Shortcutting split navigation, saving a keypress:
 	map <C-h> <C-w>h
@@ -160,17 +154,15 @@ map <C-t><right> :tabn<cr>
 " UnoTree Toggle
 nnoremap <F4> :UndotreeToggle<cr>
 nnoremap <F5> :Buffers<CR>
-nnoremap <F6> :tab sball<CR>
-" NERDTree
-nnoremap <leader>l :NERDTreeToggle<cr>
-let NERDTreeMinimalUI=1
+nnoremap <F3> :tab sball<CR>
 
-silent! nmap <F3> :NERDTreeToggle<CR>
+" NERDTree
+let NERDTreeMinimalUI=1
 let g:NERDTreeMapActivateNode="<F3>"
 let g:NERDTreeQuitOnOpen = 1
-" Nerd tree
-map <leader>n :NERDTreeToggle<CR>
+map <leader>e :NERDTreeToggle<CR>
 map <leader>r :NERDTreeFind<cr>
+
 " Automaticaly close nvim if NERDTree is only thing left open
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
@@ -266,7 +258,7 @@ let g:instant_markdown_autostart = 0	" disable autostart
 let g:vimwiki_markdown_link_ext = 1
 
 " set airline theme
-let g:airline_theme = 'tender'
+let g:airline_theme = 'nord'
 "let g:airline_theme='simple'
 let g:airline_powerline_fonts = 1
 let g:airline_section_b = '%{getcwd()}' " in section B of the status line display the CWD
@@ -285,21 +277,13 @@ let g:airline#extensions#tabline#show_splits = 0       " disables the buffer nam
 let g:airline#extensions#tabline#show_tab_nr = 0       " disable tab numbers
 let g:airline#extensions#tabline#show_tab_type = 0     " disables the weird ornage arrow on the tabline
 
-let g:PaperColor_Theme_Options = {
-  \   'theme': {
-  \     'default.dark': {
-  \       'transparent_background': 1
-  \     }
-  \   }
-  \ }
+
 " Favourite colorscheme
 set t_Co=256
-colorscheme iceberg
-set background=dark
-"let g:nord_comment_brightness = 15
-"colorscheme gruvbox
-"set background=dark    " Setting dark mode
-" set background=light   " Setting light mode
+set t_8f=^[[38;2;%lu;%lu;%lum        " set foreground color
+set t_8b=^[[48;2;%lu;%lu;%lum        " set background color
+let g:nord_bold_vertical_split_line = 1
+colorscheme nord
 
 " Make an undo directory if it does not exist
 if !isdirectory($HOME . "/.config/nvim/undo")
@@ -317,32 +301,20 @@ set backupdir=~/.config/nvim/backup
 let g:python3_host_prog='/usr/bin/python3'
 let g:python_host_prog = '/usr/bin/python2'
 
-" Coc extensions
-let g:coc_global_extensions = [
-    \ 'coc-snippets',
-    \ 'coc-json',
-    \ 'coc-css', 
-    \ 'coc-html',
-    \ 'coc-yaml',
-    \ 'coc-godot',
-    \]
 
-" \ 'coc-json', 
-" \ 'coc-markmap',
-" \ 'coc-sh',
+" omnifunc
+aug omnicomplete
+  au!
+  au FileType css,sass,scss,stylus,less setl omnifunc=csscomplete#CompleteCSS
+  au FileType html,htmldjango,jinja,markdown setl omnifunc=emmet#completeTag
+  au FileType javascript,jsx,javascript.jsx setl omnifunc=tern#Complete
+  au FileType python setl omnifunc=pythoncomplete#Complete
+  au FileType xml setl omnifunc=xmlcomplete#CompleteTags
+aug END
 
-" use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~ '\s'
-endfunction
+au FileType html setl omnifunc=csscomplete#CompleteCSS
 
-inoremap <silent><expr> <Tab>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<Tab>" :
-      \ coc#refresh()
-
-" loading the plugin
-let g:webdevicons_enable = 1
-" adding the flags to NERDTree
-let g:webdevicons_enable_nerdtree = 1
+" deoplete
+let g:deoplete#enable_at_startup = 1
+" let g:deoplete#disable_auto_complete = 1
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
