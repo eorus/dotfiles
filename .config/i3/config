@@ -276,9 +276,9 @@ bindsym $mod+minus scratchpad show
 # AUTOSTART
 # automatically start programs in specific workspaces on login
 exec --no-startup-id i3-msg "workspace $ws1; exec /usr/bin/google-chrome-stable"
-#exec --no-startup-id i3-msg "workspace $ws2; exec $term"
-exec --no-startup-id i3-msg "workspace $ws2; exec $term -e lf"
-exec --no-startup-id i3-msg "workspace $ws4; exec $term -e neomutt"
+exec --no-startup-id i3-msg "workspace $ws2; exec $term"
+#exec --no-startup-id i3-msg "workspace $ws3; exec $term -e tmuxinator alphonzo"
+#exec --no-startup-id i3-msg "workspace $ws4; exec $term -e neomutt"
 #exec --no-startup-id i3-msg "workspace $ws5; exec urxvt -e nvim -S alphonzo"
 #exec --no-startup-id i3-msg "workspace $ws5; exec /usr/bin/notable"
 #exec --no-startup-id polybar -c ~/.config/i3/polybar top

@@ -1,14 +1,14 @@
 [Added Associations]
-text/plain=xed.desktop;nvim.desktop;
-application/x-shellscript=xed.desktop;
-image/png=sxiv.desktop;
+text/plain=nvim.desktop;xed.desktop;
+application/x-shellscript=nvim.desktop;xed.desktop;
+image/png=vimiv.desktop;
 image/x-fuji-raf=darktable.desktop;nufraw.desktop;gimp.desktop;rawtherapee.desktop;
 application/pdf=org.pwmt.zathura-pdf-poppler.desktop;mupdf.desktop;
 application/json=xed.desktop;
 application/x-php=xed.desktop;
 inode/directory=thunar.desktop;
 text/html=xed.desktop;google-chrome.desktop;
-text/markdown=xed.desktop;
+text/markdown=nvim.desktop;xed.desktop;
 image/jpeg=vimiv.desktop;
 
 [Default Applications]
@@ -16,3 +16,7 @@ x-scheme-handler/https=google-chrome.desktop
 x-scheme-handler/http=google-chrome.desktop
 image/jpeg=vimiv.desktop;
 image/png=vimiv.desktop;
+text/markdown=nvim.desktop;xed.desktop;
+text/html=nvim.desktop;xed.desktop;
+
+

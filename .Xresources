@@ -151,11 +151,6 @@ st.font:Source Code Pro:size=14:antialias=true:autohint=false
 st.termname: st-256color
 ! st.borderpx: 2
 
-!! Set the background, foreground and cursor colors as below:
-!*.background: #282828
-!*.foreground: white
-!*.cursorColor: white
-
 ! -- [ XFontSel ] ------------------------------
 XFontSel*sampleText.background:       TEXTBG
 XFontSel*menu*showUnselectable:       false

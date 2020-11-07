@@ -47,12 +47,12 @@ windows:
       # 'before' represents legacy functionality and will be deprecated in a future release, in favour of 'after'
       # synchronize: after
       panes:
-        - ncmpcpp
-        - journalctl --user -f
         - nvim notes/vimwiki/notes/tasks/tasks.md
+        - journalctl --user -f
+        - bash
         - htop
   - wiki: nvim -c VimwikiIndex
   - calendar: calcurse
   - mail: neomutt
-  - ranger: ranger
-  - bash: bash
+  - files: lf
+  - music: ncmpcpp

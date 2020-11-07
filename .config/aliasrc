@@ -41,6 +41,7 @@ alias p="cat"
 alias pd="pwd"
 alias t="date"
 alias u='cd ..'
+alias hd='sh ~/deploy.sh'
 alias ka="killall" \
 	mkd="mkdir -pv" \
 	cfi3="e ~/.config/i3/config" \
@@ -69,7 +70,7 @@ alias ka="killall" \
 	yta="yt -x -f bestaudio/best" \
 	YT="youtube-viewer" \
 	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
-	upc="sudo pacman -Syu; pkill -RTMIN+8 i3blocks" \
+	upc="checkupdates" \
 	lsp="pacman -Qett --color=always | less" \
 	ffmpeg="ffmpeg -hide_banner"
 alias duf='du -hsx * | sort -rh | head -5'
