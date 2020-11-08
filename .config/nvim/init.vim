@@ -46,7 +46,7 @@ set filetype=html
 setlocal conceallevel=3
 
 set clipboard+=unnamedplus	 " use the system clipboard
-set hlsearch              	 " highlight the search query
+"set hlsearch              	 " highlight the search query
 set smartcase             	 " only use case sensitive search when uppercase
 set wildmode=longest,list,full 	 " Enable autocompletion
 set splitright splitbelow  	 " Split to the right, to the bottom
