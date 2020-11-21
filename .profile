@@ -2,6 +2,9 @@
 # Profile file. Runs on login.
 
 # Adds `~/.local/bin/` and all subdirectories to $PATH
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
+export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE=gtk
@@ -201,5 +204,3 @@ ex=:\
 
 # Start graphical server if i3 not already running.
 #[ "$(tty)" = "/dev/tty1" ] && ! pgrep -x i3 >/dev/null && exec startx
-
-

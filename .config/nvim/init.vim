@@ -11,11 +11,13 @@ Plug 'blindFS/vim-taskwarrior'
 Plug 'tpope/vim-surround' " surrounding text objects with paranthesis, quotes, html tags...
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mbbill/undotree'
-Plug 'ptzz/lf.vim'
 Plug 'mattn/calendar-vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'vimwiki/vimwiki'
-"Look and Feel
+" navigation
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
+Plug 'ryanoasis/vim-devicons'
+Plug 'morhetz/gruvbox'
 Plug 'aonemd/kuroi.vim'
 Plug 'arcticicestudio/nord-vim'
 Plug 'junegunn/goyo.vim'
@@ -81,15 +83,15 @@ nnoremap <F3> :tab sball<CR>
 nnoremap <leader>B :enew<cr>
 nnoremap <S-Tab> :bnext<cr>
 
-" LF mappings
-let g:lf_map_keys = 0
-map <leader>e :Lf<CR>
-
-"netrw
-let g:netrw_banner=0
-let g:netrw_winsize=20
-let g:netrw_liststyle=3
-let g:netrw_localrmdir='rm -r'
+" File Explorer
+let NERDTreeMinimalUI=1
+let g:NERDTreeQuitOnOpen = 1
+map <F2> :NERDTreeToggle<CR>
+let NERDTreeWinSize=32
+map <leader>e :NERDTreeToggle<CR>
+map <leader>r :NERDTreeFind<cr>
+" Automaticaly close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <leader>n :Lexplore<CR>
 autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
 

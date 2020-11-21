@@ -67,7 +67,7 @@ bindsym $mod+w			exec --no-startup-id $BROWSER
 
 bindsym $mod+e			exec $term -e neomutt
 
-bindsym $mod+r 			exec $term -e lf
+bindsym $mod+r 			exec $term -e ranger
 bindsym $mod+Shift+r		exec --no-startup-id thunar
 
 bindsym $mod+t			split toggle
@@ -138,7 +138,7 @@ bindsym $mod+v			exec --no-startup-id $term -e $EDITOR -c "VimwikiIndex"
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+b     focus child			
+bindsym $mod+b     focus child
 bindsym $mod+Shift+b		floating toggle; sticky toggle; exec --no-startup-id hover left
 
 bindsym $mod+n			exec $term -e newsboat
@@ -227,8 +227,8 @@ for_window [instance="dropdown"] floating enable
 for_window [instance="dropdown"] resize set 900 600
 for_window [instance="dropdown"] move position 0 368
 for_window [instance="dropdown"] move scratchpad
-#exec urxvt -uc -bc -bg "rgba:0000/0000/0000/cdcd" -depth "32" -fg "white" -name dropdown 
-#exec urxvt -uc -bc -bg "rgb:0000/0000/0000" -fg "white" -name dropdown 
+#exec urxvt -uc -bc -bg "rgba:0000/0000/0000/cdcd" -depth "32" -fg "white" -name dropdown
+#exec urxvt -uc -bc -bg "rgb:0000/0000/0000" -fg "white" -name dropdown
 exec st -n dropdown -c dropdown -f "Source Code Pro:pixelsize=16:antialias=true:autohint=true"
 
 
@@ -314,7 +314,7 @@ bindsym XF86AudioStop exec playerctl stop
 bindsym XF86Tools		exec --no-startup-id spotify
 bindsym XF86HomePage	exec --no-startup-id $BROWSER
 bindsym XF86Mail        exec --no-startup-id $term -e neomutt
-bindsym XF86Explorer		exec $term -e catfish
+bindsym XF86Explorer		exec catfish
 bindsym XF86Search		exec $BROWSER https://duckduckgo.com
 #bindsym XF86Search      exec --no-startup-id $term -e ranger
 #bindsym $mod+F2 exec --no-startup-id $term -e neomutt
@@ -409,7 +409,7 @@ mode "$mode_display" {
 }
 
 bindsym $mod+m mode "$mode_display"
-# Moving workspaces between screens 
+# Moving workspaces between screens
 #bindsym $mod+m move workspace to output right
 
 bar {
