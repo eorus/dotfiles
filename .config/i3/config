@@ -229,7 +229,7 @@ for_window [instance="dropdown"] move position 0 368
 for_window [instance="dropdown"] move scratchpad
 #exec urxvt -uc -bc -bg "rgba:0000/0000/0000/cdcd" -depth "32" -fg "white" -name dropdown
 #exec urxvt -uc -bc -bg "rgb:0000/0000/0000" -fg "white" -name dropdown
-exec st -n dropdown -c dropdown -f "Source Code Pro:pixelsize=16:antialias=true:autohint=true"
+#exec st -n dropdown -c dropdown -f "Source Code Pro:pixelsize=16:antialias=true:autohint=true"
 
 
 # Bindings to make the webcam float and stick.
@@ -282,7 +282,7 @@ exec --no-startup-id i3-msg "workspace $ws2; exec $term"
 #exec --no-startup-id i3-msg "workspace $ws5; exec urxvt -e nvim -S alphonzo"
 #exec --no-startup-id i3-msg "workspace $ws5; exec /usr/bin/notable"
 #exec --no-startup-id polybar -c ~/.config/i3/polybar top
-#exec_always --no-startup-id ~/.config/polybar/launch.sh &
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
 #exec --no-startup-id i3-msg 'workspace $ws4; exec firefox'
 exec --no-startup-id /home/eorus/Pictures/wallpaper.sh
 
@@ -346,15 +346,6 @@ bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t ima
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
 
-# class                 border  backgr. text    indicator child_border
-client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
-
 #bar {
 #        status_command py3status
 #        position top
@@ -375,7 +366,6 @@ client.background       #ffffff
 #        urgent_workspace   #2f343a #900000 #ffffff
 #    }
 #u}
-
 
 # split in horizontal orientation
 #bindsym $mod+h split h
@@ -412,22 +402,31 @@ bindsym $mod+m mode "$mode_display"
 # Moving workspaces between screens
 #bindsym $mod+m move workspace to output right
 
-bar {
- font pango:Source Code Pro, FontAwesome 11
-        #font pango: Inconsolata, FontAwesome, Icons 14
-#       #font pango: Source Code Pro 12px # Inconsolata 14px
-    position top
-#    status_command py3status -c ~/.config/i3status/config
-   status_command i3status .config/i3status/config
-#   status_command i3status-rs .config/i3/config.toml
-     colors {
-        background #000000
-        statusline #00A5FF #that neon blue
-        separator #666666
+# class                 border  backgr. text    indicator child_border
+client.focused          #4c7899 #285577 #ffffff #00A5FF   #285577
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-        focused_workspace  #4c7899 #285577 #ffffff
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
-    }
-}
+client.background       #ffffff
+
+#bar {
+# font pango:Source Code Pro, FontAwesome 12
+#        #font pango: Inconsolata, FontAwesome, Icons 14
+##       #font pango: Source Code Pro 12px # Inconsolata 14px
+#    position top
+##    status_command py3status -c ~/.config/i3status/config
+#   status_command i3status .config/i3status/config
+##   status_command i3status-rs .config/i3/config.toml
+#     colors {
+#        background #000000
+#        statusline #00A5FF #that neon blue
+#        separator #666666
+#
+#        focused_workspace  #4c7899 #285577 #ffffff
+#        active_workspace   #333333 #5f676a #ffffff
+#        inactive_workspace #333333 #222222 #888888
+#        urgent_workspace   #2f343a #900000 #ffffff
+#    }
+#}

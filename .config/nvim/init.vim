@@ -15,6 +15,7 @@ Plug 'mattn/calendar-vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'vimwiki/vimwiki'
 " navigation
+Plug 'mcchrish/nnn.vim'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind']}
 Plug 'ryanoasis/vim-devicons'
 Plug 'morhetz/gruvbox'
@@ -40,7 +41,7 @@ filetype plugin on
 syntax on
 set encoding=utf-8
 set number relativenumber
-
+set title
 set go=a
 set mouse=a
 set nohlsearch
@@ -94,6 +95,8 @@ map <leader>r :NERDTreeFind<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nnoremap <leader>n :Lexplore<CR>
 autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
+
+nnoremap <leader>n :NnnPicker %:p:h<CR>
 
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h

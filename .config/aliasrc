@@ -22,7 +22,6 @@ alias bat0='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "sta
 alias ll='ls -alF'
 alias notes="clear && sncli sync && sncli"
 alias first='sed -n "/ installed $1/{s/].*/]/p;q}" /var/log/pacman.log'
-alias notlar="markserv notes/vimwiki/notes/index.md"
 alias wiki="nvim -c VimwikiIndex"
 alias ipadres="curl ipinfo.io/ip"
 alias bc="bc -l"

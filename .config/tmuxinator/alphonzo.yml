@@ -49,10 +49,10 @@ windows:
       panes:
         - nvim notes/vimwiki/notes/tasks/tasks.md
         - journalctl --user -f
-        - bash
+        - cd web/alperor && hugo serve
         - htop
   - wiki: nvim -c VimwikiIndex
   - calendar: calcurse
   - mail: neomutt
-  - files: lf
+  - files: ranger
   - music: ncmpcpp

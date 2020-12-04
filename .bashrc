@@ -75,3 +75,4 @@ export FZF_DEFAULT_OPTS="--height 50% -1 --layout=reverse-list --multi --preview
 #export FZF_DEFAULT_COMMAND="find . -path '*/\.*' -type d -prune -o -type f -print -o -type l -print 2> /dev/null | sed s/^..//"
 
 
+export NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
