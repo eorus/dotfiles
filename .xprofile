@@ -14,7 +14,7 @@ xset dpms 300 600 0 &
 #xautolock -detectsleep -time 10 -corners +00- -locker "xset s activate; xset dpms force off" &
 #xautolock -detectsleep  -time 10 -corners +00- -locker "~/.config/i3/scripts/lock-i3.sh" &
 #xautolock -detectsleep -time 10 -corners +00- -locker "systemctl suspend" &
-xautolock -time 10 -detectsleep -locker "/home/eorus/suspension.sh"  -notify 30 -notifier "notify-send -u critical 'SUSPENDING in 30s'" & 
+xautolock -time 10 -detectsleep -locker "/home/eorus/suspension.sh"  -notify 30 -notifier "notify-send -u critical 'SUSPENDING in 30s'" &
 xset b off &
 
 #xrandr --output DP2-3 --off
@@ -36,7 +36,7 @@ xmodmap -e 'keycode 135 = Super_R' &
 #xset r rate 300 50 &	# Speed xrate up
 unclutter &		# Remove mouse when idle
 dunst &			# dunst for notifications
-caffeine-indicator &
+caffeine &
 xclip &
 clipit &
 pasystray &
