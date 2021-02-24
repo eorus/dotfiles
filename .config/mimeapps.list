@@ -9,8 +9,12 @@ application/x-php=xed.desktop;
 inode/directory=thunar.desktop;
 text/html=xed.desktop;google-chrome.desktop;
 text/markdown=nvim.desktop;xed.desktop;
-image/jpeg=sxiv.desktop;vimiv.desktop;
+image/jpeg=org.gnome.gThumb.desktop;shotwell-viewer.desktop;sxiv.desktop;vimiv.desktop;
 application/epub+zip=xreader.desktop;
+text/css=xed.desktop;
+application/javascript=xed.desktop;
+text/x-scss=xed.desktop;
+image/webp=org.gnome.gThumb.desktop;org.nomacs.ImageLounge.desktop;
 
 [Default Applications]
 x-scheme-handler/https=google-chrome.desktop
@@ -19,3 +23,4 @@ image/jpeg=vimiv.desktop;
 image/png=vimiv.desktop;
 text/markdown=nvim.desktop;xed.desktop;
 text/html=nvim.desktop;xed.desktop;
+image/webp=org.nomacs.ImageLounge.desktop

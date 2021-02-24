@@ -67,7 +67,7 @@ bindsym $mod+w			exec --no-startup-id $BROWSER
 
 bindsym $mod+e			exec $term -e neomutt
 
-bindsym $mod+r 			exec $term -e lf
+bindsym $mod+r 			exec $term -e ranger
 bindsym $mod+Shift+r		exec --no-startup-id thunar
 
 bindsym $mod+t			split toggle
