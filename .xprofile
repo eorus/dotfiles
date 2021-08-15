@@ -14,7 +14,7 @@ xset dpms 300 600 0 &
 #xautolock -detectsleep -time 10 -corners +00- -locker "xset s activate; xset dpms force off" &
 #xautolock -detectsleep  -time 10 -corners +00- -locker "~/.config/i3/scripts/lock-i3.sh" &
 #xautolock -detectsleep -time 10 -corners +00- -locker "systemctl suspend" &
-xautolock -time 10 -detectsleep -locker "/home/eorus/suspension.sh"  -notify 30 -notifier "notify-send -u critical 'SUSPENDING in 30s'" &
+#xautolock -time 10 -detectsleep -locker "/home/eorus/suspension.sh"  -notify 30 -notifier "notify-send -u critical 'SUSPENDING in 30s'" &
 xset b off &
 
 #xrandr --output DP2-3 --off
@@ -38,14 +38,14 @@ unclutter &		# Remove mouse when idle
 dunst &			# dunst for notifications
 caffeine &
 xclip &
-clipit &
-pasystray &
+#clipit &
+#pasystray &
 picom -b &
 allow_rgb10_configs=false picom --config ~/.config/picom.conf &
 #xfce4-power-manager &
 udiskie --tray &
-numlockx &
+#numlockx &
 ## mate-power-manager &
 # blueman-applet &
 #synapse &
-sleep 2 && nm-applet &
+#sleep 2 && nm-applet &

@@ -70,8 +70,8 @@ bindsym $mod+e			exec $term -e neomutt
 bindsym $mod+r 			exec $term -e ranger
 bindsym $mod+Shift+r		exec --no-startup-id thunar
 
-bindsym $mod+t			split toggle
-bindsym $mod+Shift+t		gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
+bindsym $mod+Shift+t			split toggle
+#bindsym $mod+Shift+t		gaps inner current set $inner_gaps; gaps outer current set $outer_gaps
 
 bindsym $mod+c			exec $term -e calcurse
 
@@ -251,7 +251,7 @@ assign [class=Lxappearance|System-config-printer.py|Lxtask|GParted|Pavucontrol|E
 # disable borders for some applications
 # for_window [class="^Icedove$"] border none
 for_window [class="^nomacs$"] floating enable
-for_window [class = "Spotify"] move to workspace $ws6
+for_window [class = "Spotify"] move to workspace $ws7
 #for_window [class="$term"] floating enable
 # window rules, you can find the window class using xprop
 #for_window [class=".*"] border pixel 2
@@ -275,7 +275,7 @@ bindsym $mod+minus scratchpad show
 
 # AUTOSTART
 # automatically start programs in specific workspaces on login
-exec --no-startup-id i3-msg "workspace $ws1; exec /usr/bin/google-chrome-stable"
+exec --no-startup-id i3-msg "workspace $ws1; exec /usr/bin/google-chrome-stable  --password-store=gnome"
 exec --no-startup-id i3-msg "workspace $ws2; exec $term"
 #exec --no-startup-id i3-msg "workspace $ws3; exec $term -e tmuxinator alphonzo"
 #exec --no-startup-id i3-msg "workspace $ws4; exec $term -e neomutt"
@@ -285,6 +285,13 @@ exec --no-startup-id i3-msg "workspace $ws2; exec $term"
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 #exec --no-startup-id i3-msg 'workspace $ws4; exec firefox'
 exec --no-startup-id /home/eorus/Pictures/wallpaper.sh
+exec /usr/bin/pasystray
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/bin/clipit
+#exec --no-startup-id udiskie -a -n
+
+# Screen Lock
+exec xautolock -time 10 -detectsleep -locker "/home/eorus/suspension.sh"  -notify 30 -notifier "notify-send -u critical 'SUSPENDING in 30s'" &
 
 # #---Extra XF86 Keys---# #
 
@@ -375,8 +382,8 @@ bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection c
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-#bindsym $mod+e layout toggle split
+bindsym $mod+t layout tabbed
+bindsym $mod+Shift+e layout toggle split
 
 #External Monitor
 #exec  --no-startup-id xrandr --output DP2-3 --off
