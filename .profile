@@ -12,7 +12,7 @@ export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export EDITOR="nvim"
 export TERMINAL="st"
-export BROWSER="/usr/bin/google-chrome-stable"
+export BROWSER="/usr/bin/google-chrome-stable --password-store=gnome"
 export READER="/usr/bin/zathura"
 export FILE="/usr/bin/thunar"
 export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"

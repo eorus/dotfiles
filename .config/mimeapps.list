@@ -19,6 +19,7 @@ audio/ogg=mpv.desktop;
 video/mp4=mpv.desktop;
 x-scheme-handler/https=google-chrome.desktop;
 x-scheme-handler/http=google-chrome.desktop;
+x-scheme-handler/tg=userapp-Telegram Desktop-I6KN90.desktop;
 
 [Default Applications]
 x-scheme-handler/https=google-chrome.desktop;
@@ -28,3 +29,4 @@ image/png=vimiv.desktop;
 text/markdown=nvim.desktop;xed.desktop;
 text/html=nvim.desktop;xed.desktop;
 image/webp=org.nomacs.ImageLounge.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-I6KN90.desktop
