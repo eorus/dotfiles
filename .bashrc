@@ -44,7 +44,7 @@ export HISTSIZE PROMPT_COMMAND
 export SHELL=/bin/bash
 export PATH="${PATH}:${HOME}/.local/bin/"
 export EDITOR="/usr/bin/nvim"
-#export TERMINAL="/usr/bin/st"
+export TERMINAL="/usr/local/bin/st"
 # colored man pages
 # Set directory colors
 eval `dircolors ~/.dir_colors`
@@ -61,7 +61,6 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput se
 #printf "Today is, $(date)\n";
 #printf "Sysinfo: $(uptime)${NC}\n"
 
-alias dotfiles='/usr/bin/git --git-dir=/home/eorus/.dotfiles/ --work-tree=/home/eorus'
 
 # FZF mappings and options
 #source /usr/share/fzf/completion.bash && source /usr/share/fzf/key-bindings.bash
@@ -76,3 +75,4 @@ export FZF_DEFAULT_OPTS="--height 50% -1 --layout=reverse-list --multi --preview
 
 
 export NNN_PLUG='f:finder;o:fzopen;p:mocplay;d:diffs;t:nmount;v:imgview'
+alias dotfiles='/usr/bin/git --git-dir=/home/eorus/.dotfiles/ --work-tree=/home/eorus'

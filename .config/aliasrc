@@ -29,6 +29,7 @@ alias la='ls -A'
 alias l='ls -CF'
 alias lh='ls -lh'
 alias mx='tmuxinator'
+alias stat='glances'
 alias vim="nvim"
 alias oldvim="\vim"
 alias pbcopy="xclip -selection clipboard"
@@ -38,10 +39,13 @@ alias c="clear"
 alias h="history"
 alias p="cat"
 alias pd="pwd"
-alias t="date"
+alias ttr="trans -b :tr"
+alias ten="trans -b tr:en"
+alias tfen="trans -b tr:en file://Documents/Notes/vimwiki/notes/tasks/blogging.md"
 alias u='cd ..'
 alias hd='sh ~/deploy.sh'
 alias ka="killall" \
+  son="grep -i installed /var/log/pacman.log" \
 	mkd="mkdir -pv" \
 	cfi3="e ~/.config/i3/config" \
 	cfbs="e ~/.config/bspwm/bspwmrc" \
@@ -57,7 +61,7 @@ alias ka="killall" \
 	g="git" \
 	trem="transmission-remote" \
 	e="$EDITOR" \
-	v="$EDITOR" \
+	v="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	x="sxiv -ft *" \
 	sdn="sudo shutdown -h now" \
 	gua="git remote | xargs -L1 git push --all" \
@@ -75,8 +79,11 @@ alias ka="killall" \
 alias duf='du -hsx * | sort -rh | head -5'
 alias treeacl='tree -A -C -L 2'
 alias hava='wttr Istanbul'
-alias windows='sudo mount -t cifs //192.168.0.31/Ortak /home/eorus/public'
-alias yedek="sudo rsync -aAXv --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude="/home/$USER/.cache" --exclude="/home/$USER/Downloads" --exclude="/home/$USER/Music" --exclude="/home/$USER/.VirtualBoxVMs"--exclude="/home/$USER/.ecryptfs" --exclude=/home/$USER/Desktop --exclude=/home/$USER/.cache --exclude=/home/$USER/.debug --exclude=/home/$USER/.dbus --exclude=/home/$USER/.gvfs --exclude=/home/$USER/.local/share/gvfs-metadata --exclude=/home/$USER/.local/share/Trash --exclude=/home/$USER/.recently-used --exclude=/home/$USER/.thumbnails --exclude=/home/$USER/.xsession-errors --exclude=/home/$USER/.Trash --exclude=/home/$USER/.steam --exclude=/home/$USER/Downloads --exclude=/home/$USER/Steam / /run/media/eorus/Backups/arch"
+alias wake='netctl restart  wlp3s0-Alphonzo'
+alias windows='sudo mount -t cifs //192.168.0.26/Ortak /mnt/ortak'
+alias notgit='rsync -avup  Documents/Notes/vimwiki eorus-home:/mnt/ortak/notes/'
+alias notgel='rsync -avup --delete eorus-home:/mnt/ortak/notes/vimwiki Documents/Notes/'
+alias yedek="sudo rsync -aAXv --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude="/home/$USER/.cache" --exclude="/home/$USER/Downloads" --exclude="/home/$USER/Music" --exclude="/home/$USER/.VirtualBoxVMs"--exclude="/home/$USER/.ecryptfs" --exclude=/home/$USER/Desktop --exclude=/home/$USER/.cache --exclude=/home/$USER/.debug --exclude=/home/$USER/.dbus --exclude=/home/$USER/.gvfs --exclude=/home/$USER/.local/share/gvfs-metadata --exclude=/home/$USER/.local/share/Trash --exclude=/home/$USER/.recently-used --exclude=/home/$USER/.thumbnails --exclude=/home/$USER/.xsession-errors --exclude=/home/$USER/.Trash --exclude=/home/$USER/.steam --exclude=/home/$USER/Videos --exclude=/home/$USER/Steam / /run/media/eorus/Backups/arch"
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 alias fzf='fzf --preview="head -$LINES {}"'

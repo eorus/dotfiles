@@ -7,7 +7,8 @@ message_delay_time = "1"
 visualizer_type = "spectrum"
 
 ### Behaviour ###
-execute_on_song_change = "bash ~/.config/ncmpcpp/mpd-notification"
+execute_on_song_change = notify-send "Now Playing" "$(mpc --format '%title% \n%artist% - %album%' current)"
+#execute_on_song_change = "bash ~/.config/ncmpcpp/mpd-notification"
 autocenter_mode = "yes"
 centered_cursor = "yes"
 allow_for_physical_item_deletion = "no"

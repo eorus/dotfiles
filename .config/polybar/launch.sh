@@ -15,7 +15,7 @@ else
 fi
 
 # Launch bar1 and bar2
-#polybar -c ~/.config/polybar/config.ini main &
+polybar -c ~/.config/polybar/config.ini top &
 
 # Launch polybar
-#polybar top &
+#polybar top,&

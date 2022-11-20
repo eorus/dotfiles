@@ -26,7 +26,7 @@ xset b off &
 # Properties button extra Mod/Escape
 #xss-lock -- i3lock -n -i .wallpaper.png &
 redshift-gtk &
-xsettingsd &
+#xsettingsd &
 #devmon --no-gui &
 #urxvtd -q -o -f &
 xmodmap -e 'keycode 135 = Super_R' &
@@ -38,14 +38,14 @@ unclutter &		# Remove mouse when idle
 dunst &			# dunst for notifications
 caffeine &
 xclip &
-#clipit &
+clipit &
 #pasystray &
-picom -b &
-allow_rgb10_configs=false picom --config ~/.config/picom.conf &
+#picom --config $HOME/.config/picom.conf &
+#allow_rgb10_configs=false picom --config ~/.config/picom.conf &
 #xfce4-power-manager &
-udiskie --tray &
-#numlockx &
+#udiskie --tray &
+numlockx on &
 ## mate-power-manager &
 # blueman-applet &
 #synapse &
-#sleep 2 && nm-applet &
+sleep 2 && nm-applet &

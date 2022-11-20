@@ -5,19 +5,20 @@
 PATH="$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix=~/.node_modules
 export PATH="$PATH:$(ruby -e 'puts Gem.user_dir')/bin"
-export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+#export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE=gtk
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export EDITOR="nvim"
-export TERMINAL="st"
+export TERMINAL="/usr/local/bin/st"
 export BROWSER="/usr/bin/google-chrome-stable --password-store=gnome"
 export READER="/usr/bin/zathura"
 export FILE="/usr/bin/thunar"
-export SUDO_ASKPASS="$HOME/.local/bin/tools/dmenupass"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
 export NOTMUCH_CONFIG="$HOME/.notmuch-config"
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export TASKRC="$HOME/.taskrc"
+#export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export PAGER="most"
 
 ## XDG ------------------------------------------------------------------------

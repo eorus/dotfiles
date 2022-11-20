@@ -11,7 +11,7 @@ Xft.dpi:96
 Xft.antialias: true
 Xft.rgba: rgb
 Xft.hinting: true
-Xft.hintstyle: hintlight
+Xft.hintstyle: hintfull
 Xft.autohint: true
 Xft.lcdfilter: lcddefault
 
@@ -29,6 +29,9 @@ Xcursor.size:  24
 #include ".config/xcolors/xrdb/fonts/scpfont"
 !#include ".config/xcolors/eorus"
 !#include ".config/xcolors/tango"
+
+!URxvt.font: xft:DejaVuSansMono Nerd Font:pixelsize=16
+!URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=true:hinting=true:pixelsize=18
 
 ! ------------------------------------------------------------------------------
 ! ROFI Config
@@ -49,6 +52,8 @@ rofi.location: 0
 
 !! Transparency (0-1):
 st.alpha: 0.95
+!st.alphaOffset: 0.7
+! *.color0: #000
 !*font = "roboto mono nerd font:pixelsize=18:antialias=true:autohint=true"
 !! Set a default font and font size as below:
 st.font:Source Code Pro:size=14:antialias=true:autohint=false
@@ -83,24 +88,42 @@ XFontSel*MenuButton*MenuButtonStyle:  select
 .xfontsel.pane.fieldBox.field5.background:        #252525
 .xfontsel.pane.fieldBox.field5.foreground:        snow
 
+
+
 XTerm*vt100.utf8: true
 XTerm*bellIsUrgent: true
 XTerm*visualBell: true
 XTerm*visualBellLine: true
 XTerm*eightBitInput: false
 !XTerm*scrollBar: false
-
+XTerm*vt100.selectToClipboard: true
+XTerm*transparent: true
 XTerm*vt100.allowBoldFonts: true
 XTerm*vt100.background: black
 XTerm*vt100.foreground: grey80
 XTerm*vt100.cursorColor: #ff7a7a
-!XTerm*vt100.faceName: Iosevka Term
-!XTerm*vt100.font: -*-terminus-bold-*-*-*-14-*-*-*-*-*-iso10646-1
-XTerm*faceName: Source Code Pro,Source Code Pro Semibold
+XTerm*faceName: SauceCodePro Nerd Font Mono
 XTerm*faceSize: 14
-!XTerm*vt100.faceNameDoublesize: VL Gothic
 XTerm*vt100.deleteIsDEL: true
-!XTerm*vt100.faceSize: 12
-!XTerm*vt100.faceName: unifont
+XTerm*deleteIsDEL:      True
+XTerm*metaSendsEscape: true
 XTerm*termName: xterm-256color
-XTerm*charClass: 33:48,35-38:48,39:43,42-47:48,58-59:48,61:48,63-64:48,126:48
+XTerm*ttyModes: intr ^c erase ^h weras ^w kill ^u
+xterm*VT100.Translations: #override \
+                 Shift <Key>Insert:    insert-selection(SELECT) \n\
+                 Ctrl Shift <Key>V:    insert-selection(SELECT) \n\
+                 Ctrl Shift <Key>C:    copy-selection(SELECT)  \n\
+                 Ctrl <Key> j: smaller-vt-font() \n\
+                 Ctrl <Key> k: larger-vt-font() \n\
+
+XTerm*renderFont: true
+XTerm*utf8: 2
+XTerm*locale: true
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+XTerm*loginshell: true
+
+! I like a LOT of scrollback...
+XTerm*savelines: 16384
+
+! double-click to select whole URLs :D
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48

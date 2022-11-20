@@ -1,0 +1,16 @@
+abook
+arc-x-icons-theme
+caffeine-ng
+clipit
+geteltorito
+google-chrome
+gtk-youtube-viewer-git
+mpd-notification
+pandoc-bin
+ripmime
+thunar-shares-plugin
+tumbler-extra-thumbnailers
+urlview
+vimiv-qt
+wttr
+yay

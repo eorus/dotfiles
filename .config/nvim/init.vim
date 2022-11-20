@@ -66,7 +66,11 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 nnoremap <leader>n :Lexplore<CR>
 autocmd FileType netrw nnoremap ? :help netrw-quickmap<CR>
 
-nnoremap <leader>n :NnnPicker %:p:h<CR>
+" Make Ranger replace netrw and be the file explorer
+let g:rnvimr_ex_enable = 1
+nmap <space>r :RnvimrToggle<CR>
+map <F2> :RnvimrToggle<CR>
+
 
 " Shortcutting split navigation, saving a keypress:
 map <C-h> <C-w>h
@@ -89,7 +93,7 @@ map <leader>g :Goyo \| set bg=dark \| set linebreak<CR>
 " Vimwiki ==================================================================
 " Ensure files are read as what I want:
 let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
-let g:vimwiki_list = [{'path': '~/notes/vimwiki/notes', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'path': '~/Documents/Notes/vimwiki/notes', 'syntax': 'markdown', 'ext': '.md'}]
 
 au BufRead,BufNewFile *.wiki set filetype=vimwiki
 :autocmd FileType vimwiki map <C-d> :VimwikiMakeDiaryNote
@@ -147,9 +151,9 @@ autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " Colorscheme********************************************************
 set t_Co=256                        "enable 256 colors
 set termguicolors                   " Use true colors
-colorscheme nord
+colorscheme iceberg
 "status line: modifiedflag, charcount, filepercent, filepath
-set statusline=%=%m\ %c\ %P\ %f
+"set statusline=%=%m\ %c\ %P\ %f
 
 "remove current line highlight in unfocused window
 au VimEnter,WinEnter,BufWinEnter,FocusGained,CmdwinEnter * set cul
@@ -163,3 +167,12 @@ au WinLeave,FocusLost,CmdwinLeave * set nocul
 	autocmd BufWritePost files,directories !shortcuts
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults !xrdb %
+
+nnoremap <silent> <leader>vtt :Translate<CR>
+vnoremap <silent> <leader>vtt :TranslateVisual<CR>
+vnoremap <silent> <leader>vtr :TranslateReplace<CR>
+
+let g:translate#default_languages = {
+      \ 'tr': 'en',
+      \ 'en': 'tr'
+      \ }
