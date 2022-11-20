@@ -49,7 +49,8 @@ super + shift + Pause
     bspc node focused -t floating; bspc node -d '^7'
 
 alt + Tab
-        rofi -show window -window-thumbnail
+    rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 # focus/swap
 
@@ -104,24 +105,54 @@ super + shift + {y,u,i,o}
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
-# Toggle gaps
-super + shift + d
-	bspc config window_gap {0,15}
-# Increase/descrease gap size
-super { ,+ shift }+ z
-	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
 
-super + u
-	cat /tmp/dropdown | xargs -I win bspc node win --flag hidden;bspc node -f win
+# Toggle node attributes: marked, locked, sticky, private, hidden
+# super + alt + {m,l,s,p,h}
+#	bspc node -g {marked,locked,sticky,private,hidden}
 
+super + BackSpace
+  bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+
+## Window size and rotation
+
+# Resize window (Up)
+super + alt + @Up
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z bottom 0 -10 || \
+		bspc node -z top 0 -10; \
+	else \
+		bspc node -z bottom 0 -10; \
+	fi
+
+# Resize window (Down)
+super + alt + @Down
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z bottom 0 +10 || \
+		bspc node -z top 0 +10; \
+	else \
+		bspc node -z bottom 0 +10; \
+	fi
+
+# Resize window (Left)
+super + alt + @Left
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z left -10 0 || \
+		bspc node -z right -10 0; \
+	else \
+		bspc node -z right -10 0; \
+	fi
+
+# Resize window (Right)
+super + alt + @Right
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z left +10 0 || \
+		bspc node -z right +10 0; \
+	else \
+		bspc node -z right +10 0; \
+	fi
 # Make a windoww sticky/non-sticky
 super + o
 	bspc node -g sticky={on,off}
-
-# remove and restore polybar
-#super + b
-#\{ pgrep polybar && \{ killall polybar ; bspc config top_padding 0 \} \} || \{ launch_polybar ; bspc config top_padding 24 \}
-
 super + {i,o}
 	bspc node -f {prev,next}.local
 super + shift + n
@@ -145,13 +176,11 @@ super + d
 super + r
 	$TERMINAL -e ranger
 super + shift + r
-	thunar
+	pcmanfm
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 $STATUSBAR
-super + p
+super + + shift + e
 	$TERMINAL -e ncmpcpp
-super + i
-	$TERMINAL -e htop
 super + n
 	$TERMINAL -e newsboat
 super + c
@@ -167,7 +196,7 @@ super + shift + w
 super + shift + e
 	tutorialvids
 super + w
-        $BROWSER
+  $BROWSER
 super + shift + n
 		$TERMINAL -e sudo nmtui
 
@@ -199,6 +228,8 @@ XF86MonBrightness{Up,Down}
 	xbacklight {-inc,-dec} 10
 
 # media keys
+super + less
+	mpc toggle
 XF86Audio{Next,Prev,Play,Stop}
 	mpc {next,prev,toggle,stop}
 XF86AudioPlay
@@ -211,12 +242,16 @@ XF86AudioPrev
 	playerctl previous
 
 # Volume {up,down,mute}
-XF86Audio{RaiseVolume,LowerVolume,Mute}
-	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%,toggle}
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%}
+# Toggle volume using media keys for default sink
+XF86AudioMute
+	pactl set-sink-mute "$(pactl info | grep 'Default Sink:' | sed 's/.*: //')" toggle
 XF86AudioMedia
 	$TERMINAL -e ncmpcpp
 
 # Recording
+
 # Take screenshot
 super + Print
 	maim ~/Pictures/screenshots/pic-full-$(date '+%y%m%d-%H%M-%S').png
@@ -289,7 +324,8 @@ XF86Tools
 super + F1
 	zathura ~/Documents/markdown-cheatsheet-online.pdf
 
-# F2 restarts either dwm or i3 and is bound in each.
+super + F2
+  rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -line-padding 4 -columns 3 -show-icons -drun-icon-theme "Papirus-Dark" -font 'Noto Sans 10'
 
 # Change display
 super + F3
@@ -299,7 +335,9 @@ super + F3
 super + F4
 	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
 
-super + F5 is unbound.
+super + F5
+	rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 super + F6
 
@@ -312,3 +350,13 @@ super + F8
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}
+
+# Turn on gaps for current desktop
+super + bracketright
+	bspc config -d focused window_gap 15; \
+	bspc config -d focused border_width 2
+
+# Turn off gaps for current desktop
+super + bracketleft
+	bspc config -d focused window_gap 0; \
+	bspc config -d focused border_width 1

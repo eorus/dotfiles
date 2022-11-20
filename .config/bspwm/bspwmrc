@@ -6,10 +6,10 @@
 
 bspc monitor HDMI3 -d I II III IV V VI VII VIII IX X
 
-#bspc config border_radius                8
+bspc config border_radius                 8
 bspc config border_width                  5
 bspc config window_gap                    5
-bspc config top_padding                   5
+bspc config top_padding                   1
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
@@ -52,3 +52,4 @@ bspc rule -a Zathura state=tiled
 pkill -USR1 -x sxhkd || /usr/bin/sxhkd &
 picom --config $HOME/.config/picom.conf &
 ~/.config/polybar/launch.sh &
+~/Pictures/wallpaper.sh &
