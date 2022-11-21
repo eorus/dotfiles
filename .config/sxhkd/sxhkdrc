@@ -1,18 +1,17 @@
-# The Simple X Hotkey Daemon is the program used by LARBS to map most of the
-# dwm-independent commands.  This file is pretty readable, so I'll let you read
-# it.
-
-# The keys NOT bound here by sxhkd, but by dwm or i3 are:
-# The t thru p keys on the top row
-# The f thru ; keys on the home row
-# The b key on the bottom row (hides the bar in either case)
+# ┌─────────────┐
+# │--ALPHONZO --│
+# └─────────────┘
 
 super + Pause
   pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
 
 # quit/restart bspwm
 shift + alt + {q,r}
-  bspc {quit,wm -r
+	bspc {quit,wm -r}
+
+# close and kill
+# super + {_,shift + }q
+#	bspc node -{c,k}
 
 # kill
 super + shift + q
@@ -21,6 +20,17 @@ super + shift + q
 # close
 super + q
 	bspc node -c
+
+# power menu
+super + End
+     ~/.config/rofi/powermenu.sh
+
+super + d
+	rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -line-padding 4 -columns 3 -show-icons -drun-icon-theme "Papirus-Dark" -font 'Noto Sans 10'
+
+alt + Tab
+    rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 # alternate between the tiled and monocle layout
 super + m
@@ -48,10 +58,6 @@ super + shift + space
 super + shift + Pause
     bspc node focused -t floating; bspc node -d '^7'
 
-alt + Tab
-    rofi -show window \
-		-config ~/.config/rofi/rofidmenu.rasi
-
 # focus/swap
 
 # focus the node in the given direction
@@ -62,26 +68,35 @@ super + {_,shift + }{Left,Down,Up,Right}
 super + {p,b,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
-super + {g,semicolon}
-	bspc desktop {prev,next}.occupied --focus
-super + {Prior,Next}
-	bspc desktop {prev,next}.occupied --focus
-super + {Tab,backslash}
-	bspc desktop last --focus
-
-# focus or swap the next node
+# focus the next/previous window in the current desktop
 super + {_,shift + }c
-	bspc node -{f,s} next.local
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
 
 # focus or send to the given desktop
 super + {_,shift + }{1-9,0}
 	bspc {desktop -f,node -d} ^{1-9,10}
 
+#
+# preselect
+#
+
 # preselect the direction
-#super + {u,o}
-#bspc node -p {south,east}
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
 
 # preselect the ratio
 super + ctrl + {1-9}
@@ -92,23 +107,43 @@ super + ctrl + space
 	bspc node -p cancel
 
 # cancel the preselection for the focused desktop
-#super + space
-#bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
 
 # expand a window by moving one of its side outward
 super + shift + {y,u,i,o}
 	bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
 
 # contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # move a floating window
 super + {Left,Down,Up,Right}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
 
+# Toggle gaps
+super + shift + d
+	bspc config window_gap {0,15}
+# Increase/descrease gap size
+super { ,+ shift }+ z
+	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
+
+super + u
+	cat /tmp/dropdown | xargs -I win bspc node win --flag hidden;bspc node -f win
+
 
 # Toggle node attributes: marked, locked, sticky, private, hidden
 # super + alt + {m,l,s,p,h}
 #	bspc node -g {marked,locked,sticky,private,hidden}
+
+# hide window
+super + h
+  bspc node -g hidden
 
 super + BackSpace
   bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
@@ -150,15 +185,7 @@ super + alt + @Right
 	else \
 		bspc node -z right +10 0; \
 	fi
-# Make a windoww sticky/non-sticky
-super + o
-	bspc node -g sticky={on,off}
-super + {i,o}
-	bspc node -f {prev,next}.local
-super + shift + n
-	bspc node focused -t \~floating ; hover right
-super + shift + b
-	bspc node focused -t \~floating ; hover left
+
 
 # Window/edge dragging
 super + button{1,3}
@@ -169,14 +196,19 @@ super + @button{1-3}
 	bspc pointer -u
 
 # Application Binds
+
+# apps example
+#super + shift + {b,t,f,m,s}
+#	{firefox,urxvt,thunar,ncmpcpp,htop}
+
 super + Return
 	$TERMINAL
-super + d
-	dmenu_run
+super + w
+  $BROWSER
 super + r
 	$TERMINAL -e ranger
 super + shift + r
-	pcmanfm
+	thunar
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 $STATUSBAR
 super + + shift + e
@@ -193,35 +225,9 @@ super + shift + a
 	pavucontrol
 super + shift + w
 	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
-super + shift + e
-	tutorialvids
-super + w
-  $BROWSER
 super + shift + n
 		$TERMINAL -e sudo nmtui
 
-# Et cetera...
-super + grave
-	dmenuunicode
-super + Scroll_Lock
-	killall screenkey || screenkey
-super + Insert
-	showclip
-super + shift + x
-	prompt "Shutdown computer?" "sudo -A shutdown -h now"
-super + shift + BackSpace
-	prompt "Reboot computer?" "sudo -A reboot"
-super + shift + Escape
-	prompt 'Leave Xorg?' 'pkill Xorg'
-super + End
-  $HOME/.config/i3/scripts/powermenu
-super + x
-	ifinstalled slock && ( slock & xset dpms force off ; mpc pause ; pauseallmpv )
-XF86Launch1
-	xset dpms force off
-# apps example
-#super + shift + {b,t,f,m,s}
-#	{firefox,urxvt,thunar,ncmpcpp,htop}
 
 # brightness keybindings
 XF86MonBrightness{Up,Down}
@@ -255,9 +261,10 @@ XF86AudioMedia
 # Take screenshot
 super + Print
 	maim ~/Pictures/screenshots/pic-full-$(date '+%y%m%d-%H%M-%S').png
+
 # Pick screenshot type
 Print
-	maimpick
+  ~/.config/bspwm/scripts/screenshot.sh
 
 shift + Print
         scrot ~/Pictures/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'
@@ -322,12 +329,11 @@ XF86Tools
 
 # Function keys
 super + F1
-	zathura ~/Documents/markdown-cheatsheet-online.pdf
+  ~/.config/bspwm/scripts/keybindings_rofi.sh
 
 super + F2
-  rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -line-padding 4 -columns 3 -show-icons -drun-icon-theme "Papirus-Dark" -font 'Noto Sans 10'
+  zathura ~/Documents/markdown-cheatsheet-online.pdf
 
-# Change display
 super + F3
 	displayselect
 
@@ -344,9 +350,11 @@ super + F6
 # toggle torrent daemon
 super + F7
 	td-toggle
+
 # sync news
 super + F8
 	newsup
+
 # Mount a USB drive or Android device
 super + {F9,F10}
 	{dmenumount,dmenuumount}

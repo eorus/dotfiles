@@ -16,8 +16,8 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-# some more ls aliases
 alias tmpsil="sudo for i in /tmp/* ; do rm -r "$i" ; done"
+alias ekran="sh .screenlayout/dock.sh"
 alias bat0='upower -i /org/freedesktop/UPower/devices/battery_BAT0| grep -E "state|to\ full|percentage"'
 alias ll='ls -alF'
 alias notes="clear && sncli sync && sncli"
