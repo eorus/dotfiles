@@ -42,9 +42,6 @@ HISTFILESIZE=900000000999999999
 PROMPT_COMMAND="history -a"
 export HISTSIZE PROMPT_COMMAND
 export SHELL=/bin/bash
-export PATH="${PATH}:${HOME}/.local/bin/"
-export EDITOR="/usr/bin/nvim"
-export TERMINAL="/usr/local/bin/st"
 # colored man pages
 # Set directory colors
 eval `dircolors ~/.dir_colors`

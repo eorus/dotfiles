@@ -4,14 +4,13 @@
 # │CONFIGURATION│
 # └─────────────┘
 
-pgrep -x sxhkd > /dev/null || sxhkd &
-
 bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -g 1920x1200+0+0
 
 bspc config border_radius                 8
-bspc config border_width                  3
-bspc config window_gap                    10
-bspc config top_padding                   1
+bspc config border_width                  5
+bspc config window_gap                    5
+#bspc config top_padding                   1
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
@@ -25,6 +24,7 @@ bspc config focus_follows_pointer         true
 bspc config history_aware_focus           true
 bspc config remove_disabled_monitors      true
 bspc config merge_overlapping_monitors    true
+
 bspc config pointer_modifier mod4
 bspc config pointer_action1 move
 bspc config pointer_action2 resize_side
@@ -45,18 +45,16 @@ bspc config urgent_border_color 	      "#dd2727"
 # └─────┘
 
 # fix programs starting in floating mode
+bspc rule -a Gimp desktop=^6 follow=on state=floating
 bspc rule -a Zathura state=tiled
-bspc rule -a lxappearence desktop='^8' state=floating follow=on
-bspc rule -a firefox desktop='^3'
+bspc rule -a mpv state=floating
 
 # ┌────────────────┐
 # │STARTUP PROGRAMS│
 # └────────────────┘
 
-picom --config $HOME/.config/picom.conf &
+xsetroot -cursor_name left_ptr
+pkill -USR1 -x sxhkd || /usr/bin/sxhkd &
+#picom --config $HOME/.config/picom.conf &
 ~/.config/polybar/launch.sh &
-~/Pictures/wallpaper.sh &
-# Cursor
-xsetroot -cursor_name left_ptr &
-# Low battery notifier
-~/.config/bspwm/scripts/low_bat_notifier.sh
+#~/Pictures/wallpaper.sh &

@@ -208,7 +208,7 @@ super + w
 super + r
 	$TERMINAL -e ranger
 super + shift + r
-	thunar
+	pcmanfm
 super + e
 	$TERMINAL -e neomutt; pkill -RTMIN+12 $STATUSBAR
 super + + shift + e
@@ -368,3 +368,6 @@ super + bracketright
 super + bracketleft
 	bspc config -d focused window_gap 0; \
 	bspc config -d focused border_width 1
+
+super + !button{1-3}
+    bspc pointer -t %i %i

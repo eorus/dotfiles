@@ -23,15 +23,12 @@ Xcursor.size:  24
 ! Import Colors
 ! ------------------------------------------------------------------------------
 
-#include ".config/xcolors/xrdb/color/nord"
-#include ".config/xcolors/xrdb/rofi/nord"
-#include ".config/xcolors/xrdb/dmenu/nord"
-#include ".config/xcolors/xrdb/fonts/scpfont"
-!#include ".config/xcolors/eorus"
-!#include ".config/xcolors/tango"
-
-!URxvt.font: xft:DejaVuSansMono Nerd Font:pixelsize=16
-!URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=true:hinting=true:pixelsize=18
+! #include ".config/xcolors/xrdb/color/nord"
+! #include ".config/xcolors/xrdb/rofi/nord"
+! #include ".config/xcolors/xrdb/dmenu/nord"
+! #include ".config/xcolors/xrdb/fonts/scpfont"
+! #include ".config/xcolors/eorus"
+! #include ".config/xcolors/tango"
 
 ! ------------------------------------------------------------------------------
 ! ROFI Config
@@ -61,69 +58,110 @@ st.font:Source Code Pro:size=14:antialias=true:autohint=false
 st.termname: st-256color
 ! st.borderpx: 2
 
-! -- [ XFontSel ] ------------------------------
-XFontSel*sampleText.background:       TEXTBG
-XFontSel*menu*showUnselectable:       false
-XFontSel*MenuButton.shadowWidth:      0
-XFontSel*Toggle*ToggleStyle:          check
-XFontSel*MenuButton*Justify:          left
-XFontSel*MenuButton*MenuButtonStyle:  select
-.xfontsel.pane.commandBox.quitButton.background:  #252525
-.xfontsel.pane.commandBox.quitButton.foreground:  snow
-.xfontsel.pane.commandBox.ownButton.background:   orange3
-.xfontsel.pane.commandBox.ownButton.foreground:   snow
-.xfontsel.pane.commandBox.countLabel.background:  snow
-.xfontsel.pane.viewPort.sampleText.background:    #252525
-.xfontsel.pane.viewPort.sampleText.foreground:    snow
-.xfontsel.pane.fieldBox.field0.background:        #252525
-.xfontsel.pane.fieldBox.field0.foreground:        snow
-.xfontsel.pane.fieldBox.field1.background:        #252525
-.xfontsel.pane.fieldBox.field1.foreground:        snow
-.xfontsel.pane.fieldBox.field2.background:        #252525
-.xfontsel.pane.fieldBox.field2.foreground:        snow
-.xfontsel.pane.fieldBox.field3.background:        #252525
-.xfontsel.pane.fieldBox.field3.foreground:        snow
-.xfontsel.pane.fieldBox.field4.background:        #252525
-.xfontsel.pane.fieldBox.field4.foreground:        snow
-.xfontsel.pane.fieldBox.field5.background:        #252525
-.xfontsel.pane.fieldBox.field5.foreground:        snow
+! -- [ URXVT ] ------------------------------
+!URxvt.font: xft:DejaVuSansMono Nerd Font:pixelsize=16
+!URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=true:hinting=true:pixelsize=18
+
+URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Medium:antialias=true:size=14:minspace=False
+URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=true:hinting=true:pixelsize=16
+
+URxvt.letterSpace: 			    -1
+URxvt.lineSpace:            -1
+URxvt.intensityStyles:      true
+urxvt.cursorBlink:          1
+URxvt.cursorColor:  	      #83C048
+URxvt*cursorUnderline:      true
+URxvt*fading:               20
+URxvt.scrollBar:            false
+URxvt*externalBorder:       0
+URxvt.internalBorder:       8
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     false
+URxvt*scrollTtyKeypress:    true
+URxvt*visualBell:           false
+URxvt*saveLines:            65535
+URxvt*hold:                 false
+URxvt.depth:        		    32
+URxvt.geometry: 			      80x23
+URxvt.underlinecolor:       #999999
+URxvt.cutchars:             "()*,<>[]{}|'"
+URxvt.print-pipe:           cat >/tmp/xxx
+
+!URxvt.background:           [90]#2E3440
 
 
+! --[ URxvt - URL/Clipboard Handling ]----------------------
+URxvt.perl-ext-common:      default,matcher,url-select,keyboard-select,clipboard
+URxvt.url-select.launcher:  /usr/bin/qutebrowser
+URxvt.url-select.underline: true
+URxvt.matcher.button:       1
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
 
-XTerm*vt100.utf8: true
-XTerm*bellIsUrgent: true
-XTerm*visualBell: true
-XTerm*visualBellLine: true
-XTerm*eightBitInput: false
-!XTerm*scrollBar: false
-XTerm*vt100.selectToClipboard: true
-XTerm*transparent: true
-XTerm*vt100.allowBoldFonts: true
-XTerm*vt100.background: black
-XTerm*vt100.foreground: grey80
-XTerm*vt100.cursorColor: #ff7a7a
-XTerm*faceName: SauceCodePro Nerd Font Mono
-XTerm*faceSize: 14
-XTerm*vt100.deleteIsDEL: true
-XTerm*deleteIsDEL:      True
-XTerm*metaSendsEscape: true
-XTerm*termName: xterm-256color
-XTerm*ttyModes: intr ^c erase ^h weras ^w kill ^u
-xterm*VT100.Translations: #override \
-                 Shift <Key>Insert:    insert-selection(SELECT) \n\
-                 Ctrl Shift <Key>V:    insert-selection(SELECT) \n\
-                 Ctrl Shift <Key>C:    copy-selection(SELECT)  \n\
-                 Ctrl <Key> j: smaller-vt-font() \n\
-                 Ctrl <Key> k: larger-vt-font() \n\
 
-XTerm*renderFont: true
-XTerm*utf8: 2
-XTerm*locale: true
-! Every shell is a login shell by default (for inclusion of all necessary environment variables)
-XTerm*loginshell: true
+URxvt.keysym.C-Down:     	  font-size:decrease
+URxvt.keysym.C-Up:      	  font-size:increase
+URxvt.keysym.C-equal:     	resize-font:reset
+URxvt.keysym.C-zero:	  	  resize-font:show
+URxvt.resize-font.step: 	  1
 
-! I like a LOT of scrollback...
-XTerm*savelines: 16384
+URxvt.keysym.Control-Left:   \033[1;5D
+URxvt.keysym.Control-Right:  \033[1;5C
 
-! double-click to select whole URLs :D
-XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48
+! Key Bindings
+! NOTE see https://superuser.com/questions/1247281/how-to-configure-rxvt-unicode-to-behave-similar-to-gnome-terminal-or-others-f
+!
+! Copy/Paste, same keys as gnome-terminal
+! https://stackoverflow.com/questions/39884093
+! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+URxvt.keysym.C-M-c:    builtin-string:
+URxvt.keysym.C-M-v:    builtin-string:
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+! I dont know why, but I needed to use hex keysym values to get it to work
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+URxvt.keysym.Home: \033[H
+URxvt.keysym.End:  \033[F
+
+
+! special
+*.foreground:   			#c5c5c5
+*.background:   			#131313
+*.cursorColor:  			#c5c5c5
+
+! black
+*.color0:       			#1c1c1c
+*.color8:       			#666666
+
+! red
+*.color1:       			#ff005b
+*.color9:       			#ff00a0
+
+! green
+*.color2:       			#cee318
+*.color10:      			#ccff00
+
+! yellow
+*.color3:       			#ffe755
+*.color11:      			#ff9f00
+
+! blue
+*.color4:       			#048ac7
+*.color12:      			#48c6ff
+
+! magenta
+*.color5:       			#833c9f
+*.color13:      			#be67e1
+
+! cyan
+*.color6:       			#0ac1cd
+*.color14:      			#63e7f0
+
+! white
+*.color7:       			#e5e5e5
+*.color15:      			#f3f3f3

@@ -12,9 +12,9 @@ show-title-bar yes
 confirm-exit no
 cleanup-on-quit no
 
-browser "google-chrome-stable %u"
+browser "w3m %u"
 external-url-viewer "urlscan"
-html-renderer "w3m -T text/html"
+html-renderer "w3m -dump -T text/html"
 player "mpv"
 download-retries 4
 pager internal
@@ -73,6 +73,9 @@ macro w set browser "w3m"; open-in-browser ; set browser linkhandler
 macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
 
+macro q set browser "qutebrowser %u" ; open-in-browser ; set browser "`echo $BROWSER`"
+macro R set browser "firefox --new-tab about:reader?url=%u" ; open-in-browser ; set browser "`echo $BROWSER`"
+
 
 # Highlight Rules
 highlight feedlist "https?://[^ ]+" cyan default
@@ -86,9 +89,9 @@ feedlist-format     "%11u %t"
 articlelist-format  "%4i %f %D  %?T?|%-24T|  ?%t"
 highlight all "^ *[0-9]*" cyan black dim
 
-highlight feedlist "(News|news)" yellow black
-highlight feedlist "(Tech|Linux|Distro)" green black
-highlight feedlist "(Gaming|Games)" red black
+highlight feedlist "(News|Haber)" yellow black
+highlight feedlist "(Tech|Linux|Projects)" green black
+# highlight feedlist "(Photos|Foto|Fotopedi)" red black
 
 highlight-article "age > 5" red black dim
 highlight article "^(Feed|Title|Author|Link|Date):.*" blue black

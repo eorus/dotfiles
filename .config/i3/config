@@ -474,6 +474,6 @@ exec --no-startup-id i3-msg "workspace $ws2; exec $term"
 #exec --no-startup-id polybar -c ~/.config/i3/polybar top
 #exec_always --no-startup-id ~/.config/polybar/launch.sh &
 #exec --no-startup-id i3-msg 'workspace $ws4; exec firefox'
-exec --no-startup-id /home/eorus/Pictures/wallpaper.sh
+#exec --no-startup-id /home/eorus/Pictures/wallpaper.sh
 #exec --no-startup-id nm-applet
-exec --no-startup-id /usr/bin/clipit
+#exec --no-startup-id /usr/bin/clipit

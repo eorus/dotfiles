@@ -15,7 +15,7 @@ general {
         color_degraded = "#DC322F"
 }
 
-order += "disk /home"
+order += "disk /"
 #order += "wireless _first_"
 #order += "ethernet _first_"
 order += "battery all"
@@ -32,10 +32,10 @@ cpu_temperature 0 {
         format = "<span color='#ff0000'> %degrees °C</span> "
         path = "/sys/class/thermal/thermal_zone0/temp"
 }
-disk "/home" {
+disk "/" {
     prefix_type = decimal
-    #format = "<span color='#00ff00'>⛁ Home %percentage_used</span>"
-    format = "HDD %percentage_use"
+    format = "<span color='#00ff00'>⛁ Disk %percentage_used</span>"
+    #format = "HDD %percentage_use"
 }
 
 wireless _first_ {
