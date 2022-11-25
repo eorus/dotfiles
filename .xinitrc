@@ -33,11 +33,13 @@ fi
 
 [[ -f ~/.Xresources ]] && xrdb -merge -I$HOME ~/.Xresources
 
+urxvtd -q -o -f &
+
 # Make sure this is before the 'exec' command or it won't be sourced.
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-#exec i3
+exec i3
 #exec startxfce4
 #exec dwm
-exec bspwm
+#exec bspwm

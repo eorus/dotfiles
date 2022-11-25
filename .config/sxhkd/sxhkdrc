@@ -342,10 +342,11 @@ super + F4
 	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
 
 super + F5
-	rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+  dmenulaunch
 
 super + F6
+rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 # toggle torrent daemon
 super + F7

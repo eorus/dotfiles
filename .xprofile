@@ -24,7 +24,6 @@ xset b off &
 # Properties button extra Mod/Escape
 #xss-lock -- i3lock -n -i .wallpaper.png &
 redshift-gtk &
-urxvtd -q -o -f &
 xmodmap -e 'keycode 135 = Super_R' &
 # MPD daemon start (if no other user instance exists)
 [ ! -s ~/.config/mpd/pid ] && mpd

@@ -3,14 +3,14 @@
 
 # Adds `~/.local/bin/` and all subdirectories to $PATH
 PATH="$HOME/.node_modules/bin:$PATH"
-export npm_config_prefix=~/.node_modules
+export npm_config_prefix="$HOME/.node_modules"
 export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
 export QT_QPA_PLATFORMTHEME="qt5ct"
 export QT_STYLE_OVERRIDE=gtk
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export EDITOR="nvim"
-export TERMINAL="urxvt"
+export TERMINAL="urxvtc"
 export BROWSER="/usr/bin/google-chrome-stable --password-store=gnome"
 export READER="/usr/bin/zathura"
 export FILE="/usr/bin/pcmanfm"

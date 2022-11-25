@@ -98,8 +98,8 @@ bindsym $mod+Shift+r		exec --no-startup-id thunar
 bindsym $mod+i 			exec $term -e htop
 
 # Calculator
-bindsym $mod+a exec --no-startup-id ddspawn dropdowncalc
 bindsym $mod+Shift+a		exec $term -e pavucontrol
+bindsym $mod+a exec --no-startup-id $term -e qalc
 
 # Show selection:
 bindsym $mod+Insert		exec --no-startup-id showclip
