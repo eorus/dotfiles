@@ -72,7 +72,7 @@ st.termname: st-256color
 !URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Medium:antialias=false:size=14:minspace=False
 !URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=false:hinting=true:pixelsize=16
 
-URxvt.letterSpace: 			    1
+URxvt.letterSpace: 			    0
 URxvt.lineSpace:            0
 URxvt.intensityStyles:      true
 urxvt.cursorBlink:          1
@@ -99,7 +99,7 @@ URxvt.print-pipe:           cat >/tmp/xxx
 
 ! --[ URxvt - URL/Clipboard Handling ]----------------------
 URxvt.perl-ext-common:      default,matcher,url-select,keyboard-select,clipboard
-URxvt.url-select.launcher:  /usr/bin/qutebrowser
+URxvt.url-select.launcher:  /usr/bin/google-chrome-stable
 URxvt.url-select.underline: true
 URxvt.matcher.button:       1
 URxvt.keysym.M-u:           perl:url-select:select_next

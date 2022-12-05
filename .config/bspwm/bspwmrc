@@ -49,7 +49,15 @@ bspc rule -a Gimp-2.10 desktop=^6 follow=on state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a mpv state=floating
 bspc rule -a Lxappearance state=floating
-bspc rule -a google-chrome:crx_uniqueextentionkey state=floating
+bspc rule -a Spotify desktop=^5 follow=on state=floating
+bspc rule -a zoom desktop=^6 follow=on state=floating
+bspc rule -a Galculator state=floating
+bspc rule -a mpv state=floating
+bspc rule -a File-roller state=floating
+bspc rule -a Vimiv state=floating
+bspc rule -a firefox state=floating
+bspc rule -a Google-chrome state=floating
+bspc rule -a Transmission-gtk state=floating
 
 # ┌────────────────┐
 # │STARTUP PROGRAMS│

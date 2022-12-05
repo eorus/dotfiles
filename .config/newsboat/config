@@ -1,7 +1,7 @@
 # general
 auto-reload yes
 reload-time 120
-show-read-articles no
+show-read-articles yes
 keep-articles-days 30
 show-read-feeds no
 max-items 4000
@@ -10,7 +10,7 @@ text-width 80
 reload-threads 8
 show-title-bar yes
 confirm-exit no
-cleanup-on-quit no
+cleanup-on-quit yes
 
 browser "w3m %u"
 external-url-viewer "urlscan"
