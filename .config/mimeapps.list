@@ -9,11 +9,13 @@ x-scheme-handler/tg=userapp-Telegram Desktop-1F2AD1.desktop
 image/jpeg=vimiv.desktop
 image/jpg=vimiv.desktop
 image/png=vimiv.desktop
+application/xhtml+xml=google-chrome.desktop
 
 [Added Associations]
 text/plain=xed.desktop;
-application/x-shellscript=xed.desktop;
-x-scheme-handler/tg=userapp-Telegram Desktop-1F2AD1.desktop;
-application/x-trash=userapp-xed-7KF0C1.desktop;
-image/jpeg=gimp.desktop;vimiv.desktop;
+image/jpeg=vimiv.desktop;
 image/png=vimiv.desktop;
+x-scheme-handler/http=google-chrome.desktop;
+x-scheme-handler/https=google-chrome.desktop;
+text/html=google-chrome.desktop;
+application/xhtml+xml=google-chrome.desktop;
