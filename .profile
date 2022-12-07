@@ -12,7 +12,7 @@ export GDK_BACKEND=x11
 export EDITOR="nvim"
 export TERMINAL="urxvtc"
 #export BROWSER="/usr/bin/qutebrowser"
-export BROWSER="/usr/bin/google-chrome-stable --password-store=gnome"
+export BROWSER="/usr/bin/brave"
 export READER="/usr/bin/zathura"
 export FILE="/usr/bin/pcmanfm"
 export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"

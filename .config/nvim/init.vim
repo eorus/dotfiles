@@ -171,6 +171,7 @@ au WinLeave,FocusLost,CmdwinLeave * set nocul
 nnoremap <silent> <leader>vtt :Translate<CR>
 vnoremap <silent> <leader>vtt :TranslateVisual<CR>
 vnoremap <silent> <leader>vtr :TranslateReplace<CR>
+vnoremap <silent> <leader>vtc :TranslateClear<CR>
 
 let g:translate#default_languages = {
       \ 'tr': 'en',

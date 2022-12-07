@@ -12,7 +12,7 @@ show-title-bar yes
 confirm-exit no
 cleanup-on-quit yes
 
-browser "w3m %u"
+browser "google-chrome-stable %u"
 external-url-viewer "urlscan"
 html-renderer "w3m -dump -T text/html"
 player "mpv"
