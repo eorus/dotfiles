@@ -20,7 +20,7 @@ bspc config split_ratio                   0.50
 bspc config borderless_monocle            true
 bspc config gapless_monocle               true
 bspc config focus_by_distance             true
-bspc config focus_follows_pointer         true
+bspc config focus_follows_pointer         false
 bspc config history_aware_focus           true
 bspc config remove_disabled_monitors      true
 bspc config merge_overlapping_monitors    true
@@ -57,6 +57,7 @@ bspc rule -a File-roller state=floating
 bspc rule -a Vimiv state=floating
 bspc rule -a firefox state=floating
 bspc rule -a Google-chrome state=floating
+bspc rule -a Brave-browser state=floating
 bspc rule -a Transmission-gtk state=floating
 
 # ┌────────────────┐
