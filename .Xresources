@@ -99,7 +99,7 @@ URxvt.print-pipe:           cat >/tmp/xxx
 
 ! --[ URxvt - URL/Clipboard Handling ]----------------------
 URxvt.perl-ext-common:      default,matcher,url-select,keyboard-select,clipboard
-URxvt.url-select.launcher:  /usr/bin/google-chrome-stable
+URxvt.url-select.launcher:  /usr/bin/brave
 URxvt.url-select.underline: true
 URxvt.matcher.button:       1
 URxvt.keysym.M-u:           perl:url-select:select_next
