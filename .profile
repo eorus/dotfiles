@@ -10,7 +10,7 @@ export QT_STYLE_OVERRIDE=gtk
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export EDITOR="nvim"
-export TERMINAL="urxvtc"
+export TERMINAL="/usr/local/bin/st"
 #export BROWSER="/usr/bin/qutebrowser"
 export BROWSER="/usr/bin/brave --password-store=basic"
 export READER="/usr/bin/zathura"

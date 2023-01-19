@@ -42,7 +42,7 @@ HISTFILESIZE=900000000999999999
 PROMPT_COMMAND="history -a"
 export HISTSIZE PROMPT_COMMAND
 export SHELL=/bin/bash
-export TERMINAL="urxvtc"
+export TERMINAL="/usr/local/bin/st"
 # colored man pages
 # Set directory colors
 eval `dircolors ~/.dir_colors`
