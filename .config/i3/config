@@ -104,13 +104,6 @@ bindsym $mod+a exec --no-startup-id $term -e qalc
 # Show selection:
 bindsym $mod+Insert		exec --no-startup-id showclip
 
-# Scratch terminal
-bindsym $mod+u exec --no-startup-id ddspawn tmuxdd
-
-bindsym $mod+Shift+u		exec --no-startup-id i3resize down
-bindsym $mod+Shift+o		exec --no-startup-id i3resize right
-bindsym $mod+Shift+i		exec --no-startup-id i3resize up
-bindsym $mod+Shift+y		exec --no-startup-id i3resize left
 
 bindsym $mod+t			split toggle
 
@@ -362,28 +355,6 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
-#bar {
-# font pango:Source Code Pro, FontAwesome 12
-#        #font pango: Inconsolata, FontAwesome, Icons 14
-##       #font pango: Source Code Pro 12px # Inconsolata 14px
-#    position top
-##    status_command py3status -c ~/.config/i3status/config
-#   status_command i3status .config/i3status/config
-##   status_command i3status-rs .config/i3/config.toml
-#     colors {
-#        background #000000
-#        statusline #00A5FF #that neon blue
-#        separator #666666
-#
-#        focused_workspace  #4c7899 #285577 #ffffff
-#        active_workspace   #333333 #5f676a #ffffff
-#        inactive_workspace #333333 #222222 #888888
-#        urgent_workspace   #2f343a #900000 #ffffff
-#    }
-#}
-
-
-
 #External Monitor
 #exec  --no-startup-id xrandr --output DP2-3 --off
 #bindsym $mod+m         exec xrandr --output DP2-3 --auto
@@ -405,7 +376,6 @@ mode "$mode_display" {
 }
 
 bindsym $mod+m mode "$mode_display"
-
 
 #### Extra Bindings
 
@@ -477,3 +447,35 @@ exec --no-startup-id i3-msg "workspace $ws2; exec $term"
 #exec --no-startup-id /home/eorus/Pictures/wallpaper.sh
 #exec --no-startup-id nm-applet
 #exec --no-startup-id /usr/bin/clipit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+u mode "resize"
+
+bindsym $mod+Shift+u		exec --no-startup-id i3resize down
+bindsym $mod+Shift+o		exec --no-startup-id i3resize right
+bindsym $mod+Shift+i		exec --no-startup-id i3resize up
+bindsym $mod+Shift+y		exec --no-startup-id i3resize left
