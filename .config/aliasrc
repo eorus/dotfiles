@@ -70,9 +70,9 @@ alias ka="killall" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \
-	YT="youtube-dl --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
+	YT="yt-dlp --add-metadata -i -o '%(upload_date)s-%(title)s.%(ext)s'" \
 	yta="yt -x -f bestaudio/best" \
-	yt="ytfzf" \
+	yt="/usr/bin/ytfzf" \
 	ref="shortcuts >/dev/null; source ~/.config/shortcutrc" \
 	upc="checkupdates" \
 	lsp="pacman -Qett --color=always | less" \
