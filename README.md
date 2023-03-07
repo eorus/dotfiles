@@ -1,26 +1,29 @@
-## Apps
+## Programs I Use at a Glance
 
 * OS : Arch Linux
-* WM : i3, BSPWM
+* WM: i3, BSPWM
 * Terminal : St, Rxvt Unicode
+* File Manager: Ranger
 * Note Taking : Nvim | Vimwiki Plugin | Syncthing | Markor App
-* Music Player : MPD + Ncmpcpp
-* Mail Client : Neomutt, mbsync, msmtp, notmuch
-* Password Store : pass
-* Browser : Qutebrowser and Firefox
-* System Watch : htop
-* PDF reader : Xreader & Zathura with ePub extensions
-* Image Editors : Vimiv-Qt, imagemagick
-* Raw Editing : Gimp and Darktable
-* Calendar - calcurse
-* Dunst for notifications
-* rofi-calc a simple calendar widget
-* Polybar for the status bar
-* Dmenu for calling programs
+* Music Player: MPD + Ncmpcpp
+* Email : Neomutt, mbsync, msmtp, notmuch
+* Password Manager: pass
+* Web Browser: Brave, Librewolf, W3m
+* Video : mpv with ytfzf and yt-dlp for Youtube from terminal
+* Social Media: Youtube, Reddit etc. feeds with Newsboat. Yes only Rss!
+* System Watch: htop
+* PDF Reader : Zathura
+* Image Viewing / Simple Editing: Vimiv-Qt with imagemagick commands (extremely useful)
+* Advanced Image Editing: Gimp
+* Calendar and Organization: calcurse
+* Dunst for occasional notifications I want to receive
+* bc and rofi-calc for simple calculator
+* Statusbar preference Polybar | i3status
+* Dmenu, Rofi to call programs
 * Picom to enable opacity
-* Mpc to make media keys work with mpd
-* Nm-applet for network management
-* Redshift for screen color temperature management
-* Playerctl to make media keys work with spotify
+* mpc to make media keys work with mpd
+* nmcli for network management
+* Redshift for display color temperature management
 * Caffeine-ng for caffeine
-* Ncdu - disk usage browser (ncurses)
+* Ncdu - disk usage scanner (ncurses)
+* fd, rg, fzf, sed, various vim plugins, xss-lock and clipit
