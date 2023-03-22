@@ -111,10 +111,10 @@ bindsym $mod+t			split toggle
 # #---Function Buttons---# #
 bindsym $mod+F1   exec dmenu_run
 bindsym $mod+F3		exec --no-startup-id displayselect
-bindsym $mod+F4		exec --no-startup-id prompt "Hibernate computer?" "$hibernate"
+bindsym $mod+F4		exec --no-startup-id dmenulaunch
 bindsym $mod+F5		exec --no-startup-id $netrefresh
-bindsym $mod+F6		exec --no-startup-id dmenumount
-bindsym $mod+F7 	exec --no-startup-id dmenuumount
+bindsym $mod+F6		exec --no-startup-id mounter
+bindsym $mod+F7 	exec --no-startup-id umounter
 
 
 # start dmenu (a program launcher)

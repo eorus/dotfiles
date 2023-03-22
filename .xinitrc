@@ -39,7 +39,7 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
-#exec i3
-#exec startxfce4
+
+exec i3
 #exec dwm
-exec bspwm
+#exec bspwm
