@@ -39,7 +39,17 @@ fi
 [ -f /etc/xprofile ] && . /etc/xprofile
 [ -f ~/.xprofile ] && . ~/.xprofile
 
+startdwm
 
-exec i3
+#exec i3
 #exec dwm
 #exec bspwm
+
+# restart dwm without logout
+while true; do
+    # Log stderror to a file
+    dwm 2> ~/.dwm.log
+    # No error logging
+    #dwm >/dev/null 2>&1
+done
+exec dwm
