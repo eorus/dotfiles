@@ -72,8 +72,8 @@ st.termname: st-256color
 !URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Medium:antialias=false:size=14:minspace=False
 !URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=false:hinting=true:pixelsize=16
 
-URxvt.letterSpace: 			    0
-URxvt.lineSpace:            0
+URxvt.letterSpace: 			    -2
+URxvt.lineSpace:            -2
 URxvt.intensityStyles:      true
 urxvt.cursorBlink:          1
 URxvt.cursorColor:  	      #83C048
