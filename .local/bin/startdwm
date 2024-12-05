@@ -1,0 +1,10 @@
+# restart dwm without logout
+
+$HOME/.local/bin/statusdwm &
+
+  while true; do
+    # Log stderror to a file
+    /usr/local/bin/dwm 2> ~/.cache/dwm.log
+    # No error logging
+    #dwm >/dev/null 2>&1
+  done

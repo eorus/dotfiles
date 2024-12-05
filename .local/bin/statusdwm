@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# dwm statusbar - show current date and time
+
+while true; do
+
+        date '+  %a. %d %b.    %R ' > /tmp/CurTime.tmp
+
+        sleep 60s
+done &
+
+while true; do
+
+	brightness=$(expr $(cat /sys/class/backlight/intel_backlight/brightness) / 242)
+	volume=$(pamixer --get-volume-human)
+	bat=$(acpi -b | awk '{ split($5,a,":"); print substr($3,0,2), $4, "["a[1]":"a[2]"]" }' | tr -d ',')
+ 	mem=$(free -h --kilo | awk '/^Mem:/ {print $3 "/" $2}')
+	cpu=$(top -bn1 | grep "Cpu(s)" | sed "s/.*, *\([0-9.]*\)%* id.*/\1/" | awk '{print 100 - $1}' )
+	temp=$(sensors|grep 'Core 0'|awk '{print $3}' )
+	disk=$(df -h /dev/nvme0n1p4 | tail -1 | awk '{print $4}')
+	time=$(< /tmp/CurTime.tmp)
+
+	xsetroot -name "🞼 ${brightness} 奄 $volume    ${bat}  $mem  $cpu%   $temp   $disk  $time  "
+        sleep 10s
+done &
