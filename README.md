@@ -1,14 +1,14 @@
 ## Programs I Use at a Glance
 
 * OS : Arch Linux
-* WM: i3, BSPWM
-* Terminal : St, Rxvt Unicode
+* WM: Dwm, i3
+* Terminal : St
 * File Manager: Ranger
 * Note Taking : Nvim | Vimwiki Plugin | Syncthing | Markor App
 * Music Player: MPD + Ncmpcpp
 * Email : Neomutt, mbsync, msmtp, notmuch
 * Password Manager: pass
-* Web Browser: Brave, Librewolf, W3m
+* Web Browser: Librewolf, W3m
 * Video : mpv with ytfzf and yt-dlp for Youtube from terminal
 * Social Media: Youtube, Reddit etc. feeds with Newsboat. Yes only Rss!
 * System Watch: htop
@@ -18,7 +18,7 @@
 * Calendar and Organization: calcurse
 * Dunst for occasional notifications I want to receive
 * bc and rofi-calc for simple calculator
-* Statusbar preference Polybar | i3status
+* Statusbar preference Xsetroot -name
 * Dmenu, Rofi to call programs
 * Picom to enable opacity
 * mpc to make media keys work with mpd
