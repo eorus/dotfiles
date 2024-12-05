@@ -1,0 +1,72 @@
+#!/bin/sh
+command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
+alias fzf='fzf --preview="head -$LINES {}"'
+vf() { fzf | xargs -r -I % $EDITOR % ;}
+
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+# Use $XINITRC variable if file exists.
+[ -f "$XINITRC" ] && alias startx="startx $XINITRC"
+
+[ -f "$MBSYNCRC" ] && alias mbsync="mbsync -c $MBSYNCRC"
+
+# sudo not required for some system commands
+for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
+	alias $command="sudo $command"
+done; unset command
+
+se() {
+	choice="$(find ~/.local/bin -mindepth 1 -printf '%P\n' | fzf)"
+	[ -f "$HOME/.local/bin/$choice" ] && $EDITOR "$HOME/.local/bin/$choice"
+	}
+
+alias first='sed -n "/ installed $1/{s/].*/]/p;q}" /var/log/pacman.log'
+alias wiki="nvim -c VimwikiIndex"
+alias ipadres="curl ipinfo.io/ip"
+
+# Verbosity and settings that you pretty much just always are going to want.
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	rsync="rsync -vrPlu" \
+	mkd="mkdir -pv" \
+	yt="yt-dlp --embed-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ytt="yt --skip-download --write-thumbnail" \
+	ffmpeg="ffmpeg -hide_banner"
+
+# Colorize commands when possible.
+alias \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ip="ip -color=auto"
+
+# These common commands are just too long! Abbreviate them.
+alias \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="shutdown -h now" \
+	e="$EDITOR" \
+	v="$EDITOR" \
+	p="pacman" \
+	xi="sudo xbps-install" \
+	xr="sudo xbps-remove -R" \
+	xq="xbps-query" \
+	z="zathura"
+	ttr="trans -b :tr" \
+	ten="trans -b tr:en" \
+	duf="du -hsx * | sort -rh | head -5" \
+	treeacl="tree -A -C -L 2" \
+	hava="wttr Istanbul" \
+	wake="systemctl restart NetworkManager.service"
+
+alias yedek="sudo rsync -aAXv --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude="/home/$USER/.cache" --exclude="/home/$USER/Downloads" --exclude="/home/$USER/.VirtualBoxVMs"--exclude="/home/$USER/.ecryptfs" --exclude=/home/$USER/Desktop --exclude=/home/$USER/.cache --exclude=/home/$USER/.debug --exclude=/home/$USER/.dbus --exclude=/home/$USER/.gvfs --exclude=/home/$USER/.local/share/gvfs-metadata --exclude=/home/$USER/.local/share/Trash --exclude=/home/$USER/.recently-used --exclude=/home/$USER/.thumbnails --exclude=/home/$USER/.xsession-errors --exclude=/home/$USER/.Trash --exclude=/home/$USER/.steam --exclude=/home/$USER/Videos --exclude=/home/$USER/Steam / /run/media/eorus/Backups/arch"
+
+alias dotfiles='/usr/bin/git --git-dir=$HOME/Templates/t14sdots/ --work-tree=$HOME'

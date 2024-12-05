@@ -1,0 +1,77 @@
+
+Xft.dpi:96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.autohint: true
+Xft.lcdfilter: lcddefault
+
+! --[ Rodent ]----------------------------------------------
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size:  24
+
+
+!! Transparency (0-1):
+st.alpha: 0.95
+!st.alphaOffset: 0.7
+! *.color0: #000
+!*font = "roboto mono nerd font:pixelsize=18:antialias=true:autohint=true"
+!! Set a default font and font size as below:
+st.font:Source Code Pro:size=14:antialias=true:autohint=false
+!st.font:Liberation Mono:pixelsize=16:antialias=true:autohint=true
+st.termname: st-256color
+! st.borderpx: 2
+
+! ------------------------------------------------------------------------------
+! Import Colors
+! ------------------------------------------------------------------------------
+
+! #include ".config/x11/xcolors/xrdb/color/nord"
+! #include ".config/x11/xcolors/xrdb/rofi/nord"
+! #include ".config/x11/xcolors/xrdb/dmenu/nord"
+! #include ".config/x11/xcolors/xrdb/fonts/scpfont"
+! #include ".config/x11/xcolors/eorus"
+! #include ".config/x11/xcolors/tango"
+
+! COLORS FOR SXIV
+Sxiv.foreground:   #bbc2cf
+Sxiv.background:   #282c34
+Sxiv.font: Ubuntu:style=bold:size=11
+
+! special
+*.foreground:   			#c5c5c5
+*.background:   			#131313
+*.cursorColor:  			#c5c5c5
+
+! black
+*.color0:       			#1c1c1c
+*.color8:       			#666666
+
+! red
+*.color1:       			#ff005b
+*.color9:       			#ff00a0
+
+! green
+*.color2:       			#cee318
+*.color10:      			#ccff00
+
+! yellow
+*.color3:       			#ffe755
+*.color11:      			#ff9f00
+
+! blue
+*.color4:       			#048ac7
+*.color12:      			#48c6ff
+
+! magenta
+*.color5:       			#833c9f
+*.color13:      			#be67e1
+
+! cyan
+*.color6:       			#0ac1cd
+*.color14:      			#63e7f0
+
+! white
+*.color7:       			#e5e5e5
+*.color15:      			#f3f3f3
