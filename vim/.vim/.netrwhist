@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =8
+let g:netrw_dirhist_8='/home/eorus/.vim'
+let g:netrw_dirhist_7='/home/eorus'
+let g:netrw_dirhist_6='/home/eorus/.config'
+let g:netrw_dirhist_5='/home/eorus'
+let g:netrw_dirhist_4='/home/eorus/Templates/suckless/dwm'
+let g:netrw_dirhist_3='/home/eorus/Templates/suckless'
+let g:netrw_dirhist_2='/home/eorus/Templates'
+let g:netrw_dirhist_1='/home/eorus'
+let g:netrw_dirhist_0='/home'
+let g:netrw_dirhist_9='/home/eorus'

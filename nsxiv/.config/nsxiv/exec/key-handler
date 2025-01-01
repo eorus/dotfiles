@@ -1,0 +1,170 @@
+#!/usr/bin/env bash
+
+# Example for $XDG_CONFIG_HOME/sxiv/exec/key-handler
+# Called by sxiv(1) after the external prefix key (C-x by default) is pressed.
+# The next key combo is passed as its first argument. Passed via stdin are the
+# images to act upon, one path per line: all marked images, if in thumbnail
+# mode and at least one image has been marked, otherwise the current image.
+# sxiv(1) blocks until this script terminates. It then checks which images
+# have been modified and reloads them.
+
+# The key combo argument has the following form: "[C-][M-][S-]KEY",
+# where C/M/S indicate Ctrl/Meta(Alt)/Shift modifier states and KEY is the X
+# keysym as listed in /usr/include/X11/keysymdef.h without the "XK_" prefix.
+
+Trash="${HOME}/.local/share/Trash/files"    # Trash/Recycle Bin Folder
+Temp="${HOME}/Pictures/Temp"                # Folder to collect files
+
+help() {
+    echo "script: $0
+  C-x-h: show this help
+  C-x-H: show sxiv manual
+  C-x-m: move image(s) to new directory
+  C-x-d: trash image(s) to $trashdir
+  C-x-D: delete image permanently
+  C-x-r: (in-place) rotate image(s) 90°
+  C-x-R: (in-place) rotate image(s) 270°
+  C-x-n: (in-place) negate image(s) color
+  C-x-f: (in-place) flip image(s)
+  C-x-y: copy *single* image to clipboard
+            - kill xclip if it stuck at pasting
+            - because the image might be too big
+  C-x-Y: copy image filenames to clipboard
+  C-x-w: *single* image set as wallpaper using feh
+  C-x-W: *single* set as colorscheme using wpg
+  C-x-g: open images in gimp
+  C-x-t: open directory of *single* image in thunar
+  C-x-e: edit this script using gnvim
+  C-x-T: for debugging purpose"
+}
+
+case "$1" in
+    # show help
+    "C-h")
+        notify-send -t 15000 "sxiv key-handler help" "$(help)" ;;
+
+    # show manual
+    "C-H")
+        $TERMINAL -e sh -c "man sxiv" &;;
+
+    # rotate images 90' in place
+    "C-r")
+        while read -r filename; do
+            convert -rotate 90 "$filename" "$filename" &&
+                notify-send "$filename rotated for 90"
+        done
+        ;;
+
+    # rotate images 270' in place
+    "C-R")
+        while read -r filename; do
+            convert -rotate 270 "$filename" "$filename" &&
+                notify-send "$filename rotated for 270°"
+        done
+        ;;
+
+    # negate images in place
+    "C-n")
+        while read -r filename; do
+            convert "$filename" -negate "$filename" &&
+                notify-send "$filename negated its color"
+        done
+        ;;
+
+    # flip images in place
+    "C-f")
+        while read -r filename; do
+            convert -flip "$filename" "$filename" &&
+                notify-send "$filename flipped"
+        done
+        ;;
+
+    # copy single image to clipboard
+    "C-y")
+        read -r filename
+        basename=$(basename "$filename")
+        suffix=${basename##*.}
+        echo "xclip -selection clipboard -t image/$suffix -i $filename" | xargs -I'{}' notify-send "debug" '{}'
+        xclip -selection clipboard -t "image/$suffix" -i "$filename" && notify-send "Picture copied to clipboard" "$filename copied";;
+
+    # copy image filenames to clipboard
+    "C-Y")
+        filenames=$(tr '\n' ' ') # it might not handle backslashes properly
+        echo "$filenames" | xclip -selection clipboard &&
+            notify-send "filenames copied" "$filenames"
+        ;;
+
+    # set *single* image as wallpaper using feh
+    "C-w")
+        read -r filename
+        feh --bg-scale "$filename" && notify-send "Picture set as wallpaper" "$filename set as wallpaper using feh"
+        ;;
+
+    # set *single* image as colorscheme using wpg
+    "C-W")
+        read -r filename
+        wpg -s "$filename" && notify-send "Picture set as colorscheme" "$filename set using wpg"
+        ;;
+
+    # open images using gimp
+    "C-g")
+        tr '\n' '\0' | xargs -0 gimp &;;
+
+    # open directory
+    "C-t")
+        read -r filename
+        dirname=$(dirname "$filename")
+        pcmanfm "$dirname" &;;
+
+    "t")                                    # Collect files
+        n=0
+        if [ ! -d ${Temp} ]; then
+            mkdir -p ${Temp}
+            notify-send "Temp" "Could not find ${Temp}. Therefor it has been created."
+        fi
+        while read file; do
+            cp ${file} ${Temp}
+            ((n++))
+        done
+        notify-send "Collector" "${n} file(s) moved to ${Temp}."
+        ;;
+
+    "d")                                    # Delete (move to Trash directory)
+        n=0
+        if [ ! -d ${Trash} ]; then
+            mkdir -p ${Trash}
+            notify-send "Trash" "Could not find ${Trash}. Therefor it has been created."
+        fi
+        while read file; do
+            mv ${file} ${Trash}
+            ((n++))
+        done
+        notify-send "Move to Trash" "${n} file(s) moved to ${Trash}."
+        ;;
+
+    "D")                                    # Delete
+        n=0
+        while read file; do
+            rm -rf ${file}
+            ((n++))
+        done
+        notify-send "Delete" "${n} file(s) deleted permanently."
+        ;;
+
+    "g")                                    # Gimp
+        n=0
+        while read file; do
+            gimp ${file} & disown
+            ((n++))
+        done
+        notify-send "Gimp" "${n} file(s) opened with Gimp."
+        ;;
+
+   "M-r")
+        while read file; do
+           mogrify -resize 900 -quality 75 $file
+         done
+           notify-send "$file resized to width 900"
+        ;;
+esac
+exit 0

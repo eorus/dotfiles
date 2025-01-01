@@ -1,0 +1,5 @@
+! fonts
+URxvt*font:				xft:M+ 1mn:regular:size=14
+URxvt*boldFont:			xft:M+ 1mn:bold:size=14
+URxvt*italicFont:		xft:M+ 1mn:italic:size=14
+URxvt*boldItalicFont:	xft:M+ 1mn:bold italic:size=14

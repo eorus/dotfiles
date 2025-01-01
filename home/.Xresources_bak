@@ -1,0 +1,181 @@
+! ██╗░░██╗██████╗░███████╗███████╗░██████╗░██╗░░░██╗██████╗░░██████╗███████╗███████╗
+! ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║░░░██║██╔══██╗██╔════╝██╔════╝██╔════╝
+! ░╚███╔╝░██████╔╝█████╗░░███████╗██║░░░██║██║░░░██║██████╔╝██║░░░░░█████╗░░███████╗
+! ░██╔██╗░██╔══██╗██╔══╝░░╚════██║██║░░░██║██║░░░██║██╔══██╗██║░░░░░██╔══╝░░╚════██║
+! ██╔╝░██╗██║░░██║███████╗███████║╚██████╔╝╚██████╔╝██║░░██║╚██████╗███████╗███████║
+! ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░╚═════╝╚══════╝╚══════╝
+!
+! --[ Font Rendering ]-------------------------------------
+
+Xft.dpi:96
+Xft.antialias: true
+Xft.rgba: rgb
+Xft.hinting: true
+Xft.hintstyle: hintfull
+Xft.autohint: true
+Xft.lcdfilter: lcddefault
+
+! --[ Rodent ]----------------------------------------------
+Xcursor.theme: Vanilla-DMZ
+Xcursor.size:  24
+
+! ------------------------------------------------------------------------------
+! Import Colors
+! ------------------------------------------------------------------------------
+
+! #include ".config/xcolors/xrdb/color/nord"
+! #include ".config/xcolors/xrdb/rofi/nord"
+! #include ".config/xcolors/xrdb/dmenu/nord"
+! #include ".config/xcolors/xrdb/fonts/scpfont"
+! #include ".config/xcolors/eorus"
+! #include ".config/xcolors/tango"
+
+! ------------------------------------------------------------------------------
+! ROFI Config
+! ------------------------------------------------------------------------------
+
+! import rofi
+!#include ".config/xcolors/rofi/bridge.rofi"
+
+! Rofi defaults
+rofi.width: 100
+rofi.padding: 300
+rofi.lines: 4
+rofi.line-margin: 5
+rofi.hide_scrollbar: True
+rofi.scrollbar_width: 0
+rofi.terminal: urxvt
+rofi.location: 0
+
+!! Transparency (0-1):
+st.alpha: 0.95
+!st.alphaOffset: 0.7
+! *.color0: #000
+!*font = "roboto mono nerd font:pixelsize=18:antialias=true:autohint=true"
+!! Set a default font and font size as below:
+st.font:Source Code Pro:size=14:antialias=true:autohint=false
+!st.font:Liberation Mono:pixelsize=16:antialias=true:autohint=true
+st.termname: st-256color
+! st.borderpx: 2
+
+! -- [ URXVT ] ------------------------------
+
+*.font: xft:Iosevka:style=Regular:size=12
+*.boldFont: xft:Iosevka:style=Bold:size=12
+*.italicFont: xft:Iosevka:style=Italic:size=12
+*.boldItalicFont: xft:Iosevka:style=Bold Italic:size=12
+
+!URxvt*font:     xft:Iosevka:size=16:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=101
+!URxvt*boldFont: xft:Iosevka:size=16:antialias=true:hinting=true:autohint=false:hintstyle=hintnone:dpi=101
+!URxvt.font: xft:Iosevka Nerd Font Mono:style=Medium:pixelsize=18:antialias=true:hinting=true
+
+!URxvt.font: xft:SauceCodePro Nerd Font Mono:style=Medium:antialias=false:size=14:minspace=False
+!URxvt.boldFont: xft:SauceCodePro Nerd Font Mono:style=Bold:antialias=false:hinting=true:pixelsize=16
+
+URxvt.letterSpace: 			    -2
+URxvt.lineSpace:            0
+URxvt.intensityStyles:      true
+urxvt.cursorBlink:          0
+URxvt.cursorColor:  	      #83C048
+URxvt*cursorUnderline:      true
+URxvt*fading:               20
+URxvt.scrollBar:            false
+URxvt*externalBorder:       0
+URxvt.internalBorder:       8
+URxvt*scrollTtyOutput:      false
+URxvt*scrollWithBuffer:     false
+URxvt*scrollTtyKeypress:    true
+URxvt*visualBell:           false
+URxvt*saveLines:            65535
+URxvt*hold:                 false
+URxvt.depth:        		    32
+URxvt.geometry: 			      80x23
+URxvt.underlinecolor:       #999999
+URxvt.cutchars:             "()*,<>[]{}|'"
+URxvt.print-pipe:           cat >/tmp/xxx
+
+!URxvt.background:           [90]#2E3440
+
+
+! --[ URxvt - URL/Clipboard Handling ]----------------------
+URxvt.perl-ext-common:      default,matcher,url-select,keyboard-select,clipboard
+URxvt.url-select.launcher:  /usr/bin/qutebrowser
+URxvt.url-select.underline: true
+URxvt.matcher.button:       1
+URxvt.keysym.M-u:           perl:url-select:select_next
+URxvt.keysym.M-Escape:      perl:keyboard-select:activate
+URxvt.keysym.M-s:           perl:keyboard-select:search
+
+URxvt.clipboard.autocopy: true
+URxvt.keysym.M-c: perl:clipboard:copy
+URxvt.keysym.M-v: perl:clipboard:paste
+
+URxvt.keysym.C-Down:     	  font-size:decrease
+URxvt.keysym.C-Up:      	  font-size:increase
+URxvt.keysym.C-equal:     	resize-font:reset
+URxvt.keysym.C-zero:	  	  resize-font:show
+URxvt.resize-font.step: 	  1
+
+!! Common Keybinds for Navigations
+URxvt.keysym.Shift-Up: command:\033]720;1\007
+URxvt.keysym.Shift-Down: command:\033]721;1\007
+URxvt.keysym.C-Right: \033[1;5C
+URxvt.keysym.C-Left: \033[1;5D
+
+! Key Bindings
+! NOTE see https://superuser.com/questions/1247281/how-to-configure-rxvt-unicode-to-behave-similar-to-gnome-terminal-or-others-f
+!
+! Copy/Paste, same keys as gnome-terminal
+! https://stackoverflow.com/questions/39884093
+! Disable ISO 14755 unicode input so we can use Ctrl-Shift bindings
+URxvt.iso14755:        false
+URxvt.iso14755_52:     false
+! Disable Ctrl-Alt-c & Ctrl-Alt-v bindings (optional)
+! URxvt.keysym.C-M-c:    builtin-string:
+! URxvt.keysym.C-M-v:    builtin-string:
+! Bind Ctrl-Shift-c & Ctrl-Shift-v to copy and paste
+! I dont know why, but I needed to use hex keysym values to get it to work
+URxvt.keysym.C-S-0x43: eval:selection_to_clipboard
+URxvt.keysym.C-S-0x56: eval:paste_clipboard
+
+! COLORS FOR SXIV
+Sxiv.foreground:   #bbc2cf
+Sxiv.background:   #282c34
+Sxiv.font: Ubuntu:style=bold:size=11
+
+! special
+*.foreground:   			#c5c5c5
+*.background:   			#131313
+*.cursorColor:  			#c5c5c5
+
+! black
+*.color0:       			#1c1c1c
+*.color8:       			#666666
+
+! red
+*.color1:       			#ff005b
+*.color9:       			#ff00a0
+
+! green
+*.color2:       			#cee318
+*.color10:      			#ccff00
+
+! yellow
+*.color3:       			#ffe755
+*.color11:      			#ff9f00
+
+! blue
+*.color4:       			#048ac7
+*.color12:      			#48c6ff
+
+! magenta
+*.color5:       			#833c9f
+*.color13:      			#be67e1
+
+! cyan
+*.color6:       			#0ac1cd
+*.color14:      			#63e7f0
+
+! white
+*.color7:       			#e5e5e5
+*.color15:      			#f3f3f3

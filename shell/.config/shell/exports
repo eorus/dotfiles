@@ -1,0 +1,68 @@
+#!/usr/bin/env sh
+# Profile file. Runs on login.
+
+# Adds `~/.local/bin/` and all subdirectories to $PATH
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix="$HOME/.node_modules"
+export PATH="$PATH:$(du "$HOME/.local/bin/" | cut -f2 | tr '\n' ':' | sed 's/:*$//')"
+
+unsetopt PROMPT_SP 2>/dev/null
+
+export EDITOR="nvim"
+export VISUAL="nvim"
+export MYVIMRC="~/.config/nvim/init.vim"
+export TERMINAL="/usr/local/bin/st"
+export BROWSER="/usr/bin/brave --password-store=basic"
+export READER="/usr/bin/zathura"
+export FILE="/usr/bin/thunar"
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export NOTMUCH_CONFIG="$HOME/.notmuch-config"
+export TASKRC="$HOME/.taskrc"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+export PAGER="less"
+
+## XDG ------------------------------------------------------------------------
+export QT_STYLE_OVERRIDE=kvantum
+export QT_QPA_PLATFORMTHEME=qt5ct
+export XDG_SESSION_TYPE=x11
+export GDK_BACKEND=x11
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XINITRC="$XDG_CONFIG_HOME/x11/xinitrc"
+
+# bash shell
+if [ "$(ps -p $$ -ocomm=)" = "bash" ]; then
+    # History settings.
+    export HISTTIMEFORMAT="%F %T "
+    export HISTCONTROL=ignoreboth
+    export HISTIGNORE="[bf]g:c:clear:e:exit:h:history:incognito:l:l[adfls]:pwd"
+    export HISTSIZE=10000
+    # Save and reload the history after each command finishes in another bash session.
+    export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+fi
+
+# FZF mappings and options
+source /usr/share/fzf/completion.bash && source /usr/share/fzf/key-bindings.bash
+#[ -f /usr/share/fzf/key-bindings.bash ] && source /usr/share/fzf/key-bindings.bash
+#export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow --glob "!.git/*"'
+export FZF_DEFAULT_COMMAND='fd --type f --hidden --exclude ".git"'
+#export FZF_DEFAULT_COMMAND='find .'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+# export FZF_DEFAULT_OPTS="--height 50% -1 --layout=reverse-list --multi --preview='[[ \$(file --mime {}) =~ binary ]] && echo {} is a binary file || (bat --style=numbers --color=always {} || cat {}) 2> /dev/null | head -300'"
+export FZF_DEFAULT_OPTS=" \
+    --color=fg:#c0c5ce,bg:#212121,hl:#808080,fg+:#e6e6e6,bg+:#3b3b3b,hl+:#f7c662 \
+    --color=info:#f7c662,prompt:#6699cc,pointer:#a6bc69,marker:#a6bc69,spinner:#f7c662,header:#6699cc"
+
+# ripgrep.
+export RIPGREP_CONFIG_PATH="$HOME/.ripgreprc"
+
+# Less.
+export LESS="--RAW-CONTROL-CHARS"
+export LESS_TERMCAP_mb=$'\e[1;31m' # Start blinking
+export LESS_TERMCAP_md=$'\e[1;34m' # Start bold mode
+export LESS_TERMCAP_me=$'\e[0m' # End all mode
+export LESS_TERMCAP_so=$'\e[38;5;215m' # Start standout mode
+export LESS_TERMCAP_se=$'\e[0m' # End standout mode
+export LESS_TERMCAP_us=$'\e[4;35m' # Start underline
+export LESS_TERMCAP_ue=$'\e[0m' # End underline

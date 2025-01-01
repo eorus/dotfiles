@@ -1,0 +1,5 @@
+#!/bin/bash
+
+bat="$(acpi -b | awk '{ split($5,a,":"); print substr($3,0,2), $4, "["a[1]":"a[2]"]" }' | tr -d ',')"
+icon=" "
+printf " %s %s \\n" "$icon" "$bat"

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+brt="$(xbacklight -get | awk '{print int($1)}')"
+icon=""
+printf " %s %s \\n" "$icon" "$brt"

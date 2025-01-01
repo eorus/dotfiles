@@ -1,0 +1,15 @@
+abook
+brave-bin
+caffeine-ng
+clipit
+google-chrome
+mpd-notification
+pam-gnupg
+python-exiv2
+tpacpi-bat
+ttf-font-awesome-4
+urlview
+vimiv-qt
+wttr
+yay
+zoom

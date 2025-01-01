@@ -1,0 +1,65 @@
+! -- [ XFontSel ] ------------------------------
+XFontSel*sampleText.background:       TEXTBG
+XFontSel*menu*showUnselectable:       false
+XFontSel*MenuButton.shadowWidth:      0
+XFontSel*Toggle*ToggleStyle:          check
+XFontSel*MenuButton*Justify:          left
+XFontSel*MenuButton*MenuButtonStyle:  select
+.xfontsel.pane.commandBox.quitButton.background:  #252525
+.xfontsel.pane.commandBox.quitButton.foreground:  snow
+.xfontsel.pane.commandBox.ownButton.background:   orange3
+.xfontsel.pane.commandBox.ownButton.foreground:   snow
+.xfontsel.pane.commandBox.countLabel.background:  snow
+.xfontsel.pane.viewPort.sampleText.background:    #252525
+.xfontsel.pane.viewPort.sampleText.foreground:    snow
+.xfontsel.pane.fieldBox.field0.background:        #252525
+.xfontsel.pane.fieldBox.field0.foreground:        snow
+.xfontsel.pane.fieldBox.field1.background:        #252525
+.xfontsel.pane.fieldBox.field1.foreground:        snow
+.xfontsel.pane.fieldBox.field2.background:        #252525
+.xfontsel.pane.fieldBox.field2.foreground:        snow
+.xfontsel.pane.fieldBox.field3.background:        #252525
+.xfontsel.pane.fieldBox.field3.foreground:        snow
+.xfontsel.pane.fieldBox.field4.background:        #252525
+.xfontsel.pane.fieldBox.field4.foreground:        snow
+.xfontsel.pane.fieldBox.field5.background:        #252525
+.xfontsel.pane.fieldBox.field5.foreground:        snow
+
+! -- [ XTerm ] ------------------------------
+XTerm*vt100.utf8: true
+XTerm*bellIsUrgent: true
+XTerm*visualBell: true
+XTerm*visualBellLine: true
+XTerm*eightBitInput: false
+!XTerm*scrollBar: false
+XTerm*vt100.selectToClipboard: true
+XTerm*transparent: true
+XTerm*vt100.allowBoldFonts: true
+XTerm*vt100.background: black
+XTerm*vt100.foreground: grey80
+XTerm*vt100.cursorColor: #ff7a7a
+XTerm*faceName: SauceCodePro Nerd Font Mono
+XTerm*faceSize: 14
+XTerm*vt100.deleteIsDEL: true
+XTerm*deleteIsDEL:      True
+XTerm*metaSendsEscape: true
+XTerm*termName: xterm-256color
+XTerm*ttyModes: intr ^c erase ^h weras ^w kill ^u
+xterm*VT100.Translations: #override \
+                 Shift <Key>Insert:    insert-selection(SELECT) \n\
+                 Ctrl Shift <Key>V:    insert-selection(SELECT) \n\
+                 Ctrl Shift <Key>C:    copy-selection(SELECT)  \n\
+                 Ctrl <Key> j: smaller-vt-font() \n\
+                 Ctrl <Key> k: larger-vt-font() \n\
+
+XTerm*renderFont: true
+XTerm*utf8: 2
+XTerm*locale: true
+! Every shell is a login shell by default (for inclusion of all necessary environment variables)
+XTerm*loginshell: true
+
+! I like a LOT of scrollback...
+XTerm*savelines: 16384
+
+! double-click to select whole URLs :D
+XTerm*charClass: 33:48,36-47:48,58-59:48,61:48,63-64:48,95:48,126:48

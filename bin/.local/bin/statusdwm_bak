@@ -1,0 +1,26 @@
+#!/bin/bash
+
+while true; do
+
+	$HOME/.local/bin/dwmscripts/dwmupdates > $HOME/.local/bin/dwmscripts/dwmupdates.txt
+
+	sleep 3600s
+
+done &
+
+while true; do
+
+	BRT=$($HOME/.local/bin/dwmscripts/dwmbright)
+	BAT=$($HOME/.local/bin/dwmscripts/dwmbat)
+	VOL=$($HOME/.local/bin/dwmscripts/dwmvol)
+	CPU=$($HOME/.local/bin/dwmscripts/dwmcpu)
+	MEM=$($HOME/.local/bin/dwmscripts/dwmmemory)
+	TEMP=$($HOME/.local/bin/dwmscripts/dwmtemp)
+	HDD=$($HOME/.local/bin/dwmscripts/dwmdisk)
+	UPDATES=$(< ~/.local/bin/dwmscripts/dwmupdates.txt)
+	TIME=$($HOME/.local/bin/dwmscripts/dwmclock)
+	xsetroot -name "$BRT $VOL $BAT $TEMP $UPDATES $TIME  "
+
+	sleep 5s
+
+done &
