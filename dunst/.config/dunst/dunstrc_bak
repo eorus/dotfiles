@@ -1,20 +1,20 @@
-[global]
-    monitor = 0
-    follow = keyboard
-    width = 370
-    height = (0, 350)
-    offset = (15, 35)
-    gap_size = 12
-    padding = 2
-    horizontal_padding = 2
-    transparency = 25
+# For defaults and description of each option, see the link bellow
+# https://github.com/dunst-project/dunst/blob/master/dunstrc
 
-# Text
-font = IosevkaTerm Nerd Font 12
-markup = full
-# format = "<big><b>%s</b></big>\n%b"
-alignment = left
-format = "<b>%s</b>\n%b"
+[global]
+# Display
+follow = mouse
+width = 350
+height = (0, 300)
+origin = top-right
+offset = (15, 35)
+indicate_hidden = yes
+notification_limit = 5
+gap_size = 12
+padding = 12
+horizontal_padding = 20
+frame_width = 1
+sort = no
 
 # Progress bar
 progress_bar_frame_width = 0
@@ -24,6 +24,22 @@ progress_bar_corner_radius = 3
 foreground = "#cdd1dc"
 frame_color = "#2d303c"
 highlight = "#2274d5, #82aad9"
+
+# Text
+font = IosevkaTerm Nerd Font 12
+markup = full
+format = "<big><b>%s</b></big>\n%b"
+alignment = left
+vertical_alignment = center
+show_age_threshold = -1
+hide_duplicate_count = false
+
+# Icon
+icon_position = left
+min_icon_size = 54
+max_icon_size = 80
+icon_path = /usr/share/icons/Arc/status/96:/usr/share/icons/Arc/status/symbolic
+icon_corner_radius = 4
 
 # Misc/Advanced
 dmenu = /usr/bin/dmenu -l 10 -p dunst:
