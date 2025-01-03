@@ -156,9 +156,9 @@ end
 map("n", "<leader>sv", ":source ~/.config/nvim/init.lua<CR>")	-- reload neovim config
 map("n", "<leader>ev", ":vsplit $MYVIMRC<CR>")              	-- reload neovim config
 map("n", "<leader>eb", ":edit ~/.bashrc<CR>")	                -- edit bashrc
-map("n", "<leader>et", ":edit ~/.tmux.con<CR>")	              -- edit tmux config
+map("n", "<leader>et", ":edit ~/.tmux.conf<CR>")	              -- edit tmux config
 map("n", "<leader>en", ":edit ~/.config/newsboat/config<CR>")	-- edit newsboat config
-map("n", "<leader>eu", ":edit ~/.config/newsboat/url<CR>")  	-- eidt newsboat url
+map("n", "<leader>eu", ":edit ~/.config/newsboat/urls<CR>")  	-- eidt newsboat url
 
 -- Tab bindings
 map("n", "<leader>t", ":tabnew<CR>")			-- space+t creates new tab
@@ -183,6 +183,7 @@ map("n", "<Tab>", ":bnext <CR>")				-- Tab goes to next buffer
 map("n", "<S-Tab>", ":bprevious <CR>")			-- Shift+Tab goes to previous buffer
 map("n", "<leader>d", ":bd! <CR>")				-- Space+d delets current buffer
 map("n", "<leader>b", ":buffers<CR>:buffer<Space>")				-- Space+d delets current buffer
+map("n", "<leader>ba", ":tab sball<CR>")				-- Tab goes to next buffer
 
 -- adjust split sizes easier
 map("n", "<C-Left>", ":vertical resize +3<CR>")		-- Control+Left resizes vertical split +

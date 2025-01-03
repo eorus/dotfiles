@@ -45,17 +45,18 @@ return packer.startup(function(use)
 	--nvim-web-devicons
 	use("nvim-tree/nvim-web-devicons") -- Add entry here to install the plugin
 	--vimwiki
-	use("vimwiki/vimwiki") -- Add entry here to install the plugin
+	use("vimwiki/vimwiki") -- vimwiki
 	--taskwiki
-	use("tools-life/taskwiki") -- Add entry here to install the plugin
+	use("tools-life/taskwiki") -- Taskwiki
 	--vimwiki
-	use("blindFS/vim-taskwarrior") -- Add entry here to install the plugin
+	use("blindFS/vim-taskwarrior") -- Taskwarrior
 	--undo tree
-	use("mbbill/undotree") -- Add entry here to install the plugin
+	use("mbbill/undotree") -- Undo tree backups
 	--vim css colors
-	use("ap/vim-css-color") -- Add entry here to install the plugin
+	use("ap/vim-css-color") -- For colorized css
 	--vim ranger
-	use("kevinhwang91/rnvimr") -- Add entry here to install the plugin
+	use("kevinhwang91/rnvimr") -- Ranger for nvim
+ -- Development Tools
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
