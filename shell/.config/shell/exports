@@ -10,7 +10,7 @@ unsetopt PROMPT_SP 2>/dev/null
 
 export EDITOR="nvim"
 export VISUAL="nvim"
-export MYVIMRC="~/.config/nvim/init.vim"
+export MYVIMRC="~/.config/nvim/init.lua"
 export TERMINAL="/usr/local/bin/st"
 export BROWSER="/usr/bin/brave --password-store=basic"
 export READER="/usr/bin/zathura"
