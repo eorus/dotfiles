@@ -44,15 +44,43 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 map <leader>fr  :%s///g<left><left>
 map <leader>frl :%s:::g<left><left>
 
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+nnoremap <leader>eb :edit ~/.bashrc<cr>
+nnoremap <leader>et :edit ~/.tmux.conf<cr>
+nnoremap <leader>en :edit ~/.config/newsboat/config<cr>
+nnoremap <leader>eu :edit ~/.config/newsboat/url<cr>
+
+"-- Tab bindings
+nnoremap <leader>t :tabnew<cr>
+nnoremap <leader>x :tabclose<cr>
+nnoremap <leader>j :tabprevious<cr>
+nnoremap <leader>k :tabnext<cr>
+
+"-- buffer navigation
+nnoremap <F3> :tab sball<CR>
+nnoremap <Tab> :bnext<cr>
+nnoremap <S-Tab> :bprevious<cr>
+nnoremap <F5> :Buffers<CR>
+nnoremap <Leader>b :buffers<CR>:buffer<Space>
+nnoremap <leader>d :bd!<cr>
+
+" Shortcutting split navigation, saving a keypress:
+map <C-h> <C-w>h
+map <C-j> <C-w>j
+map <C-k> <C-w>k
+map <C-l> <C-w>l
+
+"-- easy split generation
+nnoremap <leader>v :vsplit<cr>
+nnoremap <leader>s :split<cr>
+nnoremap <leader>hh :nohl<cr>
+
 " FZF mappings
 nmap <Leader>f :Files<CR>
 nnoremap <silent> <leader>F :FZF ~<cr>
 nnoremap <leader>l :Lines<cr>
 nnoremap <C-g> :Rg<Cr>
-nnoremap <F5> :Buffers<CR>
-nnoremap <F3> :tab sball<CR>
-nnoremap <leader>B :enew<cr>
-nnoremap <S-Tab> :bnext<cr>
 
 " File Explorer
 let NERDTreeMinimalUI=1
@@ -71,13 +99,6 @@ let g:rnvimr_ex_enable = 1
 nmap <space>r :RnvimrToggle<CR>
 map <F2> :RnvimrToggle<CR>
 
-
-" Shortcutting split navigation, saving a keypress:
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
-
 "toggle spell checking
 nnoremap <leader>ss :setlocal spell!<cr>
 
@@ -86,9 +107,6 @@ nnoremap <F4> :UndotreeToggle<cr>
 
 " Markdown Preview Toggle
 nmap <C-p> <Plug>MarkdownPreviewToggle
-
-" Goyo plugin makes text more readable when writing prose:
-map <leader>g :Goyo \| set bg=dark \| set linebreak<CR>
 
 " Vimwiki ==================================================================
 " Ensure files are read as what I want:
@@ -176,10 +194,3 @@ let g:translate#default_languages = {
       \ 'tr': 'en',
       \ 'en': 'tr'
       \ }
-
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap <leader>sv :source $MYVIMRC<cr>
-nnoremap <leader>eb :edit ~/.bashrc<cr>
-nnoremap <leader>et :edit ~/.tmux.conf<cr>
-nnoremap <leader>en :edit ~/.config/newsboat/config<cr>
-nnoremap <leader>eu :edit ~/.config/newsboat/url<cr>
