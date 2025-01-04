@@ -149,7 +149,7 @@ return require("lazy").setup({
         end,
     },
 
-   {
+    {
         "https://github.com/VonHeikemen/lsp-zero.nvim",
         dependencies = {
             "https://github.com/williamboman/mason.nvim",
@@ -163,18 +163,20 @@ return require("lazy").setup({
             local lsp_zero = require('lsp-zero')
 
             lsp_zero.on_attach(function(client, bufnr)
-                lsp_zero.default_keymaps({buffer = bufnr})
+                lsp_zero.default_keymaps({ buffer = bufnr })
             end)
 
             require("mason").setup()
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     -- See https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-                    "gopls", -- Go
-                    "pyright", -- Python
-                    "cssls", -- Css
-                    "phpactor", -- php
-                    "html", -- html
+                    "html",
+                    "cssls",
+                    "tailwindcss",
+                    "lua_ls",
+                    "emmet_ls", -- { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" } --> See lspconfig.lua
+                    -- "prismals",
+                    "pyright",
                 },
                 handlers = {
                     lsp_zero.default_setup,
@@ -311,7 +313,10 @@ return require("lazy").setup({
         lazy = true,
     },
     -- }}}
-
+    {
+        "https://github.com/ap/vim-css-color", -- For colorized css
+        lazy = true,
+    },
     -- {{{ Keymaps
     {
         "https://github.com/folke/which-key.nvim",
