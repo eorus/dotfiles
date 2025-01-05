@@ -1,2 +1,2 @@
-require("options")
-require("plugins")
+require("eorus.core")
+require("eorus.lazy")
