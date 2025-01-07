@@ -45,7 +45,7 @@ cmd paste-overwrite &{{
 	lf -remote "send $id echo \"\033[0;32mpasted $# file(s)\033[0m\""
 }}
 
-cmd trash %trash-put $fx
+cmd trash %set -f; mv $fx ~/.local/share/Trash/files/
 
 cmd mkdir $mkdir -p "$@"
 
@@ -115,10 +115,7 @@ map X !$f
 map A :rename; cmd-end # at the very end
 map <c-e> down
 map <c-y> up
-map V push :!nvim<space>
-map W $setsid -f $TERMINAL >/dev/null 2>&1
-map T $nsxiv -t "$(pwd)" # opens thumbnail mode
-map r open-with
+
 
 # Movement
 map gh cd ~
@@ -142,8 +139,15 @@ map gD cd ~/dotfiles
 map gd cd ~/Downloads
 map gw cd /usr/share/webapps/wordpress/wp-content/themes
 
-map S shell $SHELL
+map S $$SHELL
 map e shell nvim %f
+#map e $$EDITOR "$f"
+map i $$PAGER "$f"
+map w shell $SHELL
+map W $setsid -f $TERMINAL >/dev/null 2>&1
+map V push :!nvim<space>
+map T $nsxiv -t "$(pwd)" # opens thumbnail mode
+map r open-with
 
 map du shell -p du --max-depth=1 -h --apparent-size
 map dU shell -p du --max-depth=1 -h --apparent-size | sort -rh
