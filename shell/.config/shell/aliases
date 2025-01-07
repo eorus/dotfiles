@@ -86,7 +86,7 @@ alias ka="killall" \
 	trem="transmission-remote" \
 	e="$EDITOR" \
 	v="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
-	x="sxiv -ft *" \
+	x="nsxiv -ft *" \
 	sdn="sudo shutdown -h now" \
 	gua="git remote | xargs -L1 git push --all" \
 	ls="ls -hN --color=auto --group-directories-first" \
