@@ -1,0 +1,155 @@
+# Basic Settings
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 8
+set preview true
+
+set hidden true
+set drawbox true
+set icons true
+set period 1
+set ignorecase true
+
+set previewer ~/.config/lf/scope
+map i $LESSOPEN='| ~/.config/lf/scope %s' less -R $f
+set cleaner ~/.config/lf/cleaner
+#
+# Custom Functions
+cmd open $set -f; rifle -p 0 "$fx"
+
+cmd open-with ${{
+    clear
+    set -f
+    rifle -l $fx | sed -e "s/:[a-Z]*:[a-Z]*:/ \| /"
+    read -p "open with: " method
+    rifle -p $method $fx
+}}
+
+cmd paste-overwrite &{{
+	set -f
+  mode=$(head -1 ~/.local/share/lf/files)
+  list=$(sed 1d ~/.local/share/lf/files)
+	set -- _ $list; shift
+	[ $# -gt 0 ] || exit
+	case $mode in
+		copy)
+			rsync -r "$@" ./
+			;;
+		move)
+			rsync -r --remove-source-files "$@" ./
+			;;
+	esac
+	lf -remote 'save\nmove\n'
+	lf -remote "send $id load"
+	lf -remote "send $id echo \"\033[0;32mpasted $# file(s)\033[0m\""
+}}
+
+cmd trash %trash-put $fx
+
+cmd mkdir $mkdir -p "$@"
+
+cmd extract ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "extract?[y/N]"
+	read ans
+	[ $ans = "y" ] && {
+		case $fx in
+			*.tar.bz2)   tar xjf $fx     ;;
+			*.tar.gz)    tar xzf $fx     ;;
+			*.bz2)       bunzip2 $fx     ;;
+			*.rar)       unrar e $fx     ;;
+			*.gz)        gunzip $fx      ;;
+			*.tar)       tar xf $fx      ;;
+			*.tbz2)      tar xjf $fx     ;;
+			*.tgz)       tar xzf $fx     ;;
+			*.zip)       unzip $fx       ;;
+			*.Z)         uncompress $fx  ;;
+			*.7z)        7z x $fx        ;;
+			*.tar.xz)    tar xf $fx      ;;
+		esac
+	}
+}}
+
+cmd delete ${{
+	clear; tput cup $(($(tput lines)/3)); tput bold
+	set -f
+	printf "%s\n\t" "$fx"
+	printf "delete?[y/N]"
+	read ans
+	[ $ans = "y" ] && rm -rf -- $fx
+}}
+#
+# Remove some defaults
+map m
+map w
+map o
+map n
+map "'"
+map '"'
+map d
+map p
+
+# Mappings
+map <c-f> $lf -remote "send $id select \"$(fzf)\""
+map A rename # at the very end
+#map c push A<c-u> # new rename
+#map I push A<c-a> # cursor at very beginning
+#map a push A<a-b><a-b><a-f> # cursor before extension
+map . set hidden!
+map dd cut
+map y copy
+map pp :paste; clear
+map po paste-overwrite
+map <enter> open
+#
+map H cd ~
+map <c-n> push :mkdir<space>""<left>
+map <c-r> reload
+map <c-s> set hidden!
+map x $$f
+map X !$f
+
+map A :rename; cmd-end # at the very end
+map <c-e> down
+map <c-y> up
+map V push :!nvim<space>
+map W $setsid -f $TERMINAL >/dev/null 2>&1
+map T $nsxiv -t "$(pwd)" # opens thumbnail mode
+map r open-with
+
+# Movement
+map gh cd ~
+map ge cd /etc
+map gu cd /usr
+map gd cd /dev
+map gl cd -r .
+map gL cd -r %f
+map go cd /opt
+map gv cd /var
+map gC cd ~/.config
+map gb cd ~/.local/bin
+map gm cd /run/media/eorus
+map gi eval fm.cd('/run/media/' + os.getenv('USER'))
+map gM cd /mnt
+map gs cd /srv
+map gp cd ~/Pictures
+map gB cd ~/Templates
+map gT cd /tmp
+map gD cd ~/dotfiles
+map gd cd ~/Downloads
+map gw cd /usr/share/webapps/wordpress/wp-content/themes
+
+map S shell $SHELL
+map e shell nvim %f
+
+map du shell -p du --max-depth=1 -h --apparent-size
+map dU shell -p du --max-depth=1 -h --apparent-size | sort -rh
+map dD trash
+map D delete
+
+# dedicated keys for file opener actions
+map o &mimeopen $f
+map O $mimeopen --ask $f
