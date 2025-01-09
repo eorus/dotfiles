@@ -449,27 +449,6 @@ c.fonts.prompts = "default_size sans-serif"
 # Type: Font
 c.fonts.statusbar = '11pt "Source Code Pro"'
 
-# Bindings for normal mode
-config.bind(
-    ",ap",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/apprentice/apprentice-all-sites.css ""',
-)
-config.bind(
-    ",dr",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/darculized/darculized-all-sites.css ""',
-)
-config.bind(
-    ",gr",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""',
-)
-config.bind(
-    ",sd",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-dark/solarized-dark-all-sites.css ""',
-)
-config.bind(
-    ",sl",
-    'config-cycle content.user_stylesheets ~/.config/qutebrowser/solarized-everything-css/css/solarized-light/solarized-light-all-sites.css ""',
-)
 config.bind("M", "hint links spawn mpv {hint-url}")
 config.bind("Z", "hint links spawn st -e youtube-dl {hint-url}")
 config.bind("t", "cmd-set-text -s :open -t")
@@ -482,8 +461,18 @@ config.bind(
 
 config.set("zoom.default", "125%")
 
-c.colors.webpage.darkmode.enabled = True
+# c.colors.webpage.darkmode.enabled = True
 
 config.bind("<Tab>", "tab-next")
 config.bind(",e", "config-edit")
-config.bind(",s", "config-source")
+config.bind(",z", "config-source")
+
+# Aliases for commands. The keys of the given dictionary are the
+# aliases, while the values are the commands they map to.
+c.aliases = {
+    "w": "session-save",
+    "wq": "quit --save",
+    "mpv": "spawn -d mpv --force-window=immediate {url}",
+    "nicehash": "spawn --userscript nicehash",
+    "pass": "spawn -d pass -c",
+}

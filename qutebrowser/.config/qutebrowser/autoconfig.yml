@@ -6,9 +6,5 @@
 
 config_version: 2
 settings:
-  content.register_protocol_handler:
-    https://mail.google.com?extsrc=mailto&url=%25s: true
-  tabs.position:
-    global: top
-  tabs.show:
-    global: always
+  colors.webpage.darkmode.enabled:
+    global: false
