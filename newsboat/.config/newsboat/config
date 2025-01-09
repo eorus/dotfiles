@@ -82,15 +82,7 @@ macro d set browser "yt-dlp"; open-in-browser ; set browser linkhandler
 macro a set browser "yt-dlp --embed-medatada -xic -f bestaudio/best" ; open-in-browser ; set browser linkhandler
 
 # -- Theme ---------------------------------------------------------------------
-
-color background          white      default
-color listnormal          color8     default
-color listnormal_unread   green      default
-color listfocus           white     blue
-color listfocus_unread    yellow     blue
-color info                cyan      color235 bold standout
-color article             white      default
-
+include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
 
 highlight all "---.*---" yellow
 highlight feedlist ".*(0/0))" black
