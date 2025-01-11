@@ -476,3 +476,9 @@ c.aliases = {
     "nicehash": "spawn --userscript nicehash",
     "pass": "spawn -d pass -c",
 }
+
+# Bindings for normal mode
+config.bind(
+    ",ap",
+    'config-cycle content.user_stylesheets ~/.config/qutebrowser/themes/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""',
+)

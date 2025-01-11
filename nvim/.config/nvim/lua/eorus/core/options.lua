@@ -76,3 +76,67 @@ au WinLeave,FocusLost,CmdwinLeave * set nocul
 " Run xrdb whenever Xdefaults or Xresources are updated.
 	autocmd BufWritePost *Xresources,*Xdefaults,xresources !xrdb %
 ]])
+
+vim.cmd([[
+	set path+=**
+	colorscheme iceberg
+	filetype plugin on
+	set wildmenu
+	:autocmd BufNewFile *.sh 0r ~/.config/nvim/skeleton.sh
+	:autocmd BufWritePost *.h !make
+	:autocmd BufNewFile *.md 0r ~/.config/nvim/skeleton.md
+	command! Reload :source ~/.config/nvim/init.lua
+	command! Make :!make
+]])
+
+--statusline
+vim.cmd("highlight StatusType guibg=#b16286 guifg=#1d2021")
+vim.cmd("highlight StatusFile guibg=#fabd2f guifg=#1d2021")
+vim.cmd("highlight StatusModified guibg=#1d2021 guifg=#d3869b")
+vim.cmd("highlight StatusBuffer guibg=#98971a guifg=#1d2021")
+vim.cmd("highlight StatusLocation guibg=#458588 guifg=#1d2021")
+vim.cmd("highlight StatusPercent guibg=#1d2021 guifg=#ebdbb2")
+vim.cmd("highlight StatusNorm guibg=none guifg=white")
+vim.o.statusline = " "
+  .. ""
+  .. " "
+  .. "%l"
+  .. " "
+  .. " %#StatusType#"
+  .. "<< "
+  .. "%Y"
+  .. "  "
+  .. " >>"
+  .. "%#StatusFile#"
+  .. "<< "
+  .. "%F"
+  .. " >>"
+  .. "%#StatusModified#"
+  .. " "
+  .. "%m"
+  .. " "
+  .. "%#StatusNorm#"
+  .. "%="
+  .. "%#StatusBuffer#"
+  .. "<< "
+  .. "﬘ "
+  .. "%n"
+  .. " >>"
+  .. "%#StatusLocation#"
+  .. "<< "
+  .. "燐 "
+  .. "%l,%c"
+  .. " >>"
+  .. "%#StatusPercent#"
+  .. "<< "
+  .. "%p%%  "
+  .. " >> "
+
+-- Functional wrapper for mapping custom keybindings
+function map(mode, lhs, rhs, opts)
+  local options = { noremap = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  vim.api.nvim_set_keymap(mode, lhs, rhs, options)
+end

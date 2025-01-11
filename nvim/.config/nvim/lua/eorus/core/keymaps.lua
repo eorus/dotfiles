@@ -1,6 +1,4 @@
-vim.g.mapleader = " "
-vim.keymap.set("n", "<leader><F4>", vim.cmd.UndotreeToggle)
-
+vim.g.mapleader = ","
 local keymap = vim.keymap -- for conciseness
 
 keymap.set("i", "jk", "<ESC>", { desc = "Exit insert mode with jk" })
@@ -36,3 +34,5 @@ keymap.set("n", "<S-Tab>", ":bprevious <CR>") -- Shift+Tab goes to previous buff
 keymap.set("n", "<leader>bd", ":bd! <CR>") -- Space+d delets current buffer
 keymap.set("n", "<leader>b", ":buffers<CR>:buffer<Space>") -- Space+d delets current buffer
 keymap.set("n", "<leader>ba", ":tab sball<CR>") -- Tab goes to next buffer
+
+keymap.set("n", "<leader><F4>", vim.cmd.UndotreeToggle)
