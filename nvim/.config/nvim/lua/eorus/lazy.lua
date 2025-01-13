@@ -20,3 +20,5 @@ require("lazy").setup({ { import = "eorus.plugins" }, { import = "eorus.plugins.
     notify = false,
   },
 })
+
+require("colorizer").setup()

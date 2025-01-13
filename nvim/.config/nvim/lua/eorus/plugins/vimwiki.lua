@@ -1,8 +1,8 @@
 return {
   "vimwiki/vimwiki",
   event = "BufEnter *.md",
-  lazy = false,
   keys = { "<leader>ww", "<leader>wt" },
+  lazy = false,
   init = function()
     print("Setting up vimwiki!")
     vim.g.vimwiki_folding = ""
