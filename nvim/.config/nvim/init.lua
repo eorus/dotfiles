@@ -1,2 +1,3 @@
-require("eorus.core")
-require("eorus.lazy")
+require("options")
+require("keymaps")
+require("plugins")
