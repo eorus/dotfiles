@@ -11,6 +11,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+
 return require("lazy").setup({
     -- {{{ Libraries
     {
@@ -110,6 +111,7 @@ return require("lazy").setup({
 				},
 			},
 			"williamboman/mason-lspconfig.nvim", -- make mason & lspconfig work together
+                        "neovim/nvim-lspconfig",
 		},
 	},
 
@@ -140,25 +142,84 @@ return require("lazy").setup({
 	},
 
     	{ -- Completion Engine
-		"hrsh7th/nvim-cmp",
-		dependencies = "hrsh7th/cmp-nvim-lsp", -- make cmp work with LSPs
-		config = function()
-			local cmp = require("cmp")
-			cmp.setup({
-				sources = cmp.config.sources({
-					{ name = "nvim_lsp" }, -- tell cmp to use LSPs for completion
-				}),
-				mapping = cmp.mapping.preset.insert({
-					["<CR>"] = cmp.mapping.confirm({ select = true }),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<C-n>"] = cmp.mapping.select_next_item(),
-					["<C-p>"] = cmp.mapping.select_prev_item(),
-				}),
-			})
-		end,
-	},
 
-    -- TODO refactor when Tree-sitter is stable and merged to nvim core
+
+        "hrsh7th/nvim-cmp",
+
+        event = "InsertEnter",
+
+        dependencies = {
+
+            "hrsh7th/cmp-buffer", -- source for text in buffer
+
+            "hrsh7th/cmp-path", -- source for file system paths
+
+            {
+
+                "L3MON4D3/LuaSnip",
+
+                -- follow latest release.
+
+                version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+
+                -- install jsregexp (optional!).
+
+                build = "make install_jsregexp",
+
+            },
+
+            "saadparwaiz1/cmp_luasnip", -- for autocompletion
+    "rafamadriz/friendly-snippets", -- useful snippets
+    "onsails/lspkind.nvim", -- vs-code like pictograms
+  },
+  config = function()
+    local cmp = require("cmp")
+
+    local luasnip = require("luasnip")
+
+    local lspkind = require("lspkind")
+
+    -- loads vscode style snippets from installed plugins (e.g. friendly-snippets)
+    require("luasnip.loaders.from_vscode").lazy_load()
+
+    cmp.setup({
+      completion = {
+        completeopt = "menu,menuone,preview,noselect",
+      },
+      snippet = { -- configure how nvim-cmp interacts with snippet engine
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
+      mapping = cmp.mapping.preset.insert({
+        ["<C-k>"] = cmp.mapping.select_prev_item(), -- previous suggestion
+        ["<C-j>"] = cmp.mapping.select_next_item(), -- next suggestion
+        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
+        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+        ["<CR>"] = cmp.mapping.confirm({ select = false }),
+      }),
+      -- sources for autocompletion
+      sources = cmp.config.sources({
+        { name = "nvim_lsp"},
+        { name = "luasnip" }, -- snippets
+        { name = "buffer" }, -- text within current buffer
+        { name = "path" }, -- file system paths
+      }),
+
+      -- configure lspkind for vs-code like pictograms in completion menu
+      formatting = {
+        format = lspkind.cmp_format({
+          maxwidth = 50,
+          ellipsis_char = "...",
+        }),
+      },
+    })
+  end,
+},
+        --
+     -- TODO refactor when Tree-sitter is stable and merged to nvim core
     -- https://github.com/nvim-treesitter/nvim-treesitter/issues/4767
     {
         "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -278,6 +339,10 @@ return require("lazy").setup({
     {
         "https://github.com/folke/which-key.nvim",
         event = "VeryLazy",
+        icons = {
+        -- set icon mappings to true if you have a Nerd Font
+        mappings = vim.g.have_nerd_font,
+        },
         keys = require("keymaps"),
     },
 
@@ -314,5 +379,10 @@ return require("lazy").setup({
         "https://github.com/mbbill/undotree",
         event = "VeryLazy",
     },
-
+    {
+        "norcalli/nvim-colorizer.lua", -- For colorized css
+        config = function()
+            require("colorizer").setup()
+        end,
+    },
 })
