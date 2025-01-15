@@ -80,7 +80,6 @@ au WinLeave,FocusLost,CmdwinLeave * set nocul
 
 vim.cmd([[
 	set path+=**
-	colorscheme iceberg
 	filetype plugin on
 	set wildmenu
 	:autocmd BufNewFile *.sh 0r ~/.config/nvim/skeleton.sh

@@ -36,7 +36,7 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- reload config
-keymap.set("n", "<leader>sr", ":source ~/.config/nvim/init.lua<CR>") -- reload neovim config
+keymap.set("n", "<leader>er", ":source ~/.config/nvim/init.lua<CR>") -- reload neovim config
 keymap.set("n", "<leader>ev", ":vsplit $MYVIMRC<CR>") -- reload neovim config
 keymap.set("n", "<leader>eb", ":edit ~/.bashrc<CR>") -- edit bashrc
 keymap.set("n", "<leader>et", ":edit ~/.tmux.conf<CR>") -- edit tmux config
@@ -59,6 +59,7 @@ keymap.set("i", "kj", "<Esc>") -- kj simulates ESC
 keymap.set("i", "jk", "<Esc>") -- jk simulates ESC
 
 keymap.set("n", "<M-h>", ":UndotreeToggle<CR>") -- space+k moves to next tab
+
 return {
     -- Session
     { "<C-q>", ":quit<CR>", desc = "Quit" },
@@ -75,6 +76,8 @@ return {
         desc = "Find file",
     },
     { "<Leader>fg", "<Cmd>FzfLua git_files<CR>", desc = "Find git files" },
+    { "<Leader>fh", "<Cmd>FzfLua oldfiles<CR>", desc = "Find files in History" },
+    { "<Leader>ft", "<Cmd>FzfLua tabs<CR>", desc = "Find files in tabs" },
     { "-", "<Cmd>Oil<CR>", desc = "Browse project from here" },
     { "_", "<Cmd>Oil .<CR>", desc = "Browse project" },
     {

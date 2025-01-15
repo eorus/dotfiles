@@ -19,7 +19,3 @@
 
 #define termbg #101010
 #define termfg #e1d8cb
-
-! import rofi
-#include "./rofi/bridge.rofi"
-
