@@ -23,7 +23,7 @@ export PAGER="less"
 
 ## XDG ------------------------------------------------------------------------
 export QT_STYLE_OVERRIDE=kvantum
-export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_QPA_PLATFORMTHEME=qt6ct
 export XDG_SESSION_TYPE=x11
 export GDK_BACKEND=x11
 export XDG_CACHE_HOME="$HOME/.cache"
