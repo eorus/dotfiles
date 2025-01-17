@@ -41,11 +41,6 @@ if [ -x "$(command -v dircolors)" ]; then
     eval "$(dircolors -b ~/.dircolors)"
 fi
 
-# Base16 Shell.
-if [ -f ~/.local/bin/base16-oxide ]; then
-    source ~/.local/bin/base16-oxide
-fi
-
 eval "$(zoxide init bash)"
 
 export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
