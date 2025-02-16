@@ -83,12 +83,3 @@ macro a set browser "yt-dlp --embed-medatada -xic -f bestaudio/best" ; open-in-b
 
 # -- Theme ---------------------------------------------------------------------
 include /usr/share/doc/newsboat/contrib/colorschemes/inkpot
-
-highlight all "---.*---" yellow
-highlight feedlist ".*(0/0))" black
-#highlight feedlist "<no title>" black
-highlight article "(^Title:.*|^Author:.*)" cyan default bold
-highlight article "(^Feed:.*|^Author:.*)" magenta default bold
-highlight article "(^Date:.*)" yellow default
-highlight article "https?://[^ ]+" red default
-highlight article "(^Link:.*)" cyan default
