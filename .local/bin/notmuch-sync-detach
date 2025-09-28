@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# detach and return immediately without job-control messages
+setsid /home/eorus/.local/bin/notmuch-sync.sh >/dev/null 2>&1 < /dev/null &
+# Give the child a moment to be reparented (optional, prevents tiny race)
+sleep 0.05
+exit 0

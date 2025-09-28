@@ -1,0 +1,38 @@
+<?php
+/*
+ * The Page Content Loop
+ */
+?>
+
+
+
+<?php if(have_posts()): while(have_posts()): the_post(); ?>
+<?php if (function_exists('dimox_breadcrumbs')) { ?>
+  <?php dimox_breadcrumbs(); ?>
+<?php } ?>
+  <article role="article" id="post_<?php the_ID()?>" <?php post_class("card mb-5")?>>
+<?php the_post_thumbnail( 'fkulup-page', array( 'class' => 'img-fluid card-img' ));?>
+    <section class="card-body">
+    <header class="my-3">
+      <h1 class="card-title">
+        <?php the_title()?>
+      </h1>
+    </header>
+    <div class="card-text">
+      <?php the_content()?>
+      <?php wp_link_pages(); ?>
+    </div>
+    </section>
+  </article>
+  <?php
+    // This continues in the single post loop
+    if ( comments_open() || get_comments_number() ) :
+
+    //comments_template();
+    comments_template('/loops/single-post-comments.php');
+
+    endif;
+  endwhile; else :
+    get_template_part('loops/404');
+  endif;
+?>

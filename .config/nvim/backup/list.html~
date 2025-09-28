@@ -1,0 +1,35 @@
+<section class="container page blog grid-xl">
+     <div class="columns">
+       <div class="column col-12 entries">
+          <header class="card-header text-center m-2 p-2">
+            <div class="card-title">
+              <h1 class="entry-title">
+            {{- if eq .Kind "term" -}}
+            {{- i18n .Data.Singular | title -}}
+            {{- print ": " -}}
+            {{- end -}}
+            {{- .Title -}}</h1>
+            </div>
+            {{ partial "breadcrumbs.html" . }}
+          </header>
+
+    {{ range .Paginator.Pages }}
+	<div class="columns">
+		<div class="column col-10 col-sm-12 col-mx-auto">
+			<ul class="timeline">
+				<li>
+                  <a class="title" href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
+                  <span class="date float-right">{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
+                  <p class="intro">{{ .Summary }}</p>
+				</li>
+			</ul>
+		</div>
+	</div>
+    {{ end }}
+
+                        <ul class="pagination">
+{{ template "_internal/pagination.html" . }}
+                        </ul>
+		</div>
+	</div>
+</section>

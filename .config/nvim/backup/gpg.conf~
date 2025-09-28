@@ -1,0 +1,4 @@
+use-agent
+allow-loopback-pinentry
+default-cache-ttl 7200
+max-cache-ttl 86400

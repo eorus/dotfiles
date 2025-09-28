@@ -1,0 +1,119 @@
+#!/bin/sh
+
+# dash-compatible dmenu mount script
+
+err_exit() {
+	printf '%s\n' "$1" >&2
+	exit 1
+}
+
+getmount() {
+	[ -z "$chosen" ] && err_exit "no choice"
+	# $@ contains find paths/expr tokens; join into a single find invocation
+	tmpf="$(mktemp)" || err_exit "mktemp failed"
+	# run find with all args passed through "$@"
+	find "$@" 2>/dev/null >"$tmpf"
+	[ ! -s "$tmpf" ] && { rm -f "$tmpf"; err_exit "no directories found"; }
+	mp="$(dmenu -i -p "Type in mount point." <"$tmpf")" || { rm -f "$tmpf"; err_exit "cancel"; }
+	rm -f "$tmpf"
+	[ -z "$mp" ] && err_exit "no mountpoint chosen"
+	if [ ! -d "$mp" ]; then
+		mkdiryn="$(printf "No\nYes" | dmenu -i -p "$mp does not exist. Create it?")" || err_exit "cancel"
+		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || sudo -A mkdir -p "$mp")
+	fi
+}
+
+mountusb() {
+	# present usbdrives lines to dmenu
+	chosen="$(printf '%s\n' "$usbdrives" | dmenu -i -p "Mount which drive?")" || exit 1
+	# extract device (first token)
+	chosen="$(printf '%s' "$chosen" | awk '{print $1}')"
+	# try mount via fstab first
+	if sudo -A mount "$chosen" 2>/dev/null; then
+		notify-send "💻 USB mounting" "$chosen mounted." && exit 0
+	fi
+
+	# gather already-mounted mountpoints to exclude
+	mps="$(lsblk -nrpo "name,type,mountpoint" | awk '$3!~/\/boot$|\/home$|SWAP/ && length($3)>1 {print $3}')"
+
+	# build find arguments as a single string (we'll pass them positionally)
+	# base search dirs
+	search_dirs="/mnt /media /mount $HOME"
+	# Start with the dirs and base options
+	# Note: find PATHS -maxdepth 5 -type d [prunes...]
+	# We'll use set -- to pass them safely to getmount
+	# Prepare the arguments in a temp file is cumbersome; instead call getmount with positional args
+	# Build a list of args for getmount invocation:
+	# First word-split search_dirs into positional params
+	# Then append the fixed options and prune expressions for each mounted point.
+	set -- $search_dirs -maxdepth 5 -type d
+	for mp_ex in $mps; do
+		# append prune expression parts as separate positional args
+		set -- "$@" -not '(' -path "$mp_ex" -prune ')'
+	done
+
+	# call getmount with these positional args
+	getmount "$@"
+
+	partitiontype="$(lsblk -no "fstype" "$chosen")"
+	user="$(whoami)"
+	uid="$(id -u "$user")"
+	gid="$(id -g "$user")"
+
+	case "$partitiontype" in
+		vfat)
+			sudo -A mount -t vfat "$chosen" "$mp" -o rw,uid="$uid",gid="$gid",umask=0000
+			;;
+		exfat)
+			# prefer exfat driver if available
+			sudo -A mount -t exfat "$chosen" "$mp" -o uid="$uid",gid="$gid"
+			;;
+		*)
+			if sudo -A mount "$chosen" "$mp"; then
+				sudo -A chown "$user":"$gid" "$mp" 2>/dev/null || true
+			fi
+			;;
+	esac
+
+	if [ $? -eq 0 ]; then
+		notify-send "💻 USB mounting" "$chosen mounted to $mp."
+	else
+		notify-send "💻 Drive failed to mount." "Probably a permissions issue or drive is already mounted."
+	fi
+}
+
+mountandroid() {
+	chosen="$(printf '%s\n' "$anddrives" | dmenu -i -p "Which Android device?")" || exit 1
+	chosen="$(printf '%s' "$chosen" | cut -d : -f 1)"
+	# simple search under HOME for mountpoint
+	getmount "$HOME" -maxdepth 3 -type d
+	printf "OK\n" | dmenu -i -p "Tap Allow on your phone if it asks for permission and then press enter" || exit 1
+	simple-mtpfs --device "$chosen" "$mp" &&
+		notify-send "🤖 Android Mounting" "Android device mounted to $mp." ||
+		notify-send "🤖 Android failed mounting." "Probably a permissions issue or phone is already mounted."
+}
+
+asktype() {
+	choice="$(printf "USB\nAndroid" | dmenu -i -p "Mount a USB drive or Android device?")" || exit 1
+	case $choice in
+		USB) mountusb ;;
+		Android) mountandroid ;;
+	esac
+}
+
+anddrives="$(simple-mtpfs -l 2>/dev/null)"
+usbdrives="$(lsblk -rpo "name,type,size,label,mountpoint,fstype" | grep -v crypto_LUKS | grep 'part\|rom' | sed 's/ /:/g' | awk -F':' '$5==""{printf "%s (%s) %s\n",$1,$3,$4}')"
+
+if [ -z "$usbdrives" ]; then
+	[ -z "$anddrives" ] && { echo "No USB drive or Android device detected"; exit 0; }
+	echo "Android device(s) detected."
+	mountandroid
+else
+	if [ -z "$anddrives" ]; then
+		echo "USB drive(s) detected."
+		mountusb
+	else
+		echo "Mountable USB drive(s) and Android device(s) detected."
+		asktype
+	fi
+fi

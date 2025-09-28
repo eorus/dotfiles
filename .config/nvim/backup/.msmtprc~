@@ -1,0 +1,31 @@
+defaults
+auth on
+tls on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+logfile ~/.config/msmtp/msmtp.log
+
+account gmail
+host smtp.gmail.com
+port 587
+tls_starttls on
+from alperor@gmail.com
+user alperor@gmail.com
+passwordeval "pass email/gmail/apppass"
+#passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-gmail.gpg"
+#passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.config/neomutt/mypass.gpg"
+
+# A freemail service
+# account        freemail
+# host           smtp.freemail.example
+# from           joe_smith@freemail.example
+
+account dreamhost
+host smtp.dreamhost.com
+port 587
+domain eorus.com
+from alper@eorus.com
+user alper@eorus.com
+passwordeval "pass email/eorus/alper"
+
+# Set a default account
+account default : gmail

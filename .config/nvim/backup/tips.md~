@@ -1,0 +1,65 @@
+## Tips &  Tricks
+
+echo "Welcome `uname -n`! Today: `date`"
+
+find yerine fd çalış.
+
+Örn : fd -e php index -E Docs  # Docs klasöründe index isimli php dosyalarını ara
+
+[RG Cheat Sheet](https://cheatography.com/njones/cheat-sheets/ripgrep/)
+
+Search the contents of .html and .css files only for the word foobar using the Type flag (t).
+$ rg -thtml -tcss foobar
+
+Or return everything but css files using the Type Not flag (T):
+$ rg -Tjs foobar
+
+Returns a list of all .css files
+$ rg -g *.css --files
+
+* En çok yer kaplayanlar - $ du -hsx * | sort -rh | head -5
+* Aktif çalışanlar  - $ systemctl list-units --type=service --state=running
+* ffmpeg ile screencast - $ ffmpeg -y -f alsa -i hw:0 -video_size 1920x1080 -framerate 30 -f x11grab -i :0.0 -c:v libx264 -crf 0 -preset ultrafast output.mkv
+* video size düşürme $ ffmpeg -i input.mp4 -vcodec libx265 -crf 20 output.mp4
+* convert image.jpg -sampling-factor 4:2:0 -strip -quality 85 -interlace JPEG -colorspace RGB image_converted.jpg
+* youtube-dl --extract-audio --audio-format mp3  "youtube url"
+* Resolvconf https://wiki.manjaro.org/index.php?title=Networking
+* Video Birleştirme - $ ffmpeg -i concat:"input1.mp4|input2.mp4" output.mp4
+
+
+### Video Editing
+
+- [How to use ffmpeg to combine multiple videos to one](https://ma.ttias.be/use-ffmpeg-combine-multiple-videos/)
+- [How to merge multiple (more than two) videos](https://askubuntu.com/questions/637074/how-to-merge-multiple-more-than-two-videos-on-ubuntu)
+- https://superuser.com/questions/510985/how-can-i-crop-a-video-to-a-part-of-the-view
+- [Cut with Avidemux](https://help.presentations2go.eu/editing/CutwithAvidemux.html)
+
+Merge two video clips into one, placing them next to each other
+
+ffmpeg \
+  -i 1.mp4 \
+  -i 2.mp4 \
+  -filter_complex '[0:v]pad=iw*2:ih[int];[int][1:v]overlay=W/2:0[vid]' \
+  -map [vid] \
+  -c:v libx264 \
+  -crf 23 \
+  -preset veryfast \
+  output.mp4
+
+Yan yana ve soldakinin audio dosyası
+
+  ffmpeg \
+-i "1.mp4" \
+-i "2.mp4" \
+-filter_complex " \
+nullsrc=size=1900x950 [base]; \
+[0:v] setpts=PTS-STARTPTS, scale=950x950 [left]; \
+[1:v] setpts=PTS-STARTPTS, scale=950x950 [right]; \
+[base][left] overlay=shortest=1 [tmp1]; \
+[tmp1][right] overlay=shortest=1:x=950 \
+" \
+-c:v libx264 output2.mp4
+
+### Basic Nvim Config
+
+- https://github.com/zyedidia/dotvim/blob/master/init.vim

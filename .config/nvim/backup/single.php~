@@ -1,0 +1,45 @@
+<?php
+  get_header();
+  b4st_main_before();
+?>
+
+
+
+<div class="breadcrumbs">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="breadcrumbs-content">
+        <h1 class="entry-title"><?php the_title(); ?></h1>
+        </div>
+<?php if (function_exists('dimox_breadcrumbs')) { ?>
+  <?php dimox_breadcrumbs(); ?>
+<?php } ?>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<main id="site-main" class="py-5 m-0">
+
+  <div class="container">
+
+    <div class="row">
+      <div class="col-lg-9 col-md-7 col-12">
+        <div id="content" role="main">
+          <?php get_template_part('loops/single-post', get_post_format()); ?>
+        </div>
+      </div>
+      <?php get_sidebar(); ?>
+
+    </div>
+  </div>
+
+</main>
+
+
+<?php
+  b4st_main_after();
+  get_footer();
+?>

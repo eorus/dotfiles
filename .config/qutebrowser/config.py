@@ -1,0 +1,248 @@
+# Load existing settings made via :set
+config.load_autoconfig()
+
+# Start page & default page
+c.url.start_pages = ["https://duckduckgo.com"]
+c.url.default_page = "https://duckduckgo.com"
+
+# Search engines
+c.url.searchengines = {
+    "DEFAULT": "https://duckduckgo.com/?q={}",
+    "g": "https://www.google.com/search?q={}",
+    "w": "https://en.wikipedia.org/wiki/{}",
+    "yt": "https://www.youtube.com/results?search_query={}",
+    "gh": "https://github.com/search?q={}",
+}
+
+# Downloads location
+c.downloads.location.directory = "~/Downloads"
+
+# Tabs
+c.tabs.show = "multiple"         # Show tab bar when >1 tab
+c.tabs.position = "top"
+c.tabs.padding = {"top": 5, "bottom": 5, "left": 5, "right": 5}
+c.tabs.favicons.show = "always"
+
+# Status bar & command bar
+c.statusbar.show = "in-mode"     # Show only in command/insert mode
+c.completion.cmd_history_max_items = 100
+
+# Dark mode (web content)
+c.colors.webpage.preferred_color_scheme = "dark"
+
+# User agent customization (optional)
+# This can help with compatibility for some sites
+# c.headers.user_agent = "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/117.0.0.0 Safari/537.36"
+
+# Content settings
+c.content.autoplay = False
+c.content.cookies.accept = "no-3rdparty"
+c.content.blocking.method = "both"
+c.content.blocking.adblock.lists = [
+    "https://easylist.to/easylist/easylist.txt",
+    "https://easylist.to/easylist/easyprivacy.txt",
+    "https://secure.fanboy.co.nz/fanboy-annoyance.txt"
+]
+
+# Fonts (optional tweak)
+c.fonts.default_family = "Sans"
+c.fonts.default_size = "10pt"
+
+# Scrolling
+c.scrolling.smooth = True
+
+# Key bindings (example: close tab with Ctrl+w)
+config.bind("<Ctrl-w>", "tab-close")
+
+# Editor (and arguments) to use for the `edit-*` commands. The following
+# placeholders are defined:  * `{file}`: Filename of the file to be
+# edited. * `{line}`: Line in which the caret is found in the text. *
+# `{column}`: Column in which the caret is found in the text. *
+# `{line0}`: Same as `{line}`, but starting from index 0. * `{column0}`:
+# Same as `{column}`, but starting from index 0.
+# Type: ShellCommand
+c.editor.command = ["st", "-e-", "nvim", "{file}"]
+
+# Text color of the completion widget. May be a single color to use for
+# all columns or a list of three colors, one for each column.
+# Type: List of QtColor, or QtColor
+c.colors.completion.fg = ["#9cc4ff", "white", "white"]
+
+# Background color of the completion widget for odd rows.
+# Type: QssColor
+c.colors.completion.odd.bg = "#1c1f24"
+
+# Background color of the completion widget for even rows.
+# Type: QssColor
+c.colors.completion.even.bg = "#232429"
+
+# Foreground color of completion widget category headers.
+# Type: QtColor
+c.colors.completion.category.fg = "#e1acff"
+
+# Background color of the completion widget category headers.
+# Type: QssColor
+c.colors.completion.category.bg = (
+    "qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #000000, stop:1 #232429)"
+)
+
+# Top border color of the completion widget category headers.
+# Type: QssColor
+c.colors.completion.category.border.top = "#3f4147"
+
+# Bottom border color of the completion widget category headers.
+# Type: QssColor
+c.colors.completion.category.border.bottom = "#3f4147"
+
+# Foreground color of the selected completion item.
+# Type: QtColor
+c.colors.completion.item.selected.fg = "#282c34"
+
+# Background color of the selected completion item.
+# Type: QssColor
+c.colors.completion.item.selected.bg = "#ecbe7b"
+
+# Foreground color of the matched text in the selected completion item.
+# Type: QtColor
+c.colors.completion.item.selected.match.fg = "#c678dd"
+
+# Foreground color of the matched text in the completion.
+# Type: QtColor
+c.colors.completion.match.fg = "#c678dd"
+
+# Color of the scrollbar handle in the completion view.
+# Type: QssColor
+c.colors.completion.scrollbar.fg = "white"
+
+# Background color for the download bar.
+# Type: QssColor
+c.colors.downloads.bar.bg = "#282c34"
+
+# Background color for downloads with errors.
+# Type: QtColor
+c.colors.downloads.error.bg = "#ff6c6b"
+
+# Font color for hints.
+# Type: QssColor
+c.colors.hints.fg = "#282c34"
+
+# Font color for the matched part of hints.
+# Type: QtColor
+c.colors.hints.match.fg = "#98be65"
+
+# Background color of an info message.
+# Type: QssColor
+c.colors.messages.info.bg = "#282c34"
+
+# Background color of the statusbar.
+# Type: QssColor
+c.colors.statusbar.normal.bg = "#282c34"
+
+# Foreground color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.fg = "white"
+
+# Background color of the statusbar in insert mode.
+# Type: QssColor
+c.colors.statusbar.insert.bg = "#497920"
+
+# Background color of the statusbar in passthrough mode.
+# Type: QssColor
+c.colors.statusbar.passthrough.bg = "#34426f"
+
+# Background color of the statusbar in command mode.
+# Type: QssColor
+c.colors.statusbar.command.bg = "#282c34"
+
+# Foreground color of the URL in the statusbar when there's a warning.
+# Type: QssColor
+c.colors.statusbar.url.warn.fg = "yellow"
+
+# Background color of the tab bar.
+# Type: QssColor
+c.colors.tabs.bar.bg = "#1c1f34"
+
+# Background color of unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.odd.bg = "#282c34"
+
+# Background color of unselected even tabs.
+# Type: QtColor
+c.colors.tabs.even.bg = "#282c34"
+
+# Background color of selected odd tabs.
+# Type: QtColor
+c.colors.tabs.selected.odd.bg = "#282c34"
+
+# Background color of selected even tabs.
+# Type: QtColor
+c.colors.tabs.selected.even.bg = "#282c34"
+
+# Background color of pinned unselected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.odd.bg = "seagreen"
+
+# Background color of pinned unselected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.even.bg = "darkseagreen"
+
+# Background color of pinned selected odd tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.odd.bg = "#282c34"
+
+# Background color of pinned selected even tabs.
+# Type: QtColor
+c.colors.tabs.pinned.selected.even.bg = "#282c34"
+
+
+# Set Fira Code Retina as the default font
+c.fonts.default_family = "Fira Code Retina"
+c.fonts.default_size = "10pt"
+
+# Optional: Set UI fonts (for completion, status bar, messages, etc.)
+c.fonts.completion.entry = "10pt Fira Code Retina"
+c.fonts.completion.category = "bold 10pt Fira Code Retina"
+c.fonts.debug_console = "10pt Fira Code Retina"
+c.fonts.downloads = "10pt Fira Code Retina"
+c.fonts.hints = "bold 10pt Fira Code Retina"
+c.fonts.keyhint = "10pt Fira Code Retina"
+c.fonts.messages.error = "10pt Fira Code Retina"
+c.fonts.messages.info = "10pt Fira Code Retina"
+c.fonts.messages.warning = "10pt Fira Code Retina"
+c.fonts.prompts = "10pt Fira Code Retina"
+c.fonts.statusbar = "10pt Fira Code Retina"
+
+
+config.bind("M", "hint links spawn mpv {hint-url}")
+config.bind("Z", "hint links spawn st -e youtube-dl {hint-url}")
+config.bind("t", "cmd-set-text -s :open -t")
+config.bind("xb", "config-cycle statusbar.show always never")
+config.bind("xt", "config-cycle tabs.show always never")
+config.bind(
+    "xx",
+    "config-cycle statusbar.show always never;; config-cycle tabs.show always never",
+)
+
+config.set("zoom.default", "125%")
+
+# c.colors.webpage.darkmode.enabled = True
+
+config.bind("<Tab>", "tab-next")
+config.bind(",e", "config-edit")
+config.bind(",z", "config-source")
+
+# Aliases for commands. The keys of the given dictionary are the
+# aliases, while the values are the commands they map to.
+c.aliases = {
+    "w": "session-save",
+    "wq": "quit --save",
+    "mpv": "spawn -d mpv --force-window=immediate {url}",
+    "nicehash": "spawn --userscript nicehash",
+    "pass": "spawn -d pass -c",
+}
+
+# Bindings for normal mode
+config.bind(
+    ",ap",
+    'config-cycle content.user_stylesheets ~/.config/qutebrowser/themes/solarized-everything-css/css/gruvbox/gruvbox-all-sites.css ""',
+)

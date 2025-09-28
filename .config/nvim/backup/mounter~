@@ -1,0 +1,109 @@
+#!/bin/bash
+
+# Mounts Android phones and USB drives (encrypted or not).
+
+IFS='
+'
+
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+chmod +x "$SUDO_ASKPASS" 2>/dev/null || true
+sudo -A -v || exit 1
+set -e
+
+escape(){
+    echo "$@" | iconv -cf UTF-8 -t ASCII//TRANSLIT | tr -d '[:punct:]' | \
+    tr '[:upper:]' '[:lower:]' | tr ' ' '-' | sed "s/-\+/-/g;s/^-\|-\$//g";
+}
+
+# Phones
+phones="$(simple-mtpfs -l 2>/dev/null | sed 's/^/📱 /' || true)"
+
+# Gather lsblk info
+lsblkoutput="$(lsblk -rpo "name,type,size,label,mountpoint,fstype,uuid" 2>/dev/null || true)"
+
+# Format unmounted partitions
+normalparts="$(printf '%s\n' "$lsblkoutput" | awk '
+{
+    name=$1; type=$2; size=$3; label=$4; mnt=$5; fstype=$6; uuid=$7
+    if(type=="part" && mnt=="") {
+        desc=(label!=""?label:(fstype!=""?fstype:(uuid!=""?uuid:name)))
+        print "💾 " name " — " size " (" desc ")"
+    }
+}')"
+
+# Format LUKS devices (locked)
+allluks="$(printf '%s\n' "$lsblkoutput" | awk '/crypto_LUKS/ { print $1,$3 }' || true)"
+unopenedluks="$(printf '%s\n' "$allluks" | while read -r dev sz; do
+  [ -z "$dev" ] && continue
+  printf "🔒 %s — %s\n" "$dev" "$sz"
+done)"
+
+# Combine list
+alldrives="$(printf '%s\n%s\n%s\n' "$phones" "$unopenedluks" "$normalparts" | sed '/^$/d')"
+test -n "$alldrives"
+
+# Choose drive
+chosen="$(printf '%s\n' "$alldrives" | dmenu -p "Mount which drive?" -i)"
+test -n "$chosen"
+
+# Helper to get device path from chosen line
+get_device(){
+  line="$1"
+  dev="$(printf '%s' "$line" | sed 's/^[^/]*//; s/^[[:space:]]*//; s/ .*//')"
+  printf '%s' "$dev"
+}
+
+# Prompt for mountpoint
+getmount(){
+	mp="$(find /mnt /media /mount /home -maxdepth 1 -type d 2>/dev/null | dmenu -i -p "Mount this drive where?")"
+	test -n "$mp"
+	if [ ! -d "$mp" ]; then
+		mkdiryn=$(printf "No\nYes" | dmenu -i -p "$mp does not exist. Create it?")
+		[ "$mkdiryn" = "Yes" ] && (mkdir -p "$mp" || sudo -A mkdir -p "$mp")
+	fi
+}
+
+attemptmount(){
+	sudo -A mount "$chosen_dev" "$mp" -o uid="$(id -u)",gid="$(id -g)" || return 1
+	notify-send "💾 Drive Mounted." "$chosen_dev mounted to $mp."
+	exit
+}
+
+case "$chosen" in
+  "💾 "*|"🔒 "*|"📱 "*)
+    icon="${chosen%% *}"
+
+    if [ "$icon" = "💾" ]; then
+      chosen_dev="$(get_device "$chosen")"
+      getmount
+      attemptmount
+      exit
+    fi
+
+    if [ "$icon" = "🔒" ]; then
+      chosen_dev="$(get_device "$chosen")"
+      num=00
+      while [ -e "/dev/mapper/usb$num" ]; do
+        num="$(printf "%02d" "$((10#$num + 1))")"
+      done
+      ${TERMINAL:-st} -n floatterm -g 60x10 -e sudo cryptsetup open "$chosen_dev" "usb$num"
+      test -b "/dev/mapper/usb$num"
+      chosen_dev="/dev/mapper/usb$num"
+      getmount
+      attemptmount
+      notify-send "🔓 Decrypted Drive Mounted." "$chosen_dev decrypted and mounted to $mp."
+      exit
+    fi
+
+    if [ "$icon" = "📱" ]; then
+      name="$(printf '%s' "$chosen" | sed 's/^📱[[:space:]]*//')"
+      device="$(simple-mtpfs -l 2>/dev/null | awk -v pattern="$name" 'index($0,pattern){print $1; exit}')"
+      getmount
+      [ -n "$device" ] && sudo -A simple-mtpfs -o allow_other -o fsname="simple-mtpfs-$(escape "$name")" --device "$device" "$mp"
+      notify-send "🤖 Android Mounted." "Android device mounted to $mp."
+      exit
+    fi
+    ;;
+esac
+
+notify-send "No action taken" "Selection not recognized."

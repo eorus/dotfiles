@@ -1,0 +1,8 @@
+#!/bin/sh
+set -e
+
+PROJECT=${1:-eorus}
+cd ~/Projects/"$PROJECT" || exit 1
+
+rm -rf public/ resources/
+hugo server -D --disableFastRender --ignoreCache --cleanDestinationDir

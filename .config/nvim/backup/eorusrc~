@@ -1,0 +1,22 @@
+set sendmail = "/usr/bin/msmtp -a dreamhost"
+# Configure Simple Mail Transfer Protocol for sending mail for Gmail
+#set smtp_url = "smtps://alperor@gmail.com@smtp.gmail.com:465/"
+#set smtp_url = "smtps://alperor@gmail.com@smtp.gmail.com:587"
+#set smtp_pass = $my_pass
+
+
+set folder          = "~/Mail/eorus"
+set spoolfile       = "~/Mail/eorus/Inbox"
+set record          = "=Eorus Sent"
+set postponed       = "=Eorus Drafts"
+set trash           = "=Trash"
+set mbox_type       = Maildir
+
+#Mailboxes
+mailboxes =Inbox =Eorus Sent =Eorus Drafts 
+#mailboxes +inbox +sent +drafts +trash +spam
+
+# Headers
+set realname = "Alper Orus"
+set from = "alper@eorus.com"
+set signature = "$HOME/.config/neomutt/alperor.sig"

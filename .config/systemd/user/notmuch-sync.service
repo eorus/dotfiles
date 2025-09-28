@@ -1,0 +1,8 @@
+[Unit]
+Description=Run notmuch-sync script
+
+[Service]
+Type=oneshot
+Environment=DISPLAY=:0
+Environment=XAUTHORITY=%h/.Xauthority
+ExecStart=/bin/bash -c '%h/.local/bin/notmuch-sync.sh || true'

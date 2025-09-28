@@ -1,0 +1,25 @@
+
+# -- Dark Background --
+color background          black      default
+
+# Feed list colors
+color listnormal          color7     default    # Light gray text
+color listnormal_unread   color10    default    # Bright green for unread
+color listfocus           black      color11    # Black text on yellow background
+color listfocus_unread    black      color10    # Black text on green background
+
+# Info line colors
+color info                color14    default    # Cyan-ish
+
+# Article colors
+color article             white      default
+color article_unread      color10    default
+
+# Highlights
+highlight all "---.*---" yellow
+highlight feedlist ".*(0/0))" black
+highlight article "(^Title:.*|^Author:.*)" cyan default bold
+highlight article "(^Feed:.*|^Author:.*)" magenta default bold
+highlight article "(^Date:.*)" yellow default
+highlight article "https?://[^ ]+" red default
+highlight article "(^Link:.*)" cyan default

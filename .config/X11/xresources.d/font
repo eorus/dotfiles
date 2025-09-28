@@ -1,0 +1,13 @@
+! Font Rendering
+!Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hintfull
+Xft.autohint:   true
+Xft.lcdfilter:  lcddefault
+
+Xft.dpi: 110
+
+! dmenu/styled terminals may read this
+URxvt.font: xft:JetBrains Mono:size=12:antialias=true:hinting=true

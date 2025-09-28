@@ -1,0 +1,10 @@
+! ROFI Configuration
+
+rofi.width: 100
+rofi.padding: 300
+rofi.lines: 4
+rofi.line-margin: 5
+rofi.hide_scrollbar: true
+rofi.scrollbar_width: 0
+rofi.terminal: urxvt
+rofi.location: 0

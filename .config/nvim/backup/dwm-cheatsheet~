@@ -1,0 +1,11 @@
+#!/bin/sh
+
+CONFIG=~/Templates/suckless/dwm/config.h
+OUT=~/.local/share/dwm-cheatsheet.txt
+
+grep '^[[:space:]]*{.*XK_' "$CONFIG" \
+  | sed -E 's/.*\{(.*)\}/\1/' \
+  | sed -E 's/SHCMD\("([^"]+)"\).*/→ \1/' \
+  | sed -E 's/MODKEY/Mod/' \
+  | sed -E 's/XK_([a-zA-Z0-9_]+)/\1/' \
+  > "$OUT"

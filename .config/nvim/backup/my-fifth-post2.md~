@@ -1,0 +1,26 @@
+
+---
+title: "My Fifth Post2"
+author: Sebastian
+type: post
+date:  2020-10-25
+featured_image: myimage.jpg
+draft: true
+categories:
+  - A
+  - B
+  - C
+tags:
+  - Hugo
+  - Game Development
+  - Internet of Things (IoT)
+  - Linux
+  - ...
+description: xxx
+---
+
+CONTENT
+
+&nbsp;
+
+Source: xyz

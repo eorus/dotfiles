@@ -1,0 +1,798 @@
+    <!--==========================
+      Portfolio Section
+    ============================-->
+    <section id="portfolio">
+      <div class="container wow fadeInUp">
+        <div class="section-header">
+          <h3 class="section-title">Enlem Soğuk Hava Deposu</h3>
+          <p class="section-description">Aşağıdaki filtreleri kullanarak tesisimizin bölümlerini gezebilirsiniz.</p>
+        </div>
+        <div class="row">
+
+          <div class="col-lg-12">
+            <ul id="portfolio-flters">
+              <li data-filter=".filter-bina, .filter-idari, .filter-sevkiyat, .filter-depo" class="filter-active">Tümü</li>
+              <li data-filter=".filter-bina">Bina</li>
+              <li data-filter=".filter-idari">İdari Alanlar</li>
+              <li data-filter=".filter-sevkiyat">Yükleme ve Sevkiyat</li>
+              <li data-filter=".filter-depo">Depolar</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="row" id="portfolio-wrapper">
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4759.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4759.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF5080.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5080.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF5083.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5083.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4764.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4764.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4766.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4766.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4763.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4763.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4773.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4773.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF4761.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4761.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-bina">
+            <a href="/wp-content/uploads/2020/06/DSCF5091.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5091.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Bina</h4>
+                <span>Dış Görünüm</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4850.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4850.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Personel ve Ambalaj</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4841.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4841.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Personel ve Ambalaj</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4842.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4842.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Personel ve Ambalaj</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4843.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4843.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Soyunma Odası</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4846.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4846.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Soyunma Odası</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4848.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4848.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Soyunma Odası</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4857.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4857.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Yemekhane</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4858.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4858.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Yemekhane</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4860.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4860.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Yemekhane</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-idari">
+            <a href="/wp-content/uploads/2020/06/DSCF4862.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4862.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Personel ve İdari Depo</h4>
+                <span>Yemekhane</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5052.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5052.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Mal Kabul Alanı</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5057.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5057.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Mal Kabul Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5049.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5049.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Mal Kabul Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5048.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5048.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Mal Kabul Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5040.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5040.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Mal Kabul Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF5055.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5055.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Sevkiyat Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4958.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4958.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Sevkiyat Alanı</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4960.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4960.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Sevkiyat Yükleme Araçları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4963.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4963.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Forkliftler</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4778.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4778.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4788.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4788.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4776.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4776.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4782.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4782.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4787.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4787.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-sevkiyat">
+            <a href="/wp-content/uploads/2020/06/DSCF4793.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4793.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Mal Kabul ve Sevkiyat</h4>
+                <span>Yükleme Rampaları</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4972.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4972.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4983.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4983.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4989.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4989.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4999.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4999.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5001.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5001.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5016.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5016.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5018.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5018.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4973.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4973.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4970.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4970.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5036.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5036.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5038.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5038.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5037.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5037.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5035.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5035.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5034.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5034.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5033.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5033.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4975.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4975.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4977.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4977.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4978.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4978.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4979.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4979.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4980.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4980.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4981.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4981.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4982.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4982.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4985.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4985.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4986.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4986.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4992.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4992.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4993.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4993.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF4997.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF4997.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5002.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5002.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5003.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5003.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5005.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5005.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5007.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5007.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5010.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5010.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5019.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5019.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5020.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5020.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5022.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5022.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5023.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5023.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5025.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5025.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+          <div class="col-lg-3 col-md-6 portfolio-item filter-depo">
+            <a href="/wp-content/uploads/2020/06/DSCF5030.jpg" data-lightbox="single-pic">
+              <img class="img-fluid img-thumbnail" src="/wp-content/uploads/2020/06/DSCF5030.jpg" width="400" height="300" alt="Enlem Soğuk Hava Depolama">
+              <div class="details">
+                <h4>Enlem Soğuk Hava Depoları</h4>
+                <span>Depolar</span>
+              </div>
+            </a>
+          </div>
+
+
+
+        </div>
+
+      </div>
+    </section><!-- #portfolio -->

@@ -1,0 +1,3 @@
+#!/bin/sh
+rm -rf public/ resources/
+hugo server -D --disableFastRender --ignoreCache --cleanDestinationDir

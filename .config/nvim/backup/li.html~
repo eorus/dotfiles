@@ -1,0 +1,16 @@
+<section class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <header>
+            <h1 class="entry-title">{{ .Title }}</h1>
+          </header>
+            {{ partial "breadcrumbs.html" . }}
+        </div>
+
+      </div>
+ </section>
+<li>
+  <span class="date">{{ .Date.Format (.Site.Params.dateFormat | default "January 2, 2006" ) }}</span>
+  <a class="title" href="{{ .Params.ExternalLink | default .RelPermalink }}">{{ .Title }}</a>
+</li>

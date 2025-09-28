@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# LF scope script with text, PDF, and image previews via Ueberzug
+# Fully compatible with ST or any terminal supporting Ueberzug
+
+FILE="$1"
+[ -e "$FILE" ] || exit
+
+# Terminal dimensions
+WIDTH=$(tput cols)
+HEIGHT=$(tput lines)
+
+# Determine MIME type
+MIME=$(file --mime-type -Lb "$FILE")
+
+# -----------------------------
+# Function to display image
+# -----------------------------
+display_image() {
+    local img="$1"
+    # Clear previous image
+    printf '\033[9;0;0t'
+    # Display image in background (non-blocking)
+    ueberzug layer --parser bash 0 0 "$WIDTH" "$HEIGHT" display "$img" &
+}
+
+# -----------------------------
+# Main Preview Logic
+# -----------------------------
+case "$MIME" in
+    image/*)
+        display_image "$FILE"
+        ;;
+
+    text/*)
+        if command -v bat &>/dev/null; then
+            bat --style=plain --color=always --paging=never "$FILE"
+        else
+            head -n 100 "$FILE"
+        fi
+        ;;
+
+    application/pdf)
+        if command -v pdftotext &>/dev/null; then
+            pdftotext "$FILE" - | head -n 40
+        else
+            echo "Install pdftotext to preview PDFs"
+        fi
+        ;;
+
+    *)
+        echo "$FILE"
+        ;;
+esac

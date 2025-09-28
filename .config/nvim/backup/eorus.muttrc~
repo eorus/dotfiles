@@ -1,0 +1,10 @@
+set folder = ~/Mail/eorus
+set spoolfile = +INBOX
+set record = +sent
+set postponed = +drafts
+set trash = +trash
+
+set from = "alper@eorus.com"
+set realname = "Alper Orus"
+set smtp_url = "smtp://alper@eorus.com:587/"
+set smtp_pass = `pass email/eorus/alper`

@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Check for tsp
+if ! command -v tsp >/dev/null 2>&1; then
+  notify-send "Error: tsp (task-spooler) is not installed."
+  exit 1
+fi
+
+[ -z "$1" ] && exit
+
+base="$(basename "$1")"
+notify-send "⏳ Queuing $base..."
+
+cmd="$2"
+[ -z "$cmd" ] && cmd="yt-dlp --embed-metadata -ic"
+
+idnum="$(tsp $cmd "$1")"
+
+realname="$(echo "$base" | sed -E 's/[?&].*//;s/%20/ /g;s/[^a-zA-Z0-9._ -]//g')"
+
+tsp -D "$idnum" mv "$base" "$realname"
+tsp -D "$idnum" notify-send "👍 $realname done."

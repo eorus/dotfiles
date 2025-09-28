@@ -1,0 +1,14 @@
+! ST Terminal Configuration
+
+st.termname:    st-256color
+
+! Font
+!st.font:        Fira Code Retina:style=Regular:pixelsize=18:antialias=true:autohint=false
+!st.boldfont:    Fira Code Retina:style=Bold:pixelsize=18:antialias=true:autohint=false
+
+
+! Transparency
+st.alpha:       0.92
+
+! Optional border
+! st.borderpx: 2

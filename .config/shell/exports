@@ -1,0 +1,32 @@
+# ~/.config/shell/exports
+
+# PATH
+export PATH="$HOME/.local/bin:$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix="$HOME/.node_modules"
+
+# Programs
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="/usr/local/bin/st"
+export BROWSER="/usr/bin/brave --password-store=basic"
+export READER="/usr/bin/zathura"
+export FILE="/usr/bin/thunar"
+export PAGER="most"
+
+# XDG dirs
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_SESSION_TYPE=x11
+export X11_CONFIG_DIR="$HOME/.config/X11"
+
+# Toolkits
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE="fusion"
+export GDK_BACKEND="x11"
+
+# App-specific
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export NOTMUCH_CONFIG="$HOME/.notmuch-config"
+export TASKRC="$HOME/.taskrc"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"

@@ -1,0 +1,69 @@
+#!/bin/sh
+
+# Prompt for URL if none given
+feed="${1:-$(printf "" | dmenu -p 'Paste URL or file path: ')}"
+
+# Make sure feed isn't empty
+if [ -z "$feed" ]; then
+    exit 1
+fi
+
+option=$(printf "copy url\nsxiv\nsetbg\nPDF\nbrowser\nlynx\nvim\nmpv\nmpv loop\nmpv float\nqueue download\nqueue yt-dlp\nqueue yt-dlp audio" | dmenu -i -p "Open it with?")
+
+case "$option" in
+    "copy url")
+        echo "$feed" | xclip -selection clipboard
+        ;;
+
+    sxiv)
+        curl -sL "$feed" -o "/tmp/$(basename "${feed//%20/ }")" && sxiv -a "/tmp/$(basename "${feed//%20/ }")" >/dev/null 2>&1 &
+        ;;
+
+    setbg)
+        curl -sL "$feed" -o "$XDG_CACHE_HOME/pic" && xwallpaper --zoom "$XDG_CACHE_HOME/pic" >/dev/null 2>&1
+        ;;
+
+    PDF)
+        curl -sL "$feed" -o "/tmp/$(basename "${feed//%20/ }")" && zathura "/tmp/$(basename "${feed//%20/ }")" >/dev/null 2>&1 &
+        ;;
+
+    browser)
+        setsid -f "$BROWSER" "$feed" >/dev/null 2>&1
+        ;;
+
+    lynx)
+        lynx "$feed" >/dev/null 2>&1
+        ;;
+
+    vim)
+        curl -sL "$feed" -o "/tmp/$(basename "${feed//%20/ }")" && setsid -f "$TERMINAL" -e "$EDITOR" "/tmp/$(basename "${feed//%20/ }")" >/dev/null 2>&1 &
+        ;;
+
+    mpv)
+        setsid -f mpv -quiet "$feed" >/dev/null 2>&1
+        ;;
+
+    "mpv loop")
+        setsid -f mpv -quiet --loop "$feed" >/dev/null 2>&1
+        ;;
+
+    "mpv float")
+        setsid -f "$TERMINAL" -e mpv --geometry=+0-0 --autofit=30% --title="mpvfloat" "$feed" >/dev/null 2>&1 &
+        ;;
+
+    "queue download")
+        qndl "$feed" 'curl -LO' >/dev/null 2>&1
+        ;;
+
+    "queue yt-dlp")
+        qndl "$feed" >/dev/null 2>&1
+        ;;
+
+    "queue yt-dlp audio")
+        qndl "$feed" 'yt-dlp -o "%(title)s.%(ext)s" -f bestaudio --embed-metadata --restrict-filenames' >/dev/null 2>&1
+        ;;
+
+    *)
+        exit 1
+        ;;
+esac

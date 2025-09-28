@@ -1,0 +1,374 @@
+# ┌─────────────┐
+# │--ALPHONZO --│
+# └─────────────┘
+
+super + Pause
+  pkill -USR1 -x sxhkd; notify-send 'sxhkd' 'Reloaded config'
+
+# quit/restart bspwm
+shift + alt + {q,r}
+	bspc {quit,wm -r}
+
+# close and kill
+# super + {_,shift + }q
+#	bspc node -{c,k}
+
+# kill
+super + shift + q
+	kill -9 `xdotool getwindowfocus getwindowpid`
+
+# close
+super + q
+	bspc node -c
+
+# power menu
+super + End
+     ~/.config/rofi/powermenu.sh
+
+super + d
+	rofi -lines 12 -padding 18 -width 60 -location 0 -show drun -sidebar-mode -line-padding 4 -columns 3 -show-icons -drun-icon-theme "Papirus-Dark" -font 'Noto Sans 10'
+
+alt + Tab
+    rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# rotate current node 90 degrees
+super + y
+	bspc node @focused:/ -R 90
+
+# swap the current node and the biggest local node
+super + space
+	bspc node -s biggest.local || bspc node -s next.local
+
+#
+# state/flags
+#
+
+# change window states
+super + {t,shift + t,s,f}
+  bspc node -t {tiled,pseudo_tiled,floating,fullscreen}
+
+super + shift + space
+	bspc node focused -t \~floating
+
+super + shift + Pause
+    bspc node focused -t floating; bspc node -d '^7'
+
+# focus/swap
+
+# focus the node in the given direction
+super + {_,shift + }{Left,Down,Up,Right}
+	bspc node -{f,s} {west,south,north,east}
+
+# focus the node for the given path jump
+super + {p,b,comma,period}
+	bspc node -f @{parent,brother,first,second}
+
+# focus the next/previous window in the current desktop
+super + {_,shift + }c
+	bspc node -f {next,prev}.local.!hidden.window
+
+# focus the next/previous desktop in the current monitor
+super + bracket{left,right}
+	bspc desktop -f {prev,next}.local
+
+# focus the last node/desktop
+super + {grave,Tab}
+	bspc {node,desktop} -f last
+
+# focus the older or newer node in the focus history
+super + {o,i}
+	bspc wm -h off; \
+	bspc node {older,newer} -f; \
+	bspc wm -h on
+
+# focus or send to the given desktop
+super + {_,shift + }{1-9,0}
+	bspc {desktop -f,node -d} ^{1-9,10}
+
+#
+# preselect
+#
+
+# preselect the direction
+super + ctrl + {h,j,k,l}
+	bspc node -p {west,south,north,east}
+
+# preselect the ratio
+super + ctrl + {1-9}
+	bspc node -o 0.{1-9}
+
+# cancel the preselection for the focused node
+super + ctrl + space
+	bspc node -p cancel
+
+# cancel the preselection for the focused desktop
+super + ctrl + shift + space
+	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
+
+#
+# move/resize
+#
+
+# expand a window by moving one of its side outward
+super + shift + {y,u,i,o}
+	bspc node -z {right -20 0,bottom 0 20,bottom 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# move a floating window
+super + {Left,Down,Up,Right}
+	bspc node -v {-20 0,0 20,0 -20,20 0}
+
+# Toggle gaps
+super + shift + d
+	bspc config window_gap {0,15}
+# Increase/descrease gap size
+super { ,+ shift }+ z
+	bspc config window_gap $(($(bspc config window_gap) {+,-} 3))
+
+super + u
+	cat /tmp/dropdown | xargs -I win bspc node win --flag hidden;bspc node -f win
+
+
+# Toggle node attributes: marked, locked, sticky, private, hidden
+# super + alt + {m,l,s,p,h}
+#	bspc node -g {marked,locked,sticky,private,hidden}
+
+# hide window
+super + h
+  bspc node -g hidden
+
+super + BackSpace
+  bspc node $(bspc query -N -n .hidden | tail -n1) -g hidden=off
+
+## Window size and rotation
+
+# Resize window (Up)
+super + alt + @Up
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z bottom 0 -10 || \
+		bspc node -z top 0 -10; \
+	else \
+		bspc node -z bottom 0 -10; \
+	fi
+
+# Resize window (Down)
+super + alt + @Down
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z bottom 0 +10 || \
+		bspc node -z top 0 +10; \
+	else \
+		bspc node -z bottom 0 +10; \
+	fi
+
+# Resize window (Left)
+super + alt + @Left
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z left -10 0 || \
+		bspc node -z right -10 0; \
+	else \
+		bspc node -z right -10 0; \
+	fi
+
+# Resize window (Right)
+super + alt + @Right
+	if [ "$(bspc query -N -n focused.tiled)" ]; then \
+		bspc node -z left +10 0 || \
+		bspc node -z right +10 0; \
+	else \
+		bspc node -z right +10 0; \
+	fi
+
+
+# Window/edge dragging
+super + button{1,3}
+	bspc pointer --grab {move,resize_side}
+super + !button{1-3}
+	bspc pointer -t %i %i
+super + @button{1-3}
+	bspc pointer -u
+
+# Application Binds
+
+# apps example
+#super + shift + {b,t,f,m,s}
+#	{firefox,urxvt,thunar,ncmpcpp,htop}
+
+super + Return
+	$TERMINAL
+super + w
+  $BROWSER
+super + r
+	$TERMINAL -e ranger
+super + shift + r
+	pcmanfm
+super + e
+	$TERMINAL -e neomutt; pkill -RTMIN+12 $STATUSBAR
+super + + shift + e
+	$TERMINAL -e ncmpcpp
+super + n
+	$TERMINAL -e newsboat
+super + c
+	$TERMINAL -e calcurse -D ~/.config/calcurse
+super + v
+	$TERMINAL -e nvim -c "VimwikiIndex"
+super + a
+  rofi -show calc -modi calc -no-show-match -no-sort
+super + shift + a
+	pavucontrol
+super + shift + w
+	mpv --no-osc --no-input-default-bindings --input-conf=/dev/null --title='mpvfloat' /dev/video0
+super + shift + n
+		$TERMINAL -e sudo nmtui
+
+
+# brightness keybindings
+XF86MonBrightness{Up,Down}
+	xbacklight {-inc,-dec} 10
+
+# media keys
+super + less
+	mpc toggle
+XF86Audio{Next,Prev,Play,Stop}
+	mpc {next,prev,toggle,stop}
+XF86AudioPlay
+	playerctl play-pause
+XF86AudioStop
+	playerctl stop
+XF86AudioNext
+	playerctl next
+XF86AudioPrev
+	playerctl previous
+
+# Volume {up,down,mute}
+XF86Audio{RaiseVolume,LowerVolume}
+	pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%}
+# Toggle volume using media keys for default sink
+XF86AudioMute
+	pactl set-sink-mute "$(pactl info | grep 'Default Sink:' | sed 's/.*: //')" toggle
+XF86AudioMedia
+	$TERMINAL -e ncmpcpp
+
+# Recording
+
+# Take screenshot
+super + Print
+	maim ~/Pictures/screenshots/pic-full-$(date '+%y%m%d-%H%M-%S').png
+
+# Pick screenshot type
+Print
+  ~/.config/bspwm/scripts/screenshot.sh
+
+shift + Print
+        scrot ~/Pictures/screenshots/$(date --iso-8601='seconds').png -s -e 'xclip -selection c -t image/png < $f'
+
+# Print: Record audio or video; Del: kill recording
+super + shift + Print
+	dmenurecord
+super + Delete
+	dmenurecord kill
+
+# Pause audio
+super + p
+	mpc toggle
+super + shift + p
+  mpc pause; pauseallmpv
+## MEDIA - Spotify
+# AUR - playerctl
+super + gbreve
+    playerctl stop
+super + udiaeresis
+    playerctl play-pause
+# Changes to next/previous tracks
+super + {comma,period}
+  playerctl {previous,next}
+# Restart track
+super + shift + less
+	mpc seek 0%
+# Seek foward in song
+super + {_,shift +} bracketright
+	mpc seek +{10,120}
+# Seek backward in song
+super + {_,shift +} bracketleft
+	mpc seek -{10,120}
+# Increase volume
+super {_,shift +} + plus
+	amixer sset Master {5,15}%+; pkill -RTMIN+10 $STATUSBAR
+# Decrease volume
+super {_,shift +} + minus
+	amixer sset Master {5,15}%-; pkill -RTMIN+10 $STATUSBAR
+super + shift + m
+	amixer sset Master toggle; pkill -RTMIN+10 $STATUSBAR
+
+
+XF86PowerOff
+	prompt "Shutdown computer?" "sudo -A shutdown -h now"
+XF86Calculator
+	$TERMINAL -e bc
+XF86Sleep
+	prompt 'Hibernate computer?' 'sudo -A zzz'
+XF86WWW
+	$BROWSER
+XF86DOS
+	$TERMINAL
+XF86ScreenSaver
+	mpc pause; pauseallmpv; i3lock -e -f -c 1d2021; xset dpms force off
+XF86TaskPane
+	$TERMINAL -e htop
+XF86Mail
+	$TERMINAL -e neomutt
+XF86Tools
+	$FILE ~/
+
+# Function keys
+super + F1
+  ~/.config/bspwm/scripts/keybindings_rofi.sh
+
+super + F2
+  zathura ~/Documents/markdown-cheatsheet-online.pdf
+
+super + F3
+	displayselect
+
+# Hibernate
+super + F4
+	prompt 'Hibernate computer?' 'sudo -A zzz -Z'
+
+super + F5
+  dmenulaunch
+
+super + F6
+rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
+
+# toggle torrent daemon
+super + F7
+	td-toggle
+
+# sync news
+super + F8
+	newsup
+
+# Mount a USB drive or Android device
+super + {F9,F10}
+	{dmenumount,dmenuumount}
+
+# Turn on gaps for current desktop
+super + bracketright
+	bspc config -d focused window_gap 15; \
+	bspc config -d focused border_width 2
+
+# Turn off gaps for current desktop
+super + bracketleft
+	bspc config -d focused window_gap 0; \
+	bspc config -d focused border_width 1
+
+super + !button{1-3}
+    bspc pointer -t %i %i

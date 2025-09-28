@@ -1,0 +1,7 @@
+#!/bin/bash
+dt=$(date '+%d/%m/%Y %H:%M:%S');
+/home/eorus/.local/bin/notmuch-move.sh
+mbsync -a
+/home/eorus/.local/bin/notmuch-tag.sh
+echo "$dt"
+exit

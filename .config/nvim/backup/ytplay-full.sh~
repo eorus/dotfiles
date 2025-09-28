@@ -1,0 +1,15 @@
+#!/bin/sh
+query=$(dmenu -i -p "Search YouTube:")
+[ -z "$query" ] && exit 0
+
+# Fetch results safely
+results=$(yt-dlp "ytsearch5:$query" --flat-playlist --get-title --get-id | awk 'NR%2{printf "%s\t",$0;next}{print}')
+
+# Debug: show results in terminal
+# echo "$results" | cat
+
+selected=$(echo "$results" | fzf --with-nth=1 --delimiter=$'\t' --prompt="Select video: ")
+[ -z "$selected" ] && exit 0
+
+video_id=$(echo "$selected" | awk -F'\t' '{print $2}')
+echo "$video_id"

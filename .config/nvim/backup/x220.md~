@@ -1,0 +1,11 @@
+# Lenovo Thinkpad X220 için Linux Ayarlar
+
+## Wifi Drop Issue
+
+Aralıklarla wifinin gitmesi sonucu sinyalin optimize edilmesi
+
+$ sudo tee /etc/modprobe.d/iwlwifi-opt.conf <<< "options iwlwifi 11n_disable=1"
+
+
+
+debene 5 gdfg55

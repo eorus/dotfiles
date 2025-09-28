@@ -1,0 +1,33 @@
+  <footer class="footer">
+    <section class="container">
+      <div class="columns">
+        <div class="column col-12 col-md-12 col-sm-12 text-center">
+      {{ with .Site.Params.footercontent | safeHTML }}
+        <p>{{ . }}</p>
+      {{ end }}
+        </div>
+      </div>
+      <p class="footer text-center"><a href="https://github.com/eorus" rel="me"><i class="fab fa-github"></i></a>
+<a href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank"> <i class="fab fa-creative-commons"></i><i class="fab fa-creative-commons-by"></i><i class="fab fa-creative-commons-sa"></i> <span class="separator">•</span></a> {{ now.Format "2006"}} Crafted with <i class="fa fa-heart" aria-hidden=true></i> • by <a href="https://www.eorus.com/" class="h-card" rel="me">Alper Orus</a>  & Powered by <a href="https://gohugo.io/">Hugo</a></p>
+    <div class="column col-12 col-md-12 col-sm-12 text-center">
+      <ul class="d-flex" style="
+    justify-content: center;
+    list-style: none;">
+      <li>
+        <a href="https://xn--sr8hvo.ws/previous">←</a>
+          An <a href="https://xn--sr8hvo.ws">IndieWeb Webring</a> 🕸💍
+        <a href="https://xn--sr8hvo.ws/next">→</a>
+      </li>
+      <li>
+        <a href="https://fediring.net/previous?host=eorus.com">←</a>
+        <a href="https://fediring.net/">Fediring</a>
+        <a href="https://fediring.net/next?host=eorus.com">→</a>
+      </li>
+    </ul>
+        </div>
+<div class="kb-club">
+		<a target="blank" href="https://512kb.club"><span class="kb-club-no-bg">512KB Club</span><span class="kb-club-bg">Green Team</span></a>
+	</div>
+    </section>
+
+  </footer>

@@ -1,0 +1,76 @@
+/*
+ * b4st JS
+ */
+
+(function ($) {
+
+	'use strict';
+
+	$(document).ready(function() {
+
+		// Comments
+
+		$('.commentlist li').addClass('card mb-3');
+		$('.comment-reply-link').addClass('btn btn-secondary');
+
+		// Forms
+
+		$('select, input[type=text], input[type=email], input[type=password], textarea').addClass('form-control');
+		$('input[type=submit]').addClass('btn btn-primary');
+
+		// Pagination fix for ellipsis
+
+		$('.pagination .dots').addClass('page-link').parent().addClass('disabled');
+
+		// You can put your own code in here
+   // for menu scroll 
+    var pageLink = document.querySelectorAll('.page-scroll');
+
+    pageLink.forEach(elem => {
+        elem.addEventListener('click', e => {
+            e.preventDefault();
+            document.querySelector(elem.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth',
+                offsetTop: 1 - 60,
+            });
+        });
+    });
+    //===== close navbar-collapse when a  clicked
+    let navbarToggler = document.querySelector(".navbar-toggler");
+    var navbarCollapse = document.querySelector(".collapse");
+
+    document.querySelectorAll(".page-scroll").forEach(e =>
+        e.addEventListener("click", () => {
+            navbarToggler.classList.remove("active");
+            navbarCollapse.classList.remove('show')
+        })
+    );
+    navbarToggler.addEventListener('click', function () {
+        navbarToggler.classList.toggle("active");
+    })
+
+	    // ------------------------------------------------------- //
+	    // Navbar Sticky & Scroll Top
+	    // ------------------------------------------------------ //
+	    $(window).on('scroll', function () {
+	        if ($(window).scrollTop() > ($('.top').outerHeight())) {
+	            $('header.nav-holder.make-sticky').addClass('sticky');
+	            $('header.nav-holder.make-sticky').css('margin-bottom', '' + $('.top').outerHeight() * 1.5 + 'px');
+	        } else {
+	            $('header.nav-holder.make-sticky').removeClass('sticky');
+	            $('header.nav-holder.make-sticky').css('margin-bottom', '0');
+	        }
+         var backToTo = document.querySelector(".scroll-top");
+        if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+            backToTo.style.display = "flex";
+        } else {
+            backToTo.style.display = "none";
+        }
+	    });
+
+
+
+
+	});
+
+}(jQuery));

@@ -1,0 +1,32 @@
+#!/bin/sh
+set -euo pipefail
+
+src="$1"
+tempdir="${XDG_CACHE_HOME:-$HOME/.cache}/neomutt/files"
+mkdir -p -- "$tempdir"
+
+# If source already inside tempdir, use it directly
+case "$src" in
+  "$tempdir"/*) file="$src" ;;
+  *)
+    basename="$(basename -- "$src")"
+    # create unique target that preserves basename and extension
+    file="$(mktemp --tmpdir="$tempdir" ".${basename}.XXXXXX")"
+    cp -a -- "$src" "$file"
+    # fix name to include original basename (some viewers rely on it)
+    mv -- "$file" "$tempdir/$basename" || true
+    file="$tempdir/$basename"
+    ;;
+esac
+
+if [ "$(uname -s)" = "Darwin" ]; then
+  opener="open"
+else
+  opener="setsid -f xdg-open"
+fi
+
+# Launch opener and detach
+sh -c "$opener \"${file}\"" >/dev/null 2>&1 || true
+
+# Remove files older than 1 day
+find -- "$tempdir" -type f -mtime +1 -delete || true

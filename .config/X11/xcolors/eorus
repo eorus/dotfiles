@@ -1,0 +1,22 @@
+! ST Color Scheme (Custom Dark)
+
+*.foreground:   #C5C8C6
+*.background:   #1E1E1E
+*.cursorColor:  #AEAFAD
+
+*.color0:       #282A2E
+*.color1:       #FF6C6B
+*.color2:       #98BE65
+*.color3:       #ECBE7B
+*.color4:       #51AFEF
+*.color5:       #C678DD
+*.color6:       #46D9FF
+*.color7:       #C5C8C6
+*.color8:       #5B6268
+*.color9:       #EC5F67
+*.color10:      #A9B665
+*.color11:      #F0C674
+*.color12:      #8ABEB7
+*.color13:      #B294BB
+*.color14:      #81A2BE
+*.color15:      #DFDFDF

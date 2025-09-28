@@ -1,0 +1,35 @@
+## Account settings
+unmailboxes *
+source "gpg -dq $HOME/.config/neomutt/mypass.gpg |"
+
+# Headers
+set realname = "Alper Orus"
+set signature = "$HOME/.config/neomutt/alperor.sig"
+
+color status color208 default
+
+set imap_user = "alperor@gmail.com"
+set imap_pass=$my_pass
+#set imap_pass=`pass show email/gmail/apppass`
+set smtp_url = "smtp://alperor@gmail.com@smtp.gmail.com:587/"
+#set smtp_pass=`pass show email/gmail/apppass`
+set smtp_pass=$my_pass
+set from = "alperor@gmail.com"
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set record = "+[Gmail]/Sent Mail"
+set copy = no
+
+
+# Allow Mutt to open a new IMAP connection automatically.
+#unset imap_passive
+
+# Keep the IMAP connection alive by polling intermittently (time in seconds).
+#set imap_keepalive = 300
+
+## Hook -- IMPORTANT!
+account-hook $folder "set imap_pass=`pass show email/gmail/apppass`"
+set header_cache = ~/.config/neomutt/accounts/gmail/cache/headers
+set message_cachedir = ~/.config/neomutt/accounts/gmail/cache/bodies
+set certificate_file = ~/.config/neomutt/accounts/gmail/certificates

@@ -1,0 +1,30 @@
+## Apps
+
+ https://www.reddit.com/r/vim/comments/3tluqr/my_list_of_applications_with_vi_keybindings/
+
+- OS : Arch Linux
+- WM : [i3gaps](https://www.archlinux.org/packages/community/x86_64/i3-gaps/)
+- Note Taking App : Nvim | Vimwiki Plugin | Syncthing | Markor App  
+- Music Player : MPD + Ncmpcpp $ ncmpcpp 
+- Mail Client : Neomutt, mbsync, msmtp, notmuch
+- Passwords : pass
+- Terminal : St, Rxvt Unicode
+- Browser : Qutebrowser, Google Chrome and Firefox
+- System Watch :  htop
+- PDF reader : Xreader & Zathura with ePub extensions
+- Image Editors : Vimiv-Qt, imagemagick, gthumb
+- Raw Editing : Gimp and Darktable
+- Calendar - calcurse
+- [dunst](https://www.archlinux.org/packages/?name=dunst) for notifications
+- [bc](https://www.archlinux.org/packages/extra/x86_64/bc/) a simple calendar widget
+- [i3blocks](https://aur.archlinux.org/packages/i3blocks) for the status bar
+- [dmenu](https://wiki.archlinux.org/index.php/Dmenu) dmenu for calling programs
+- [Urxvt](https://wiki.archlinux.org/index.php/urxvt) as the terminal emulator
+- [picom](https://wiki.archlinux.org/index.php/Picom) to enable opacity
+- [mpc](https://www.archlinux.org/packages/?name=mpc) to make media keys work with mpd
+- [nm-applet](https://www.archlinux.org/packages/?name=network-manager-applet) for network management
+- [redshift](https://www.archlinux.org/packages/?name=redshift) for screen color temperature management
+- [qutebrowser](https://aur.archlinux.org/packages/qutebrowser/) as a minimalistic browser
+- [playerctl](https://aur.archlinux.org/packages/playerctl/) to make media keys work with spotify
+- [caffeine-ng](https://aur.archlinux.org/packages/caffeine-ng/) for caffeine
+- [imagemagick](https://www.archlinux.org/packages/?sort=&q=imagemagick) for convert

@@ -1,0 +1,49 @@
+
+-- ~/.config/nvim/lua/cheatsheet.lua
+local M = {}
+
+function M.show()
+  local leader = vim.g.mapleader or ","
+  local keymaps = vim.api.nvim_get_keymap("n")
+  local lines = {}
+
+  -- Collect all leader mappings
+  for _, km in ipairs(keymaps) do
+    if km.lhs:sub(1,1) == leader then
+      local desc = km.desc or "(no description)"
+      table.insert(lines, string.format("%s → %s", km.lhs, desc))
+    end
+  end
+
+  if #lines == 0 then
+    table.insert(lines, "No leader keymaps defined!")
+  end
+
+  -- Create a floating buffer
+  local buf = vim.api.nvim_create_buf(false, true)
+  vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+
+  -- Set keymaps to close buffer easily
+  vim.api.nvim_buf_set_keymap(buf, "n", "q", "<Cmd>bd!<CR>", { noremap = true, silent = true })
+  vim.api.nvim_buf_set_keymap(buf, "n", "<ESC>", "<Cmd>bd!<CR>", { noremap = true, silent = true })
+
+  -- Determine window size
+  local width = 0
+  for _, l in ipairs(lines) do
+    width = math.max(width, vim.fn.strwidth(l))
+  end
+  local height = math.min(#lines, vim.o.lines - 4) -- max height fits screen
+
+  -- Open floating window
+  vim.api.nvim_open_win(buf, true, {
+    relative = "editor",
+    row = 2,
+    col = 2,
+    width = width + 2,
+    height = height,
+    style = "minimal",
+    border = "single",
+  })
+end
+
+return M

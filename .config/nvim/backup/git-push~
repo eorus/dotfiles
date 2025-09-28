@@ -1,0 +1,12 @@
+echo "Commit mesajı?"
+read message
+git add .
+git commit -m"${message}"
+if [ -n "$(git status - porcelain)" ];
+then
+ echo "Commit Tamamlanmıştır"
+else
+ git status
+ echo "Sunucuya gönderiliyor!!!"
+ git push
+fi

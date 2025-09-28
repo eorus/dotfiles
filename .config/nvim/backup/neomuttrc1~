@@ -1,0 +1,164 @@
+# Paths
+set mailcap_path =   "~/.config/neomutt/mailcap"
+set header_cache =   "~/.config/neomutt/cache/headers"	# where to store headers
+set message_cachedir = "~/.config/neomutt/cache/bodies"	# where to store bodies
+set tmpdir           = "~/.config/neomutt/cache/temp"	# where to keep temp files
+#set folder           = "~/mail"               # mailbox location
+#set alias_file       = "~/.config/neomutt/alias"        # where to store aliases
+#set certificate_file = "~/.config/neomutt/certificates" # where to store certs
+source $HOME/.config/neomutt/color.mutt
+source $HOME/.config/neomutt/gpg.rc
+
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set forward_quote                    # include message in forwards
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set pager_index_lines=10
+# Start in insert mode
+set editor="nvim  \"+/^$/\" \"+nohl\" \"+ normal o\" \"+startinsert\"
+
+# Decrypts passwords quietly
+# see: https://wiki.archlinux.org/index.php/Mutt#Passwords_management
+# make mutt aware to use gpg
+source "gpg -dq $HOME/.config/neomutt/mypass.gpg |"
+
+# use program "pass" to handle and decrypt passwords
+
+# Username and password for your Gmail/G Suite account
+set imap_user = "alperor@gmail.com"
+# Password assigned from decrypted file
+set imap_pass = $my_pass
+
+# Specifies the default location of your mailboxes
+set folder = "imaps://imap.gmail.com:993"
+
+# Configure Simple Mail Transfer Protocol for sending mail for Gmail
+set smtp_url = "smtps://alperor@gmail.com@smtp.gmail.com:465/"
+#set smtp_url = "smtps://alperor@smtp.gmail.com:587"
+# for G Suite with own domain
+#set smtp_url = "smtps://alperor@yourdomain.ext@smtp.gmail.com:587"
+set smtp_pass = $my_pass
+
+# Location of inbox
+# Set up all the folders
+set spoolfile = "+INBOX"
+set postponed = "+[GMail]/Drafts"
+#set record= "+[GMail]/Sent"
+set record="+[Gmail]/Sent Mail"
+
+# Sort by reverse date
+set sleep_time = 0
+set sort = 'reverse-date'
+set sort_aux=last-date-received
+
+# Default sending charset
+set send_charset="utf-8"
+set charset = "utf-8"
+
+# Headers
+set realname = "Alper Orus"
+set from = "alperor@gmail.com"
+set signature = "$HOME/.config/neomutt/alperor.sig"
+
+#my_hdr X-Info: Keep It Simple.
+#my_hdr X-Operating-System: `uname -s`, kernel `uname -r`
+#my_hdr User-Agent: NeoMutt
+
+# Disable saving outgoing mail since Gmail saves them by default.
+set record = ""
+# Index View Options ---------------------------------
+set date_format="%d-%m-%y %T"
+# Index page format. Default "%4C %Z %{%b %d} %-15.15L (%?l?%4l&%4c?) %s"
+set index_format="%4C %Z %{%b %d %R} %-15.15L (%?l?%4l&%4c?) %s"
+# set index_format="%2C | %Z [%d] %-30.30F (%-4.4c) %s"# -*-muttrc-*-
+set status_chars  = " *%A"
+set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+mailboxes =INBOX =[Gmail]/Sent\ Mail =[Gmail]/Drafts =[Gmail]/Spam =[Gmail]/Trash =Eorus
+#mailboxes +INBOX +Drafts +Sent +Eorus
+set sort = threads                         # like gmail
+set sort_aux = reverse-last-date-received  # like gmail
+set uncollapse_jump                        # don't collapse on an unread message
+set sort_re                                # thread based on regex
+set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+
+
+# Sending mail options
+set use_from = yes
+set envelope_from = yes
+
+# main options
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+
+set mail_check=60
+set timeout=20
+set followup_to=yes
+unset mark_old
+set markers = no
+#set mark_old = no
+
+# SSL options
+set ssl_force_tls = yes
+set ssl_starttls = yes
+
+# Default text editor
+set editor = $EDITOR
+
+# Ways to open the mail messages
+set implicit_autoview
+auto_view text/html  application/x-pgp-message
+alternative_order text/plain text/html
+auto_view text/html
+auto_view application/pgp-encrypted
+alternative_order text/plain text/enriched text/html
+set rfc2047_parameters = yes
+
+# UI
+set sleep_time = 0
+set sidebar_visible = no
+set sidebar_width = 20
+set sidebar_format = "%B%?F? [%F]?%* %?N?%N/?%S"
+set mail_check_stats = yes
+set index_format = "%4C %Z %(%d %b %H:%M) %-15.15L  %s"
+subjectrx '\[[^]]*\]:? *' '%L%R'
+
+bind index,pager \CP sidebar-prev
+bind index,pager \CN sidebar-next
+bind index,pager \CO sidebar-open
+bind index,pager B sidebar-toggle-visible
+bind pager j next-line
+bind pager k previous-line
+bind attach,index,pager \Cd next-page
+bind attach,index,pager \Cu previous-page
+bind pager g top
+bind pager G bottom
+bind attach,index g first-entry
+bind attach,index G last-entry
+bind index,pager a group-reply
+# G to get mail
+bind index '^' imap-fetch-mail
+
+macro index i \
+    "<change-folder>=INBOX<enter>" \
+    "go to inbox"
+
+# History
+set history = 256
+set save_history = 256
+
+# Abook
+set query_command= "abook --mutt-query '%s'"
+macro index,pager  a "<pipe-message>abook --add-email-quiet<return>" "Add this sender to Abook"
+bind editor        <Tab> complete-query
+
+

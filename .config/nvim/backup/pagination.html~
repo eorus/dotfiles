@@ -1,0 +1,19 @@
+
+{{ $paginator := .Paginator }}
+{{ if gt $paginator.TotalPages 1 }}
+  <ul class="pagination">
+    {{ if $paginator.HasPrev }}
+      <li><a href="{{ $paginator.Prev.URL }}">« Prev</a></li>
+    {{ end }}
+
+    {{ range $paginator.Pagers }}
+      <li class="{{ if eq . $paginator }}active{{ end }}">
+        <a href="{{ .URL }}">{{ .PageNumber }}</a>
+      </li>
+    {{ end }}
+
+    {{ if $paginator.HasNext }}
+      <li><a href="{{ $paginator.Next.URL }}">Next »</a></li>
+    {{ end }}
+  </ul>
+{{ end }}

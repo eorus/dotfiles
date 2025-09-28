@@ -1,0 +1,13 @@
+sensors:
+  - hwmon: /sys/class/hwmon/hwmon1/temp1_input
+  - hwmon: /sys/class/thermal/thermal_zone0/temp
+
+fans:
+  - tpacpi: /proc/acpi/ibm/fan
+
+levels:
+  - [0, 0, 45]
+  - [1, 44, 55]
+  - [3, 54, 65]
+  - [5, 64, 75]
+  - [7, 74, 32767]

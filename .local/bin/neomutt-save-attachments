@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# neomutt-save-attachments
+# Read a raw email from stdin and extract attachments into ~/Downloads/neomutt/<MSGID>/
+# Requires ripmime or munpack. Uses mktemp to create a safe work dir.
+set -euo pipefail
+
+DEST_BASE="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/neomutt"
+TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/neomutt-XXXXXX")"
+cleanup() { rm -rf "$TMPDIR"; }
+trap cleanup EXIT
+
+mkdir -p "$DEST_BASE"
+
+# Save stdin to temp file
+stdin_file="$TMPDIR/message.eml"
+cat - > "$stdin_file"
+
+# Try to extract a Message-ID or From/Date to make a friendly dir name
+MSGID="$(awk 'BEGIN{IGNORECASE=1} /^Message-ID:[[:space:]]*/{gsub(/.*Message-ID:[[:space:]]*/,""); gsub(/[<>]/,""); print $0; exit} END{if(NR==0) print ""}' "$stdin_file")"
+if [ -z "$MSGID" ]; then
+  # fallback: use Date and From to create a stable-ish name
+  DATEPART="$(awk 'BEGIN{IGNORECASE=1} /^Date:[[:space:]]*/{gsub(/.*Date:[[:space:]]*/,""); print $0; exit}' "$stdin_file" | tr -s ' ' '_' | tr -cd '[:alnum:]_-')"
+  FROMPART="$(awk 'BEGIN{IGNORECASE=1} /^From:[[:space:]]*/{gsub(/.*From:[[:space:]]*/,""); gsub(/[<>]/,""); print $0; exit}' "$stdin_file" | tr -s ' ' '_' | tr -cd '[:alnum:]_-')"
+  MSGID="${DATEPART:-no_date}-${FROMPART:-no_from}-$(date +%s)"
+else
+  # sanitize
+  MSGID="$(echo "$MSGID" | tr -cd '[:alnum:]._-' | cut -c1-64)"
+fi
+
+DEST_DIR="$DEST_BASE/$MSGID"
+mkdir -p "$DEST_DIR"
+
+# Prefer ripmime, else munpack
+if command -v ripmime >/dev/null 2>&1; then
+  ripmime -i "$stdin_file" -d "$DEST_DIR" >/dev/null 2>&1 || true
+elif command -v munpack >/dev/null 2>&1; then
+  # munpack changes CWD
+  (cd "$DEST_DIR" && munpack -q "$stdin_file") || true
+else
+  echo "neomutt-save-attachments: neither ripmime nor munpack found" >&2
+  exit 1
+fi
+
+# Print destination for user / caller
+echo "$DEST_DIR"

@@ -1,0 +1,30 @@
+#!/bin/bash
+# Background mail sync with notify-send only if new mail arrived
+
+LOGFILE="$HOME/.cache/mbsync.log"
+MAILDIR="$HOME/Mail"   # root mail directory
+
+# Count previous mails in inboxes
+GMAIL_PREV=$(find "$MAILDIR/gmail/INBOX/cur" -type f | wc -l)
+EORUS_PREV=$(find "$MAILDIR/eorus/INBOX/cur" -type f | wc -l)
+
+# Run mbsync silently
+mbsync -a &> "$LOGFILE"
+
+# Count mails after sync
+GMAIL_NOW=$(find "$MAILDIR/gmail/INBOX/cur" -type f | wc -l)
+EORUS_NOW=$(find "$MAILDIR/eorus/INBOX/cur" -type f | wc -l)
+
+# Calculate new mails
+GMAIL_NEW=$((GMAIL_NOW - GMAIL_PREV))
+EORUS_NEW=$((EORUS_NOW - EORUS_PREV))
+
+# Compose notification only if new mails arrived
+NOTIFY_MSG=""
+[ "$GMAIL_NEW" -gt 0 ] && NOTIFY_MSG+="Gmail: $GMAIL_NEW new\n"
+[ "$EORUS_NEW" -gt 0 ] && NOTIFY_MSG+="Eorus: $EORUS_NEW new\n"
+
+# Send desktop notification if there is a message
+if [ -n "$NOTIFY_MSG" ]; then
+    notify-send "New Mail Arrived" "$NOTIFY_MSG"
+fi

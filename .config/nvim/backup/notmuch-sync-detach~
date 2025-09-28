@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+setsid /home/eorus/.local/bin/notmuch-sync.sh >/dev/null 2>&1 < /dev/null &
+exit 0

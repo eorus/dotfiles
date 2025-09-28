@@ -1,0 +1,127 @@
+# Alphonzo RSS Feeds
+# To get the number of feeds:
+# grep '^http' < "path/to/this/file/urls" | wc -l
+
+"query:Unread Articles:unread = \"yes\""
+"query:IndieWeb:tags # \"IndieWeb\""
+"query:Haber:tags # \"Haber\""
+"query:Photos:tags # \"Photo\""
+"query:Linux:tags # \"Linux\""
+"query:Foto:tags # \"Foto\""
+"query:Projects:tags # \"Projects\""
+"query:Videos:tags # \"yt-videos\""
+
+#Linux  ==================================================================
+http://distrowatch.com/news/oggcast.xml "Linux"
+http://feeds.cyberciti.biz/Nixcraft-LinuxFreebsdSolarisTipsTricks "Linux"
+http://feeds.feedburner.com/d0od "Linux"
+http://feeds.feedburner.com/UbuntuGeek "Linux"
+https://feeds.feedburner.com/FreedomPenguin "Linux"
+https://www.archlinux.org/feeds/news/ "Linux"
+https://opensourcemusings.com/feed/ "Linux"
+https://averagelinuxuser.com/feed.xml "Linux"
+https://hund.tty1.se/feed.xml "Linux"
+
+#IndieWeb  ===================================================================
+https://feeds.feedburner.com/LinuxUprising "IndieWeb"
+https://silviamaggidesign.com/feed.xml "IndieWeb"
+https://sanlive.com/feed.xml "IndieWeb"
+https://www.brycewray.com/index.xml "IndieWeb"
+https://alperor.us/en/index.xml "IndieWeb"
+https://manuelmoreale.com/feed/rss "IndieWeb"
+https://lazybear.io/index.xml "IndieWeb"
+https://kevquirk.com/feed.xml "IndieWeb"
+https://bt.ht/atom.xml "IndieWeb"
+https://chriscoyier.net/feed/ "IndieWeb"
+https://herman.bearblog.dev/feed/?type=rss "IndieWeb"
+https://jlelse.blog/.rss "IndieWeb"
+https://www.joshwcomeau.com/rss.xml "IndieWeb"
+https://mikestone.me/feed.xml "IndieWeb"
+https://rusingh.com/feed/ "IndieWeb"
+https://thejollyteapot.com/feed.rss "IndieWeb"
+https://www.davidrevoy.com/feed/rss "IndieWeb"
+https://www.unixsheikh.com/feed.rss "IndieWeb"
+
+
+#Projects   ==================================================================
+http://blog.aseprite.org/rss "Projects"
+https://delta.chat/feed.xml "Projects"
+https://github.com/baskerville/bspwm/releases.atom "Projects"
+https://itch.io/blog "Projects"
+https://joaoapps.com/tag/new-release/feed/ "Projects"
+https://kdenlive.org/feed/ "Projects"
+https://mullvad.net/blog/feed/atom/ "Projects"
+https://posteo.de/en/blog/feed?format=atom "Projects"
+https://suckless.org/atom.xml "Projects"
+https://www.archlinux.org/feeds/news/ "Projects"
+https://www.blog.google/products/stadia/rss "Projects"
+https://www.eff.org/rss/pressrelease "Projects"
+https://www.gimp.org/feeds/atom.xml "Projects"
+https://github.com/gokcehan/lf/releases.atom "Projects"
+https://groups.google.com/forum/feed/vim_announce/topics/rss.xml?num=15     "Projects"
+https://github.com/junegunn/fzf/releases.atom                               "Projects"
+https://github.com/newsboat/newsboat/releases.atom                          "Projects"
+
+#Photo  ===================================================================
+http://www.canonwatch.com/feed/ "Photo"
+http://43rumors.com/feed/ "Photo"
+http://feeds.feedburner.com/canonrumors/rss "Photo"
+http://feeds.feedburner.com/dailycameranews "Photo"
+http://www.cameraegg.org/feed/ "Photo"
+http://cameratimes.org/feed/ "Photo"
+http://www.sonyalpharumors.com/feed/ "Photo"
+https://www.guidetocamera.com/rss.xml "Photo"
+https://www.bestcameranews.com/feed/ "Photo"
+http://www.fujirumors.com/feed/ "Photo"
+http://feeds.feedburner.com/LeicaRumors "Photo"
+http://thenewcamera.com/feed/ "Photo"
+http://feeds2.feedburner.com/photographyblog "Photo"
+http://fujiaddict.com/feed/ "Photo"
+http://photorumors.com/feed/ "Photo"
+http://www.camerajabber.com/feed/ "Photo"
+http://sonyaddict.com/feed/ "Photo"
+http://nikonrumors.com/feed/ "Photo"
+http://www.mirrorlessrumors.com/feed/ "Photo"
+
+#Foto  ==================================================================
+http://feedproxy.google.com/DigitalPhotographySchool "Foto"
+http://feedproxy.google.com/PetaPixel "Foto"
+http://www.thephoblographer.com/feed/ "Foto"
+http://www.imaging-resource.com/rss/news "Foto"
+http://feeds.feedburner.com/fstoppersfeed "Foto"
+https://www.fotopedi.org/feed/ "Foto"
+
+#Haber  ==================================================================
+http://feeds.feedburner.com/euronews/tr/home "Haber"
+http://www.bbc.co.uk/turkce/index.xml "Haber"
+https://rss.dw.com/atom/rss-en-top "Haber"
+https://www.diken.com.tr/feed/ "Haber"
+https://t24.com.tr/rss/haberler "Haber"
+
+#Reddit  =================================================================
+https://www.reddit.com/r/battlestations.rss "~REDDIT: /r/battlestations"
+https://www.reddit.com/r/linux.rss "~REDDIT: /r/linux"
+https://www.reddit.com/r/archlinux.rss "~REDDIT: /r/archlinux"
+https://www.reddit.com/r/i3wm.rss "~REDDIT: /r/i3wm"
+https://www.reddit.com/r/unixporn.rss "~REDDIT: /r/unixporn"
+https://www.reddit.com/r/funny.rss "~REDDIT: /r/funny"
+https://www.reddit.com/r/lifehacks.rss "~REDDIT: /r/lifehacks"
+https://www.reddit.com/r/science.rss "~REDDIT: /r/science"
+https://www.reddit.com/r/technology.rss "~REDDIT: /r/technology"
+
+# YouTube Channel
+------------------------------------------------YOUTUBE_CHANNEL
+# URL_FORMAT:
+# https://www.youtube.com/feeds/videos.xml?channel_id=YOURCHANNELIDHERE
+# https://www.youtube.com/feeds/videos.xml?playlist_id=YOURPLAYLISTIDHERE
+
+https://www.youtube.com/feeds/videos.xml?channel_id=UCVls1GmFKf6WlTraIb_IaJg "~YOUTUBE: DistroTube" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC5UAwBUum7CPN5buc-_N1Fw "~YOUTUBE: Linux EXP" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHugE6eRhqB9_AZQh4DDbIw "~YOUTUBE: Jupiter Broadcasting" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCkK9UDm_ZNrq_rIXCz3xCGA "~YOUTUBE: Bryan Lunduke" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC2eYFnH61tmytImy1mTYvhA "~YOUTUBE: Luke Smith" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCbHXJGd7c8Hy4z0-YX1Jf3Q "~YOUTUBE: Matt Hartley" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCpis3RcTw6t47XO0R_KY4WQ "~YOUTUBE: Caroline Girwan" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCrom-lPe2Ekby1kWLOAnL1A "~YOUTUBE: Tabata" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UCg6gPGh8HU2U01vaFCAsvmQ "~YOUTUBE: Linus Titus Tech" "yt-videos"
+https://www.youtube.com/feeds/videos.xml?channel_id=UC8kGsMa0LygSX9nkBcBH1Sg "~YOUTUBE: Peter Attia" "yt-videos"

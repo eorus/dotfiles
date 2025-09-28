@@ -1,0 +1,7 @@
+echo "Commit mesajı?"
+read message
+git add .
+git commit -m"${message}"
+echo "Sunucuya gönderiliyor!!!"
+git push
+echo "Commit Tamamlanmıştır"

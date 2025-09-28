@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# Google Photos–like auto enhance using ImageMagick
+# Enhances all JPEGs in current folder into *_enhanced.jpg
+
+set -e
+shopt -s nullglob nocaseglob
+
+for img in *.jpg *.jpeg; do
+    base="${img%.*}"
+    out="${base}_enhanced.jpg"
+    echo "Enhancing (ImageMagick): $img → $out"
+
+    magick "$img" \
+        -auto-gamma \
+        -auto-level \
+        -contrast-stretch 0.5%x0.5% \
+        -unsharp 0x1 \
+        -modulate 100,115,100 \
+        "$out"
+done
+
+echo "All images processed! _enhanced copies created."

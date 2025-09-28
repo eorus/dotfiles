@@ -1,0 +1,9 @@
+pcm_slave.slave {
+  pcm "hw:1"
+  channels 2
+  rate 44100
+}
+pcm.plug {
+  type plug
+  slave slave
+}

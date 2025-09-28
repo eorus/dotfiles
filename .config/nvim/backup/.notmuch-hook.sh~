@@ -1,0 +1,24 @@
+#!/bin/sh
+echo "Importing new mail"
+notmuch new --quiet
+# Tag spam
+# Move tag new mails with unread and inbox
+notmuch tag +inbox +unread -new -- tag::new
+# Mark sent mails as not inbox, but sent
+notmuch tag -new -inbox +sent -- from:alperor@gmail.com
+# Move mails in trash out of the inbox
+notmuch tag -inbox -- tag:delete
+# Tag old emails as archive
+echo "Moving older messages to the archive."
+
+notmuch tag +archive -inbox -- date:..4week AND NOT '(' tag:unread OR tag:important ')'
+
+
+notmuch tag +archive        --  NOT tag:unread
+
+notmuch tag +important -- tag:flagged
+notmuch tag -important -- tag:flagged
+
+echo "Complete."
+
+echo "All done. Goodbye!"

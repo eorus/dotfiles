@@ -1,0 +1,13 @@
+sensors:
+  - hwmon: /sys/class/hwmon/hwmon2/temp1_input
+
+fans:
+  - hwmon: /sys/class/hwmon/hwmon3/device/pwm1
+
+levels:
+  - [0, 0]
+  - [55, 50]
+  - [60, 80]
+  - [70, 120]
+  - [80, 200]
+  - [90, 255]

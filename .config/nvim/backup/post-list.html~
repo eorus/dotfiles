@@ -1,0 +1,30 @@
+<div class="container">
+{{ $paginator := .Paginate (where .Site.RegularPages "Type" "in" site.Params.mainSections) }}
+{{ range $paginator.Pages }}
+                        <section class="post m-3 mx-auto p-3">
+                            <div class="row">
+                                <div class="col-md-4">
+                                  <div class="image">
+                                      <a href="{{ .Permalink }}">
+                                          {{ if .Params.Image }}
+                                          <img src="{{ .Params.Image | relURL }}" class="img-fluid" alt="">
+                                          {{ else }}
+                                          <img src="{{ "https://via.placeholder.com/300x200.png" | relURL }}" class="img-fluid" alt="">
+                                          {{ end }}
+                                      </a>
+                                  </div>
+                                </div>
+                                <div class="col-md-8">
+                                    <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
+                                {{ partial "metadata.html" . }}
+                                    <p class="intro">{{ .Summary }}</p>
+                                    <p class="read-more"><a href="{{ .Permalink }}" class="btn btn-info">Continue Reading</a></p>
+                                </div>
+                            </div>
+                        </section>
+{{ end }}
+
+                        <ul class="pager">
+{{ template "_internal/pagination.html" . }}
+                        </ul>
+</div>

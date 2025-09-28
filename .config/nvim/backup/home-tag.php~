@@ -1,0 +1,28 @@
+<?php
+/*
+ * The Index Post (or excerpt)
+ * ===========================
+ * Used by index.php, category.php and author.php
+ */
+?>
+
+<div class="col">
+<article role="article" id="post_<?php the_ID()?>" <?php post_class("h-100 card pb-3 border-bottom"); ?> >
+    <div class="card-image-top entry-img">
+    <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" >
+		<?php the_post_thumbnail( 'fkulup-page', array( 'class' => 'card-img-top img-fluid rounded w-100' ));
+		?>
+		</a>
+    </div>
+  <div class="card-body">
+  <header>
+    <h2 class="card-title h4 mb-2">
+      <a href="<?php the_permalink(); ?>">
+        <?php the_title()?>
+      </a>
+    </h2>
+  </header>
+  </div>
+
+</article>
+  </div>

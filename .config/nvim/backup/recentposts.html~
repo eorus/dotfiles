@@ -1,0 +1,23 @@
+                    <div class="card mb-4">
+                        <div class="card-header h3">Recent Posts</div>
+                        <div class="card-body">
+{{- $recent := where .Site.RegularPages "Section" "in" (.Site.Params.postSections | default (slice "posts")) }}
+{{- $recent_num := (.Site.Params.widgets.recent_num | default 5) }}
+
+{{- if $recent }}
+			{{- range first $recent_num $recent }}
+<div class="clearfix mb-4 border-bottom shadow">
+                                      <a href="{{ .Permalink }}">
+                                        {{ if .Params.featured_image }}
+                                          <img src="{{ .Params.featured_image | relURL }}" class="card-img-top img-fluid" alt="">
+                                          {{ else }}
+                                          <img src="{{ "/images/blog.jpg" | relURL }}" class="card-img-top img-fluid" alt="">
+                                          {{ end }}
+                                      </a>
+            <h3 class="h5 p-2"><a class="page-link" href="{{ .RelPermalink }}">{{ .Title }}</a></li></h4>
+
+</div>
+			{{- end }}
+</div>
+</div><!-- End sidebar recent posts-->
+{{- end }}

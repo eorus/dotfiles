@@ -1,0 +1,30 @@
+#!/bin/sh
+
+HISTFILE="$HOME/.cache/dmenu_calc_history"
+[ -f "$HISTFILE" ] || mkdir -p "$(dirname "$HISTFILE")" && touch "$HISTFILE"
+
+# Show history in dmenu (most recent first)
+expr="$(tac "$HISTFILE" | dmenu -p 'Calc:' -l 10 -i)"
+[ -z "$expr" ] && exit 0
+
+# Prefer qalc if available
+if command -v qalc >/dev/null 2>&1; then
+    result="$(qalc -t "$expr" 2>/dev/null)"
+else
+    result="$(echo "$expr" | bc -l 2>/dev/null | sed 's/^\./0./')"
+fi
+
+# If evaluation fails, notify and exit
+if [ -z "$result" ]; then
+    notify-send "Calc error" "Invalid expression: $expr"
+    exit 1
+fi
+
+# Save to history (append only unique entries)
+grep -qxF "$expr" "$HISTFILE" || echo "$expr" >> "$HISTFILE"
+
+# Show result
+notify-send "Calc" "$expr = $result"
+
+# Copy to clipboard
+printf "%s" "$result" | xclip -selection clipboard

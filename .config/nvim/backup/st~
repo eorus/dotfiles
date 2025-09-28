@@ -1,0 +1,21 @@
+! ST Terminal Configuration
+
+st.termname:    st-256color
+
+! Font
+!st.font:        Fira Code Retina:style=Regular:pixelsize=18:antialias=true:autohint=false
+!st.boldfont:    Fira Code Retina:style=Bold:pixelsize=18:antialias=true:autohint=false
+
+! Preferred font string
+! Example for st config.h: static const char *font = "JetBrains Mono:size=12:antialias=true:autohint=true";
+st.font: xft:JetBrains Mono:size=12:antialias=true:autohint=true
+
+! Fallback fonts ! Noto Color Emoji and Noto Sans Symbols2 recommended for emoji/symbols
+st.font2-1: xft:Noto Color Emoji:pixelsize=12:antialias=true:autohint=true
+st.font2-2: xft:Noto Sans Symbols2:pixelsize=12:antialias=true:autohint=true
+
+! Transparency
+st.alpha:       0.92
+
+! Optional border
+! st.borderpx: 2

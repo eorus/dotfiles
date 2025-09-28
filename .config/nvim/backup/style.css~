@@ -1,0 +1,14 @@
+/** !
+Theme Name: Fotopedi Mini
+Theme URI: https://www.eorus.com
+Description: A simple starter theme for WordPress. Gutenberg compatible. Using Bootstrap 4, Font Awesome 5, and Gulp-SASS.
+Author: Alper Orus
+Author URI:  https://www.eorus.com
+Version: 3.1
+Tags:
+Text Domain: b4st
+License: Unlicense
+License URI: http://unlicense.org
+*/
+
+/* The CSS is all in theme/css/b4st.css  */

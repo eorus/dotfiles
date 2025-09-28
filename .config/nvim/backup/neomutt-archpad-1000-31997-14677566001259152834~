@@ -1,0 +1,139 @@
+From: Alper Orus <alperor@gmail.com>
+To: DreamHost Customer Support Team <support@dreamhost.com>
+Cc:
+Bcc:
+Subject: Re: [alperor 184397735] Sending but can't recieve mails
+Reply-To:
+
+On 21-10-20 17:00:39, Alper Orus wrote:
+>Hello Ryan,
+>
+>Thanks for the reply. Yes i've set my dns records to point Netlify for Hugo
+>deploys. But I would also like to use DH's mail server. Is it possible to
+>add DH MX record to Netlify DNS to make it work as i wanted. In this case
+>mx1.mailchannels.net.
+>
+>Thx
+>
+>On Wed, Oct 21, 2020 at 4:23 PM DreamHost Customer Support Team <
+>support@dreamhost.com> wrote:
+>
+>> Hello,
+>>  Thank you for contacting DreamHost support. The mail for this domain is
+>> not working as you have not yet pointed your mail records to DreamHost
+>> yet. You will need to point the records to connect it. Your domain is not
+>> using the dreamhost nameservers, so your dns is managed elsewhere:
+>>
+>> eorus.com
+>>
+>>    Registrar: DreamHost, LLC
+>> Registrar: DREAMHOST
+>>
+>> Nameservers:
+>> dns1.p03.nsone.net.
+>> dns2.p03.nsone.net.
+>> dns3.p03.nsone.net.
+>> dns4.p03.nsone.net.
+>>
+>> So your dns is not managed (automated) through dreamhost; this means you
+>> must manage and manually add your dns/mx records for the mail service at
+>> dreamhost at your host (where your nameservers are pointed). To have the
+>> mail service with dreamhost, you will need to add the dns/mx for the
+>> service at your host. You will need to add the following records at your
+>> host:
+>>
+>> RECORD (EORUS.COM ZONE) TYPE    VALUE
+>>         MX      0 mx1.mailchannels.net.
+>>         MX      0 mx2.mailchannels.net.
+>>         TXT     v=spf1 mx include:netblocks.dreamhost.com
+>> include:relay.mailchannels.net -all
+>> _domainkey      TXT     o=~; r=postmaster@eorus.com
+>> eorus.com._domainkey    TXT     k=rsa;
+>>
+>> p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCq1vg3Fr3EI+0Pp6IaPDrfczyB6w8+Rjdst6EufjIMM8rYGZnrBU3h7/F/4U3TTMnUEk6Ejmbgq9+3mCnGKhJ46mBLq1sOHCo2ofpTTm17aHauijW
+>> ThVhMi5j/yWCQFTmZjOyvN/vt1X9A1Int+y0uyW498sZFJ4YwYMnvhUdO8QIDAQAB
+>> _autodiscover._tcp      SRV     5 0 443 autoconfig.dreamhost.com
+>> autoconfig      CNAME   autoconfig.dreamhost.com
+>> mail    A       64.90.62.162
+>> mail    MX      0 mx1.mailchannels.net.
+>> mail    MX      0 mx2.mailchannels.net.
+>> mailboxes       A       66.33.205.233
+>> www.mailboxes   A       66.33.205.233
+>> webmail         A       69.163.136.138
+>> www.webmail     A       69.163.136.138
+>>
+>> If you ever need to see the DNS/MX for a domain just go to the manage
+>> domains tab:
+>>
+>> https://panel.dreamhost.com/index.cgi?tree=domain.manage&
+>>
+>> and click the DNS link under the domain and you will see them located
+>> there located there for a cleaner view (viewable guide:
+>> https://help.dreamhost.com/hc/en-us/articles/214694378).
+>>
+>> If you would like to simply manage the dns from DreamHost, then I would
+>> suggest using the Dreamhost Nameservers, as you will only need to change
+>> your nameservers and then all the records will be automated to prevent
+>> you from having to manually add the records or manage. The Dreamhost
+>> Nameservers are as follows:
+>>
+>> https://help.dreamhost.com/hc/en-us/articles/215769408
+>>
+>> ns1.dreamhost.com
+>> ns2.dreamhost.com
+>> ns3.dreamhost.com
+>>
+>> Please note dns changes can take 4-48 hours to fully propagate across the
+>> internet. You can check on the dns propagation at sites like this:
+>> https://www.whatsmydns.net .
+>>
+>>
+>>
+>> On Wed, 21 Oct 2020, you wrote:
+>>
+>> > Hi,
+>> >
+>> > I've created a mail account on eorus.com. It's alper@eorus.com.
+>> > However i can send mails and login to webmail but i can't recieve any
+>> > mails to this account. I've send many test mails but none of them
+>> > fall into my inbox. I can confirm recieve process but the INBOX looks
+>> > empty. Can you please help me with this?
+>> >
+>> > Thx in advance.
+>> > Alper
+>>
+>>
+>>
+>> Thanks!
+>> Ryan V
+>>
+>> --
+>> To continue this support case, just reply to this email.
+>> Check our Knowledge Base tips and how-tos! https://help.dreamhost.com/
+>> Don't forget the expert content on our blog:
+>> https://www.dreamhost.com/blog/
+>> Anti-virus for your website. Safe and secure. Try DreamShield today.
+>> https://help.dreamhost.com/hc/en-us/articles/226704048
+>>
+>>
+>>
+>>
+>> ------------------------------------------------------------------------
+>> Are you happy with this response to your support inquiry?
+>>
+>> YES https://www.dreamhost.com/survey.cgi?h=y&n=184397735&m=7431278
+>>
+>> NO https://www.dreamhost.com/survey.cgi?h=n&n=184397735&m=7431278
+>>
+>> Click one of the survey links above and complete the form for your chance
+>> to win 6 months of free shared hosting (or product of equal value)!
+>> ------------------------------------------------------------------------
+>>
+>>
+>
+>-- 
+>Alper Orus
+
+-- 
+Alper Orus
+Freelance Entrepreneur

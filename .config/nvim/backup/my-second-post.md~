@@ -1,0 +1,11 @@
+---
+title: "My Second Post"
+date: 2020-10-25T22:26:18+03:00
+draft: false
+tags: ["deneme" ,"iki", "foo"]
+categories: ["First" , "Second" , "Third"]
+description: "This is the second post"
+Image: [/images/featured1.jpg]
+---
+Bu bir dfeneme
+<!--more-->

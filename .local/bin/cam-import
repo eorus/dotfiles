@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+SRC="/mnt/import/DCIM"
+BASE="$HOME/Pictures"
+
+# --- 1️⃣ Find all JPG + RAF files ---
+files=$(find "$SRC" -type f \( -iname '*.JPG' -o -iname '*.RAF' \))
+if [[ -z "$files" ]]; then
+    echo "❌ No JPG or RAF files found in $SRC"
+    exit 1
+fi
+
+read -p "Do you want to overwrite existing JPG/RAF files in destination? [y/n]: " ow
+declare -A seen_dates
+
+# --- 2️⃣ Import & organize by shooting date ---
+for f in $files; do
+    date=$(exiftool -s3 -d "%Y-%m-%d" -DateTimeOriginal "$f" 2>/dev/null || echo "Unknown_Date")
+    year=${date:0:4}
+    DEST="$BASE/$year/$date"
+
+    mkdir -p "$DEST/JPG" "$DEST/RAF" "$DEST/Edited" "$DEST/Selected"
+
+    ext="${f##*.}"
+    ext_upper=$(echo "$ext" | tr '[:lower:]' '[:upper:]')
+
+    if [[ "$ext_upper" == "JPG" ]]; then
+        if [[ "$ow" == "y" ]]; then
+            rsync -av --progress "$f" "$DEST/JPG/"
+        else
+            rsync -av --progress --ignore-existing "$f" "$DEST/JPG/"
+        fi
+    elif [[ "$ext_upper" == "RAF" ]]; then
+        if [[ "$ow" == "y" ]]; then
+            rsync -av --progress "$f" "$DEST/RAF/"
+        else
+            rsync -av --progress --ignore-existing "$f" "$DEST/RAF/"
+        fi
+    fi
+
+    seen_dates["$date"]=1
+done
+
+# --- 3️⃣ Show import stats ---
+for d in "${!seen_dates[@]}"; do
+    year=${d:0:4}
+    JPG_COUNT=$(find "$BASE/$year/$d/JPG" -type f -iname '*.JPG' | wc -l)
+    RAF_COUNT=$(find "$BASE/$year/$d/RAF" -type f -iname '*.RAF' | wc -l)
+    echo "📂 $BASE/$year/$d -> JPGs: $JPG_COUNT, RAFs: $RAF_COUNT"
+done
+
+# --- 4️⃣ Optional auto-enhance ---
+read -p "Do you want to auto-enhance all JPGs in every folder? [y/n]: " enh
+if [[ "$enh" == "y" ]]; then
+    for d in "${!seen_dates[@]}"; do
+        year=${d:0:4}
+        SRC_JPG="$BASE/$year/$d/JPG"
+        EDITED="$BASE/$year/$d/Edited"
+
+        cp "$SRC_JPG"/*.JPG "$EDITED"/ 2>/dev/null || true
+        mogrify -auto-level -brightness-contrast 10x5 -modulate 100,120,100 "$EDITED"/*.JPG
+        echo "✨ Enhanced JPGs saved in $EDITED"
+    done
+fi
+
+# --- 5️⃣ Browse + mark with sxiv ---
+read -p "Do you want to browse and mark JPGs into Selected/ folders? [y/n]: " browse
+if [[ "$browse" == "y" ]]; then
+    for d in "${!seen_dates[@]}"; do
+        year=${d:0:4}
+        DIR="$BASE/$year/$d/JPG"
+        echo "🔹 Browsing $DIR ..."
+        mapfile -t imgs < <(find "$DIR" -type f -iname '*.JPG' -print0 | xargs -0 -n1 echo)
+
+        if [[ ${#imgs[@]} -eq 0 ]]; then
+            echo "No JPGs found in $DIR"
+            continue
+        fi
+
+        # Open all images in sxiv fullscreen, marking handled by key-handler
+        sxiv -f "${imgs[@]}"
+    done
+fi
+
+echo "✅ Import workflow complete!"

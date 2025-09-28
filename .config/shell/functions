@@ -1,0 +1,16 @@
+# ~/.config/shell/functions
+
+# FZF open in $EDITOR
+fzf_open_in_editor() {
+    local file
+    file=$(fzf) && "$EDITOR" "$file"
+}
+bind -x '"\C-o": fzf_open_in_editor'
+
+# Git fuzzy checkout
+git_checkout_fzf() {
+    git rev-parse --is-inside-work-tree &> /dev/null || return
+    local branch
+    branch=$(git branch --all | grep -v HEAD | sed 's/.* //' | sort -u | fzf) && git checkout "$branch"
+}
+bind -x '"\C-g": git_checkout_fzf'

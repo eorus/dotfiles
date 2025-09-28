@@ -1,0 +1,22 @@
+! ██╗░░██╗██████╗░███████╗███████╗░██████╗░██╗░░░██╗██████╗░░██████╗███████╗███████╗
+! ╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║░░░██║██╔══██╗██╔════╝██╔════╝██╔════╝
+! ░╚███╔╝░██████╔╝█████╗░░███████╗██║░░░██║██║░░░██║██████╔╝██║░░░░░█████╗░░███████╗
+! ░██╔██╗░██╔══██╗██╔══╝░░╚════██║██║░░░██║██║░░░██║██╔══██╗██║░░░░░██╔══╝░░╚════██║
+! ██╔╝░██╗██║░░██║███████╗███████║╚██████╔╝╚██████╔╝██║░░██║╚██████╗███████╗███████║
+! ╚═╝░░╚═╝╚═╝░░╚═╝╚══════╝╚══════╝░╚═════╝░░╚═════╝░╚═╝░░╚═╝░╚═════╝╚══════╝╚══════╝
+!
+
+! Xresources Main Config
+! Loaded via: xrdb -merge ~/.config/X11/xresources
+
+! Font & rendering
+#include "/home/eorus/.config/X11/xresources.d/font"
+! Cursor settings
+#include "/home/eorus/.config/X11/xresources.d/cursor"
+! ST terminal config
+#include "/home/eorus/.config/X11/xresources.d/st"
+! Colors
+#include "/home/eorus/.config/X11/xcolors/tokyonight"
+
+! Rofi (optional)
+#include "/home/eorus/.config/X11/xresources.d/rofi"

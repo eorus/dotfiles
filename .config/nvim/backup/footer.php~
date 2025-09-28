@@ -1,0 +1,29 @@
+
+<?php b4st_footer_before();?>
+
+<footer id="site-footer" class="footer">
+<div class="footer-orta">
+  <div class="container">
+
+            <?php if(is_active_sidebar('footer-widget-area')): ?>
+            <div class="row py-5" id="footer" role="navigation">
+            <?php dynamic_sidebar('footer-widget-area'); ?>
+             </div><!-- /.row -->
+            <?php endif; ?>
+
+  </div><!-- /.container -->
+</div>
+</footer>
+
+<a href="#" class="scroll-top btn-hover">
+<i class="fa fa-4x fa-angle-up"></i>
+</a>
+
+<?php b4st_footer_after();?>
+
+<?php b4st_bottomline();?>
+
+<?php wp_footer(); ?>
+
+</body>
+</html>

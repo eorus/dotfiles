@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+# neomutt-save-attachments
+# Read a raw email from stdin and extract attachments into ~/Downloads/neomutt/<MSGID>/
+# Requires ripmime or munpack. Uses mktemp to create a safe work dir.
+set -euo pipefail
+
+DEST_BASE="${XDG_DOWNLOAD_DIR:-$HOME/Downloads}/neomutt"
+TMPDIR="$(mktemp -d "${TMPDIR:-/tmp}/neomutt-XXXXXX")"
+cleanup() { rm -rf "$TMPDIR"; }
+trap cleanup EXIT
+
+mkdir -p "$DEST_BASE"
+
+# Try to generate a message id from headers; fallback to timestamp+random
+MSGID="$(awk 'BEGIN{IGNORECASE=1;msg=""} /^Message-ID:[[:space:]]*/{gsub(/.*Message-ID:[[:space:]]*/,""); gsub(/[<>]/,""); msg=$0; exit} END{if(msg)print msg; else print strftime("%Y%m%dT%H%M%S") "-" int(systime()%1000)}' <&0)"
+# awk consumed stdin; re-read via temporary file
+# Save stdin to temp file for processing
+stdin_file="$TMPDIR/message.eml"
+# Rewind by reading original input again (using /dev/fd if available) — simpler: read once at top into file.
+# To support being called directly, we require callers to pipe the message into this script.
+# So instead, read from stdin at start:
+# (This file was created before MSGID above; adjust: read stdin first)

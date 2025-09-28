@@ -1,0 +1,12 @@
+#!/bin/bash
+
+echo 'Kaç Tane Hayvan Seviyorsun ?'
+
+read age
+
+if [ $age -gt 5 ]
+then
+    echo 'Ooooooo çok hayvansever bir insanmışsın.. Tebrikler !!!!'
+else
+    echo 'Hmmmm neden hayvanları sevmediğini anlayamıyorum. Onlar sevilmez mi?'
+fi

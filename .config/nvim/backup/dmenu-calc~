@@ -1,0 +1,26 @@
+#!/bin/sh
+
+HISTFILE="$HOME/.cache/dmenu_calc_history"
+[ -f "$HISTFILE" ] || touch "$HISTFILE"
+
+expr="$(tac "$HISTFILE" | dmenu -p 'Calc:' -l 10 -i)"
+
+[ -z "$expr" ] && exit 0
+
+# Evaluate with bc
+result="$(echo "$expr" | bc -l 2>/dev/null | sed 's/^\./0./')"
+
+# If bc fails, just show error
+if [ -z "$result" ]; then
+    notify-send "Calc error" "Invalid expression: $expr"
+    exit 1
+fi
+
+# Save to history (append only unique entries)
+grep -qxF "$expr" "$HISTFILE" || echo "$expr" >> "$HISTFILE"
+
+# Show result in notify
+notify-send "Result" "$expr = $result"
+
+# Copy result to clipboard
+printf "%s" "$result" | xclip -selection clipboard

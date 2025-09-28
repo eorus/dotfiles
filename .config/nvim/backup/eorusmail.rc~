@@ -1,0 +1,26 @@
+## Account settings
+set from = eorusmail
+
+# Headers
+set realname = "Alper Orus"
+set signature = "$HOME/.config/neomutt/alperor.sig"
+
+set mbox_type = Maildir
+set folder = "~/.local/share/email/eorusmail"
+
+set sendmail = "msmtp -a eorusmail"
+
+# cache settings
+set header_cache = "~/.cache/neomutt/eorusmail/header_cache"
+set message_cachedir = "~/.cache/neomutt/eorusmail/message_cache"
+
+# mailbox settings
+set spoolfile = +INBOX
+set postponed = +Drafts
+set record = +Sent
+set trash = +Trash
+
+color status color208 default
+
+#Mailboxes
+mailboxes =INBOX =Sent =Drafts =Trash

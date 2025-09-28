@@ -1,0 +1,23 @@
+
+<?xml version="1.0"?>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+  <match target="font">
+    <edit name="antialias" mode="assign"><bool>true</bool></edit>
+    <edit name="hinting" mode="assign"><bool>true</bool></edit>
+    <edit name="hintstyle" mode="assign">hintfull</edit>
+    <edit name="rgba" mode="assign">rgb</edit>
+  </match>
+
+  <!-- Prefer Fira Code Retina -->
+  <match target="pattern">
+    <test qual="any" name="family"><string>Fira Code Retina</string></test>
+    <edit name="priority" mode="assign"><int>90</int></edit>
+  </match>
+
+  <!-- Scale size for better legibility -->
+  <match target="pattern">
+    <test qual="any" name="family"><string>Fira Code Retina</string></test>
+    <edit name="size" mode="assign"><double>16</double></edit>
+  </match>
+</fontconfig>

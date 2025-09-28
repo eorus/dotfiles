@@ -1,0 +1,9 @@
+
+#!/usr/bin/env bash
+FILE="$1"
+[ -e "$FILE" ] || exit
+
+# Only text preview
+if [ -f "$FILE" ] && [[ "$FILE" == *.txt || "$FILE" == *.sh || "$FILE" == *.md ]]; then
+    head -n 50 "$FILE"
+fi

@@ -1,0 +1,35 @@
+[Default Applications]
+text/html=brave-browser.desktop
+x-scheme-handler/http=brave-browser.desktop
+x-scheme-handler/https=brave-browser.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+x-scheme-handler/mailto=brave-browser.desktop
+x-scheme-handler/tg=userapp-Telegram Desktop-1F2AD1.desktop
+image/jpeg=sxiv.desktop
+image/jpg=sxiv.desktop
+image/png=sxiv.desktop
+application/xhtml+xml=brave-browser.desktop
+application/pdf=org.pwmt.zathura.desktop
+image/webp=sxiv.desktop
+x-scheme-handler/webcal=brave-browser.desktop
+text/plain=org.x.editor.desktop
+x-scheme-handler/discord-1038970224050962582=nuclear.desktop
+image/x-raf=sxiv.desktop
+inode/directory=sxiv.desktop
+
+[Added Associations]
+text/plain=vim.desktop;org.x.editor.desktop;xed.desktop;
+image/jpeg=sxiv.desktop;feh.desktop;nsxiv.desktop;gimp.desktop;vimiv.desktop;
+image/png=vimiv.desktop;sxiv.desktop;
+x-scheme-handler/http=google-chrome.desktop;
+x-scheme-handler/https=google-chrome.desktop;
+text/html=brave-browser.desktop;xed.desktop;
+application/xhtml+xml=brave-browser.desktop;
+application/pdf=org.pwmt.zathura.desktop;
+image/webp=userapp-sxiv-58TE21.desktop;vimiv.desktop;
+application/x-shellscript=xed.desktop;
+text/x-log=org.x.editor.desktop;
+application/fits=userapp-st -e nvim-TRWK12.desktop;userapp-nvim-DKBZ12.desktop;
+
+[Removed Associations]

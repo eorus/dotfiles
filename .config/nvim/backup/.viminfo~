@@ -1,0 +1,53 @@
+# Bu viminfo dosyası Vim 8.2 tarafından oluşturulmuştur.
+# Yapabileceğinizi düşünüyorsanız bu dosyayı düzenleyebilirsiniz!
+
+# Viminfo version
+|1,4
+
+# Bu dosya yazıldığı sırada mevcut 'encoding'in değeri
+*encoding=utf-8
+
+
+# hlsearch on (H) or off (h):
+~h
+# Komut Satırı Geçmişi (yeniden eskiye):
+:q
+|2,0,1603721469,,"q"
+
+# Arama Dizisi Geçmişi (yeniden eskiye):
+
+# İfade Geçmişi (yeniden eskiye):
+
+# Girdi Satırı Geçmişi (yeniden eskiye):
+
+# Hata Ayıklama Satırı Geçmişi (yeniden eskiye):
+
+# Yazmaçlar:
+
+# Dosya imleri:
+'0  1  0  ~/.config/directories
+|4,48,1,0,1603721469,"~/.config/directories"
+'1  76  0  ~/.local/share/xorg/Xorg.0.log
+|4,49,76,0,1599842613,"~/.local/share/xorg/Xorg.0.log"
+
+# Atlama listesi (önce en yeniler):
+-'  1  0  ~/.config/directories
+|4,39,1,0,1603721469,"~/.config/directories"
+-'  76  0  ~/.local/share/xorg/Xorg.0.log
+|4,39,76,0,1599842613,"~/.local/share/xorg/Xorg.0.log"
+-'  76  0  ~/.local/share/xorg/Xorg.0.log
+|4,39,76,0,1599842613,"~/.local/share/xorg/Xorg.0.log"
+-'  1  0  ~/.local/share/xorg/Xorg.0.log
+|4,39,1,0,1599842589,"~/.local/share/xorg/Xorg.0.log"
+-'  1  0  ~/.local/share/xorg/Xorg.0.log
+|4,39,1,0,1599842589,"~/.local/share/xorg/Xorg.0.log"
+
+# Dosyalardaki imlerin geçmişi (yeniden eskiye):
+
+> ~/.config/directories
+	*	1603721464	0
+	"	1	0
+
+> ~/.local/share/xorg/Xorg.0.log
+	*	1599842610	0
+	"	76	0

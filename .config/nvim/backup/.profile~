@@ -1,0 +1,48 @@
+#!/usr/bin/env sh
+# ~/.profile – environment setup on login shell
+
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+
+# Node/npm (if used)
+export PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix="$HOME/.node_modules"
+
+# Default programs
+export EDITOR="nvim"
+export VISUAL="nvim"
+export TERMINAL="/usr/local/bin/st"
+export BROWSER="/usr/bin/brave --password-store=basic"
+export READER="/usr/bin/zathura"
+export FILE="/usr/bin/thunar"
+export PAGER="most"
+
+# XDG Base Directories
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_SESSION_TYPE=x11
+
+# Toolkit theming
+export QT_QPA_PLATFORMTHEME="qt5ct"
+export QT_STYLE_OVERRIDE="fusion"
+export GDK_BACKEND="x11"
+
+# Misc app settings
+export SUDO_ASKPASS="$HOME/.local/bin/dmenupass"
+export NOTMUCH_CONFIG="$HOME/.notmuch-config"
+export TASKRC="$HOME/.taskrc"
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
+# Less color
+export LESS="R"
+export LESS_TERMCAP_mb="$(printf '%b' '\e[1;31m')"
+export LESS_TERMCAP_md="$(printf '%b' '\e[1;36m')"
+export LESS_TERMCAP_me="$(printf '%b' '\e[0m')"
+export LESS_TERMCAP_so="$(printf '%b' '\e[01;44;33m')"
+export LESS_TERMCAP_se="$(printf '%b' '\e[0m')"
+export LESS_TERMCAP_us="$(printf '%b' '\e[1;32m')"
+export LESS_TERMCAP_ue="$(printf '%b' '\e[0m')"
+export LESSOPEN="| /usr/bin/highlight -O ansi %s 2>/dev/null"
+
+# FZF-related ENV vars should stay in bashrc for interactive shell only

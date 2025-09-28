@@ -1,0 +1,224 @@
+# ===========================
+# LF CONFIGURATION
+# ===========================
+
+# --- Basic Settings ---
+set shell bash
+set shellopts '-eu'
+set ifs "\n"
+set scrolloff 8
+set preview true
+set hidden true
+set drawbox true
+
+# display size and time for all files
+set info time
+
+set icons true
+set period 1
+set ignorecase true
+set previewer ~/.config/lf/preview
+set cleaner ~/.config/lf/cleaner
+
+# latest modified first
+set sortby natural
+set noreverse
+
+# permanent sort by directory
+setlocal ~/Downloads/ sortby time
+setlocal ~/Downloads/ reverse
+
+# ===========================
+# CUSTOM COMMANDS
+# ===========================
+
+# Open file with rifle
+cmd open &{{
+    case $(file --mime-type -Lb $f) in
+        text/*) lf -remote "send $id \$$EDITOR \$fx";;
+        image/*) setsid -f /usr/share/doc/ranger/examples/rifle_sxiv.sh $f;;
+        */pdf) setsid -f zathura $fx;;
+        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+# Open file with a selected method
+cmd open-with ${{
+    clear
+    set -f
+    rifle -l $fx | sed -e "s/:[a-Z]*:[a-Z]*:/ | /"
+    read -p "open with: " method
+    rifle -p $method $fx
+}}
+
+# Paste-overwrite
+cmd paste-overwrite &{{
+    set -f
+    mode=$(head -1 ~/.local/share/lf/files)
+    list=$(sed 1d ~/.local/share/lf/files)
+    set -- _ $list; shift
+    [ $# -gt 0 ] || exit
+    case $mode in
+        copy)
+            cp -r "$@" ./
+            ;;
+        move)
+            mv "$@" ./
+            ;;
+    esac
+    lf -remote 'save\nmove\n'
+    lf -remote "send $id load"
+    lf -remote "send $id echo \"\033[0;32mpasted $# file(s)\033[0m\""
+}}
+
+# Move files to trash
+cmd trash ${{
+    set -f
+    mv $fx ~/.local/share/Trash/files/
+}}
+
+# custom wrapper to delete a file/folder. Will prompt you before continuing
+cmd delete ${{
+set -f
+printf "$fx\n"
+printf "delete?[y/n]"
+read ans
+[ $ans = "y" ] && rm -rf $fx
+}}
+
+
+
+# Extract archives
+cmd extract ${{
+    clear
+    tput cup $(($(tput lines)/3))
+    tput bold
+    set -f
+    printf "%s\n\t" "$fx"
+    printf "extract?[y/N]"
+    read ans
+    [ "$ans" = "y" ] || exit
+
+    case "$fx" in
+        *.tar.bz2)   tar xjf "$fx" ;;
+        *.tar.gz)    tar xzf "$fx" ;;
+        *.tar.xz)    tar xJf "$fx" ;;
+        *.tbz2)      tar xjf "$fx" ;;
+        *.tgz)       tar xzf "$fx" ;;
+        *.tar)       tar xf "$fx" ;;
+        *.bz2)       bunzip2 "$fx" ;;
+        *.gz)        gunzip "$fx" ;;
+        *.zip)       unzip "$fx" ;;
+        *.rar)       unrar e "$fx" ;;
+        *.7z)        7z x "$fx" ;;
+        *.Z)         uncompress "$fx" ;;
+        *)           echo "Unsupported archive type: $fx" ;;
+    esac
+}}
+
+# Toggle preview
+cmd toggle-preview ${{
+    set preview!
+}}
+
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename -a -- $fs)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" > "$old"
+    printf '%s\n' "$fs" > "$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}
+
+map R bulk-rename
+
+# Make directories
+cmd mkdir %mkdir "$@"
+map m push :mkdir<space>
+
+cmd touch %touch "$@"
+map a push :touch<space>
+
+# ===========================
+# MAPPINGS
+# ===========================
+
+# --- File operations ---
+map dd cut
+map y copy
+map pp :paste; clear
+map po paste-overwrite
+map D delete
+map dD trash
+map E extract
+map md
+
+# --- Open / Edit ---
+map o open-with
+map <c-n> push :mkdir<space>""<left>
+map <c-r> reload
+map <c-s> set hidden!
+map <enter> open
+map x $$f
+map X !$f
+map O $mimeopen --ask "$f"
+map S shell
+
+# ---- Interactive search ----
+map <c-f> $lf -remote "send $id select \"$(fzf)\""
+
+
+# --- Navigation shortcuts ---
+map gh cd ~
+map ge cd /etc
+map gu cd /usr
+map gl cd -r .
+map gL cd -r %f
+map go cd /opt
+map gv cd /var
+map gC cd ~/.config
+map gb cd ~/.local/bin
+map gm cd /run/media/$USER
+map gM cd /mnt
+map gs cd /srv
+map gP cd ~/Projects/
+map gp cd ~/Pictures
+map gB cd ~/Templates
+map gT cd /tmp
+map gD cd ~/Documents
+map gd cd ~/Downloads
+map gw cd /srv/http/wordpress/wp-content/themes
+
+# --- Preview / Viewer ---
+map pv toggle-preview
+map Pv bat --style=grid --color=always $f
+
+# --- Disk usage ---
+map du du --max-depth=1 -h --apparent-size
+map dU du --max-depth=1 -h --apparent-size | sort -rh
+
+# --- Movement ---
+map <c-e> down
+map <c-y> up
+
+# --- Remove some default mappings to avoid conflicts ---
+map n
+map "'"
+map '"'
+map d
+map p
