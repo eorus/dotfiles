@@ -55,6 +55,7 @@ alias ka="killall" \
 	cfex="e ~/.config/shell/exports" \
 	cfvi="e ~/.config/nvim/init.vim" \
 	cfdw="e $HOME/Templates/suckless/dwm/config.h" \
+  cfpr="cd ~/Projects/eorus-hugo/" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	calcurse="calcurse -D ~/.calcurse" \
 	magit="nvim -c MagitOnly" \
