@@ -1,2 +1,16 @@
-#!/bin/bash
-awk '/^[a-z]/ && last {print $0,"\t",last} {last=""} /^#/{last=$0}' ~/.config/sxhkd/sxhkdrc | column -t -s $'\t'  | rofi -dmenu -i -no-show-icons -width 1000
+
+#!/usr/bin/env bash
+# ~/.local/bin/cheatsheet
+# Show SXHKD bindings in Rofi
+
+SXHKD_FILE="$HOME/.config/sxhkd/sxhkdrc"
+
+# Parse sxhkdrc:
+# - Lines starting with '#' are comments (descriptions)
+# - Lines starting with key combos are the bindings
+# - Combine comment + binding for display
+awk '
+  /^[[:space:]]*#/ {desc = substr($0, 3)}
+  /^[^#[:space:]]/ {if(desc!=""){print $0 " : " desc; desc=""}}
+' "$SXHKD_FILE" \
+| rofi -dmenu -i -no-show-icons -width 1000 -font "JetBrainsMono Nerd Font 10"

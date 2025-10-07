@@ -14,16 +14,27 @@ bspc config window_gap                    5
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
-bspc config single_monocle                false
 bspc config click_to_focus                true
-bspc config split_ratio                   0.50
-bspc config borderless_monocle            true
-bspc config gapless_monocle               true
+bspc config split_ratio                   0.70
 bspc config focus_by_distance             true
-bspc config focus_follows_pointer         false
+bspc config focus_follows_pointer         true
+bspc config pointer_follows_monitor       true
 bspc config history_aware_focus           true
 bspc config remove_disabled_monitors      true
 bspc config merge_overlapping_monitors    true
+
+# Behavior
+bspc config smart_border true     # Hide border for fullscreen windows
+bspc config single_monocle true   # Monocle layout equivalent
+bspc config borderless_monocle            true
+bspc config gapless_monocle               true
+
+bspc config automatic_scheme spiral
+bspc config initial_polarity first_child
+bspc config removal_adjustment true
+
+# Floating windows
+#bspc rule -a \* state=floating    # Optional: float all dialogs if desired
 
 bspc config pointer_modifier mod1
 bspc config pointer_action1 move
@@ -36,7 +47,7 @@ bspc config pointer_action3 resize_corner
 
 bspc config normal_border_color		      "#4c566a"
 bspc config active_border_color	        "#1e1e1e"
-bspc config focused_border_color	      "#5e81ac"
+bspc config focused_border_color	      "#ebdbb2"
 bspc config presel_feedback_color	      "#5e81ac"
 bspc config urgent_border_color 	      "#dd2727"
 
@@ -45,7 +56,7 @@ bspc config urgent_border_color 	      "#dd2727"
 # └─────┘
 
 # fix programs starting in floating mode
-bspc rule -a Gimp-2.10 desktop=^6 follow=on state=floating
+bspc rule -a Gimp desktop=^6 follow=on state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a mpv state=floating
 bspc rule -a Lxappearance state=floating
@@ -56,8 +67,7 @@ bspc rule -a mpv state=floating
 bspc rule -a File-roller state=floating
 bspc rule -a Vimiv state=floating
 bspc rule -a firefox state=floating
-bspc rule -a Google-chrome state=floating
-bspc rule -a Brave-browser state=floating
+# bspc rule -a Brave-browser state=floating
 bspc rule -a Transmission-gtk state=floating
 
 # ┌────────────────┐
@@ -66,6 +76,10 @@ bspc rule -a Transmission-gtk state=floating
 
 xsetroot -cursor_name left_ptr
 pkill -USR1 -x sxhkd || /usr/bin/sxhkd &
-#picom --config $HOME/.config/picom.conf &
-~/.config/polybar/launch.sh &
-#~/Pictures/wallpaper.sh &
+
+# Kill old bars
+killall -q polybar
+while pgrep -x polybar >/dev/null; do sleep 0.2; done
+
+# Launch main bar
+polybar mainbar &
