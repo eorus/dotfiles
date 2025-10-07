@@ -26,6 +26,8 @@ case "$WM" in
         exec dbus-launch --sh-syntax --exit-with-session dwm
         ;;
     bspwm)
+        # Start xdg-portal for Brave dialogs
+        /usr/lib/xdg-desktop-portal-gtk &
         sxhkd &
         exec dbus-launch --sh-syntax --exit-with-session bspwm
         ;;

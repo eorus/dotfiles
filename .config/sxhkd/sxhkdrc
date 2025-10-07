@@ -78,6 +78,11 @@ super + shift + q
 shift + alt + {q,r}
   bspc {quit,wm -r}
 
+# Hide/Unhide Window
+super + BackSpace
+	~/.local/bin/winhide
+
+
 # ─── Layout / DWM-like ──────────────────────
 super + space
     bspc desktop -l next           # Cycle layouts: tiled → floating → monocle
@@ -97,7 +102,7 @@ super + y
     bspc node @focused:/ -R 90
 
 # Swap with biggest local or next window
-super + space
+super + Return
     bspc node -s biggest.local || bspc node -s next.local
 
 super + {comma,m}
@@ -122,8 +127,14 @@ super + {h,l}
 # ─── Move / Resize Floating Windows ─────────
 super + {Left,Down,Up,Right}
     bspc node -v {-20 0,0 20,0 -20,20 0}     # Move floating
+
+# expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
-    bspc node -z {left -20 0,down 0 10,up 0 -20,right 10 0}  # Resize floating
+    bspc node -z {left -20 0,bottom 0 10,top 0 -20,right 10 0}  # Resize floating
+#
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
 
 # ─── Desktop Navigation ────────────────────
 super + {_,shift + }{1-9,0}

@@ -10,7 +10,7 @@ bspc monitor -g 1920x1200+0+0
 bspc config border_radius                 8
 bspc config border_width                  5
 bspc config window_gap                    5
-#bspc config top_padding                   1
+bspc config top_padding                   1
 bspc config bottom_padding                0
 bspc config left_padding                  0
 bspc config right_padding                 0
@@ -34,7 +34,7 @@ bspc config initial_polarity first_child
 bspc config removal_adjustment true
 
 # Floating windows
-#bspc rule -a \* state=floating    # Optional: float all dialogs if desired
+# bspc rule -a \* state=floating    # Optional: float all dialogs if desired
 
 bspc config pointer_modifier mod1
 bspc config pointer_action1 move
@@ -67,8 +67,24 @@ bspc rule -a mpv state=floating
 bspc rule -a File-roller state=floating
 bspc rule -a Vimiv state=floating
 bspc rule -a firefox state=floating
-# bspc rule -a Brave-browser state=floating
 bspc rule -a Transmission-gtk state=floating
+
+# ┌──────────────┐
+# │ BRAVE BROWSER │
+# └──────────────┘
+
+# Float real dialog/popup windows
+bspc rule -a "*:dialog" state=floating center=true
+bspc rule -a "*:popup" state=floating center=true
+
+bspc rule -a "Brave-browser:Browser" state=tiled
+bspc rule -a "Brave-browser:Dialog" state=floating center=true
+bspc rule -a "brave-browser" state=floating
+bspc rule -a "brave" state=floating
+
+
+#“Float anything that identifies itself as a dialog, utility, or splash screen.”
+#bspc rule -a \* type~='(_NET_WM_WINDOW_TYPE_DIALOG|_NET_WM_WINDOW_TYPE_UTILITY|_NET_WM_WINDOW_TYPE_TOOLBAR|_NET_WM_WINDOW_TYPE_SPLASH)' state=floating
 
 # ┌────────────────┐
 # │STARTUP PROGRAMS│
@@ -82,4 +98,6 @@ killall -q polybar
 while pgrep -x polybar >/dev/null; do sleep 0.2; done
 
 # Launch main bar
-polybar mainbar &
+if ! pgrep "polybar" > /dev/null 2>&1 ; then
+    ~/.config/polybar/launch.sh &
+fi
