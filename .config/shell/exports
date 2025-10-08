@@ -1,5 +1,7 @@
 # ~/.config/shell/exports
 
+#export WM_SESSION=bspwm
+
 # PATH
 export PATH="$HOME/.local/bin:$HOME/.node_modules/bin:$PATH"
 export npm_config_prefix="$HOME/.node_modules"

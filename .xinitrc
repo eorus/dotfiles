@@ -17,11 +17,12 @@
 # picom --experimental-backends &
 # nm-applet &
 
-# Ask which WM to start using dmenu or rofi
-WM=$(echo -e "dwm\nbspwm" | dmenu -i -p "Select WM:")
+# Ask which WM to start, default to dwm
+choice=${WM_SESSION:-dwm}   # set WM_SESSION env var or fallback to dwm
 
-case "$WM" in
+case "$choice" in
     dwm)
+        # Start dwm status script
         ~/.local/bin/xsetroot_loop.sh >> ~/.xsetroot.log 2>&1 &
         exec dbus-launch --sh-syntax --exit-with-session dwm
         ;;
@@ -32,7 +33,7 @@ case "$WM" in
         exec dbus-launch --sh-syntax --exit-with-session bspwm
         ;;
     *)
-        echo "No selection made. Starting dwm as fallback."
+        echo "Unknown WM: $choice, starting dwm as fallback"
         ~/.local/bin/xsetroot_loop.sh >> ~/.xsetroot.log 2>&1 &
         exec dbus-launch --sh-syntax --exit-with-session dwm
         ;;
