@@ -32,6 +32,12 @@ case "$choice" in
         sxhkd &
         exec dbus-launch --sh-syntax --exit-with-session bspwm
         ;;
+    i3)
+        # Start xdg-portal for Brave dialogs
+        /usr/lib/xdg-desktop-portal-gtk &
+        # i3 uses its own bar, no need for xsetroot_loop.sh here unless you want a shared bar
+        exec dbus-launch --sh-syntax --exit-with-session i3
+        ;;
     *)
         echo "Unknown WM: $choice, starting dwm as fallback"
         ~/.local/bin/xsetroot_loop.sh >> ~/.xsetroot.log 2>&1 &

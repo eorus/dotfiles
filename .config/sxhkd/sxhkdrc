@@ -169,7 +169,7 @@ shift + Print
 # ─── Power / System ───────────────────────
 # Launch power menu
 super + End
-  ~/.config/rofi/powermenu.sh
+    ~/.local/bin/powermenu
 
 # Shutdown computer
 XF86PowerOff
@@ -254,22 +254,25 @@ XF86Tools
 
 # ─── Function Keys ─────────────────────────
 super + F1
-  ~/.local/bin/cheatsheet
+ ~/.local/bin/cheatsheet
 
 super + F2
-  ~/.local/bin/dmenu-calc
+ ~/.local/bin/dmenu-calc
 
 super + F3
-  displayselect
+ ~/.local/bin/displayselect
 
 super + F4
-  pavucontrol
+ pavucontrol
 
 super + F5
-  dmenulaunch
+ ~/.local/bin/dmenulaunch
 
-super + F6
-  newsup
+super + F7
+ ~/.local/bin/newsup
+
+super + F8
+ ~/.local/bin/rssadd
 
 super + F11
   mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)

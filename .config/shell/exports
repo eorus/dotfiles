@@ -1,6 +1,6 @@
 # ~/.config/shell/exports
 
-#export WM_SESSION=bspwm
+#export WM_SESSION=i3
 
 # PATH
 export PATH="$HOME/.local/bin:$HOME/.node_modules/bin:$PATH"
