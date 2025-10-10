@@ -39,13 +39,14 @@ caffeine &
 # Clipboard utilities
 xclip &
 
-# Compositor (picom)
+
 picom --config ~/.config/picom/picom.conf -b &
 
 # Start Network Manager applet (if you want)
 # sleep 2 && nm-applet &
 
 xbacklight -set 40  # 40% brightness at startup
-
+# Compositor (picom)
+picom --config ~/.config/picom/picom.conf --experimental-backends -b &
 # Wallpaper script
 "$HOME/Pictures/wallpaper.sh" &

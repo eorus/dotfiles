@@ -104,4 +104,7 @@ return {
     })
   end
 },
+
+{ "tbabej/taskwiki" },
+
 }
