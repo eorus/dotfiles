@@ -86,8 +86,6 @@ read ans
 [ $ans = "y" ] && rm -rf $fx
 }}
 
-
-
 # Extract archives
 cmd extract ${{
     clear
@@ -160,11 +158,25 @@ map a push :touch<space>
 
 # --- File operations ---
 map dd cut
-map y copy
+
+# General Yank
+map yy copy
+
+# Yank absolute path(s)
+map ya &printf "%s\n" "$fx" | xclip -selection clipboard && notify-send "Copied absolute path"
+
+# Yank filename(s)
+map yf &basename -a $fx | xclip -selection clipboard && notify-send "Copied filename"
+
+# Yank directory path (of first selected file)
+map yd &dirname "$(printf "%s\n" "$fx" | head -n 1)" | xclip -selection clipboard && notify-send "Copied directory path"
+
 map pp :paste; clear
 map po paste-overwrite
+
 map D delete
 map dD trash
+
 map E extract
 map md
 
@@ -222,3 +234,4 @@ map "'"
 map '"'
 map d
 map p
+map y
