@@ -1,7 +1,0 @@
-#!/bin/bash
-# Run mbsync in background silently
-LOGFILE="$HOME/.cache/mbsync.log"
-mbsync -a &> "$LOGFILE" &
-
-# Optional: desktop notification
-notify-send "Mail Sync" "mbsync finished for all accounts"

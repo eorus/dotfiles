@@ -1,4 +1,0 @@
- <!-- themes/tailwind-theme/layouts/partials/header.html -->
-<header class="w-full bg-blue-300 py-4">
-  <h1 class="text-center">Welcome to HugoTails!</h1>
-</header>

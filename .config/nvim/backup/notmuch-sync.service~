@@ -1,8 +1,0 @@
-[Unit]
-Description=Run notmuch-sync script
-
-[Service]
-Type=oneshot
-# Ensure the DBus session from your DWM environment is available
-Environment=DISPLAY=:0
-ExecStart=%h/.local/bin/notmuch-sync.sh

@@ -1,8 +1,0 @@
-#!/bin/bash
-bat=$(acpi -a)
-if [ "$bat" = "Adapter 0: on-line" ]; then
- sh ./.config/i3/scripts/lock-i3.sh 
-#  i3lock -i ~/Pictures/i3lockimage.png
-else
-  systemctl suspend
-fi

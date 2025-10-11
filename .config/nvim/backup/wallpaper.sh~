@@ -1,4 +1,0 @@
- while true; do
-      nitrogen --set-zoom --random ~/Pictures/wallpapers
-      sleep 5m
-   done
