@@ -1,3 +1,18 @@
 # ~/.config/shell/prompt
 
-export PS1="\[$(tput bold)\]\[$(tput setaf 1)\][\[$(tput setaf 3)\]\u\[$(tput setaf 2)\]@\[$(tput setaf 4)\]\h \[$(tput setaf 5)\]\W\[$(tput setaf 1)\]]\[$(tput setaf 7)\]\\$ \[$(tput sgr0)\]"
+# Colors
+RESET="\[$(tput sgr0)\]"
+BOLD="\[$(tput bold)\]"
+DIM="\[$(tput dim)\]"
+RED="\[$(tput setaf 1)\]"
+GREEN="\[$(tput setaf 2)\]"
+LIGHTYELLOW="\[$(tput setaf 229)\]"
+MAGENTA="\[$(tput setaf 5)\]"
+
+# Set prompt dynamically
+set_prompt() {
+    local EXIT="$?"
+    local ARROW_COLOR=$([ $EXIT -eq 0 ] && echo "$GREEN" || echo "$RED")
+    PS1="${RED}[\A] ${LIGHTYELLOW}\u ${BOLD}${MAGENTA}\W ${ARROW_COLOR}➜ ${RESET}"
+}
+PROMPT_COMMAND=set_prompt

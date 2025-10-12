@@ -5,7 +5,7 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done; unset command
 
-
+alias ls='ls --color=auto'
 alias ll='ls -lah --color=auto'
 alias la='ls -A'
 alias l='ls -CF'

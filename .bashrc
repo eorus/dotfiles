@@ -30,6 +30,7 @@ export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 # dircolors.
 if [ -x "$(command -v dircolors)" ]; then
     eval "$(dircolors -b ~/.dircolors)"
+    export LS_COLORS   # <-- make sure this is exported
 fi
 
 # FZF setup
