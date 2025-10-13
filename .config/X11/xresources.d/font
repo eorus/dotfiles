@@ -10,4 +10,4 @@ Xft.lcdfilter:  lcddefault
 Xft.dpi: 110
 
 ! dmenu/styled terminals may read this
-URxvt.font: xft:JetBrains Mono:size=12:antialias=true:hinting=true
+URxvt.font: xft:JetBrainsMono Nerd Font:size=12:antialias=true:hinting=true
