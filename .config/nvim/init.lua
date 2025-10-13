@@ -1,6 +1,6 @@
--- Leader
+-- Set leaders first, before anything else
 vim.g.mapleader = ","
-vim.g.maplocalleader =","
+vim.g.maplocalleader = ","
 
 -- Load options first
 require("options")
