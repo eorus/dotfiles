@@ -54,7 +54,7 @@ alias ka="killall" \
 	cfal="e ~/.config/shell/aliases" \
 	cfex="e ~/.config/shell/exports" \
 	cfvi="e ~/.config/nvim/init.vim" \
-	cfdw="e $HOME/Templates/suckless/dwm/config.h" \
+	cfdw="e $HOME/Templates/suckless/dwm/config.def.h" \
   cfpr="cd ~/Projects/eorus-hugo/" \
 	mpv="mpv --input-ipc-server=/tmp/mpvsoc$(date +%s)" \
 	calcurse="calcurse -D ~/.calcurse" \

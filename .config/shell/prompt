@@ -13,6 +13,6 @@ MAGENTA="\[$(tput setaf 5)\]"
 set_prompt() {
     local EXIT="$?"
     local ARROW_COLOR=$([ $EXIT -eq 0 ] && echo "$GREEN" || echo "$RED")
-    PS1="${RED}[\A] ${LIGHTYELLOW}\u ${BOLD}${MAGENTA}\W ${ARROW_COLOR}➜ ${RESET}"
+    PS1="${MAGENTA}[\A] ${LIGHTYELLOW}\u ${BOLD}${RED}\W ${ARROW_COLOR}➜ ${RESET}"
 }
 PROMPT_COMMAND=set_prompt

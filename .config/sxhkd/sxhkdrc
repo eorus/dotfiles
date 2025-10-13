@@ -187,9 +187,12 @@ XF86Audio{RaiseVolume,LowerVolume}
 XF86AudioMute
   pactl set-sink-mute "$(pactl info | grep 'Default Sink:' | sed 's/.*: //')" toggle
 
-# Brightness up/down
-XF86MonBrightness{Up,Down}
-  xbacklight {-inc,-dec} 10
+# Brightness up/down using brightnessctl
+XF86MonBrightnessUp
+  brightnessctl set +10%
+
+XF86MonBrightnessDown
+  brightnessctl set 10%-
 
 # ─── Media Keys ────────────────────────────
 # Music play/pause toggle

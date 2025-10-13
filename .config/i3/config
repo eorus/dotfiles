@@ -262,8 +262,9 @@ bar {
 }
 
 # Brightness keys
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 15
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 15
+bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 10%-
+bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +10%
+
 
 # Multimedia keys
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%

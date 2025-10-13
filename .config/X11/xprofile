@@ -44,9 +44,12 @@ picom --config ~/.config/picom/picom.conf -b &
 
 # Start Network Manager applet (if you want)
 # sleep 2 && nm-applet &
+#
+# 40% brightness at startup
+brightnessctl set 40%
 
-xbacklight -set 40  # 40% brightness at startup
 # Compositor (picom)
 picom --config ~/.config/picom/picom.conf --experimental-backends -b &
+
 # Wallpaper script
 "$HOME/Pictures/wallpaper.sh" &
