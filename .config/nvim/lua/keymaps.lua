@@ -5,16 +5,21 @@ local opts = { noremap = true, silent = true }
 map("n", "<leader>f", ":Files<CR>", opts)
 map("n", "<leader>F", ":FZF ~<CR>", opts)
 map("n", "<leader>l", ":Lines<CR>", opts)
-if vim.fn.exists(":Rg") == 2 then
-  map("n", "<leader>g", ":Rg<CR>", opts)
-end
-map("n", "<C-g>", ":Rg<CR>", opts)
+
+-- Leader + fr : search & replace interactively in project
+map("n", "<leader>fr", ":%s///g<Left><Left>", opts)
+map("n", "<leader>frl", ":%s///g<Left><Left><Left>", opts)
+-- Prompt for input after pressing leader+g
+map("n", "<C-g>", ":Rg <C-r>=expand('<cword>')<CR><CR>", opts)
+
 map("n", "<F5>", ":Buffers<CR>", opts)             -- list buffers
 map("n", "<leader>fh", ":History<CR>", opts)       -- recent files
 map("n", "<leader>bb", ":Buffers<CR>", opts)       -- buffer switch
 map("n", "<leader>ch", ":History:<CR>", opts)      -- command history
 map("n", "<leader>sh", ":History/<CR>", opts)      -- search history
 map("n", "<Esc>",      ":nohlsearch<CR>", opts)    -- Clear search highlights
+map("n", "<F3>", ":tab sball<CR>", opts)           -- open all buffers in tabs
+map("n", "<leader>B", ":enew<CR>", opts)           -- open a new empty buffer
 
 ------------------------------------------------------------
 -- Oil (file manager)
