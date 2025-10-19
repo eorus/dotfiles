@@ -28,28 +28,82 @@ set noreverse
 setlocal ~/Downloads/ sortby time
 setlocal ~/Downloads/ reverse
 
-# ===========================
-# CUSTOM COMMANDS
-# ===========================
+# =========================
+# File Open Commands (nsxiv normal view + thumbnail toggle)
+# =========================
 
-# Open file with rifle
 cmd open &{{
-    case $(file --mime-type -Lb $f) in
-        text/*) lf -remote "send $id \$$EDITOR \$fx";;
-        image/*) setsid -f /usr/share/doc/ranger/examples/rifle_sxiv.sh $f;;
-        */pdf) setsid -f zathura $fx;;
-        *) for f in $fx; do $OPENER $f > /dev/null 2> /dev/null & done;;
+    case $(file --mime-type -Lb "$f") in
+        text/*)
+            lf -remote "send $id \$$EDITOR \$fx"
+            ;;
+        image/*)
+            # Open nsxiv showing the selected image in normal view,
+            # but include all images in the directory so you can press Enter for thumbnails.
+            dir=$(dirname "$f")
+            imgs=$(find "$dir" -maxdepth 1 -type f \( \
+                -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.png' -o -iname '*.gif' \
+                -o -iname '*.bmp' -o -iname '*.webp' -o -iname '*.tif' -o -iname '*.tiff' \
+            \) | sort)
+
+            if [ -z "$imgs" ]; then
+                setsid -f nsxiv "$f" >/dev/null 2>&1 &
+                exit 0
+            fi
+
+            others=$(printf '%s\n' "$imgs" | grep -Fvx -- "$f" || true)
+
+            {
+                printf '%s\n' "$f"
+                printf '%s\n' "$others"
+            } | xargs -d '\n' -r setsid -f nsxiv -- >/dev/null 2>&1 &
+            ;;
+        */pdf)
+            setsid -f zathura "$fx" >/dev/null 2>&1 &
+            ;;
+        video/*|audio/*)
+            setsid -f mpv "$fx" >/dev/null 2>&1 &
+            ;;
+        *)
+            for ff in $fx; do
+                setsid -f ${OPENER:-xdg-open} "$ff" >/dev/null 2>&1 &
+            done
+            ;;
     esac
 }}
 
-# Open file with a selected method
+# =========================
+# Smart "Open With" Command (auto-suggests app by type)
+# =========================
+
 cmd open-with ${{
     clear
-    set -f
-    rifle -l $fx | sed -e "s/:[a-Z]*:[a-Z]*:/ | /"
-    read -p "open with: " method
-    rifle -p $method $fx
+    # detect MIME type of the first selected file
+    mime=$(file --mime-type -Lb "$f")
+
+    # suggest default app based on file type
+    case "$mime" in
+        text/*)      default=$EDITOR ;;
+        image/*)     default=nsxiv ;;
+        */pdf)       default=zathura ;;
+        video/*|audio/*) default=mpv ;;
+        *)            default=${OPENER:-xdg-open} ;;
+    esac
+
+    echo "Files: $fx"
+    echo "Detected type: $mime"
+    echo "Suggested app: $default"
+    read -p "Open with [${default}]: " app
+    app=${app:-$default}   # if user just hits Enter, use the default
+
+    for file in $fx; do
+        setsid -f "$app" "$file" >/dev/null 2>&1 &
+    done
 }}
+
+# ===========================
+# CUSTOM COMMANDS
+# ===========================
 
 # Paste-overwrite
 cmd paste-overwrite &{{
@@ -181,14 +235,13 @@ map E extract
 map md
 
 # --- Open / Edit ---
+map <enter> open
 map o open-with
 map <c-n> push :mkdir<space>""<left>
 map <c-r> reload
 map <c-s> set hidden!
-map <enter> open
 map x $$f
 map X !$f
-map O $mimeopen --ask "$f"
 map S shell
 
 # ---- Interactive search ----
