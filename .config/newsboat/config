@@ -99,13 +99,12 @@ macro o open-in-browser ; toggle-article-read "read"
 
 macro b set browser "brave"; open-in-browser ; set browser linkhandler
 macro f set browser "firefox"; open-in-browser ; set browser linkhandler
-macro i set browser "/usr/bin/vimiv %u"; open-in-browser ; set browser "/usr/bin/w3m %u"
+macro i set browser "/usr/bin/nsxiv %u"; open-in-browser; set browser "/usr/bin/w3m %u"
 macro v set browser "mpv --pause %u &"; open-in-browser-noninteractively; set browser "brave %u"
 macro w set browser "w3m"; open-in-browser ; set browser linkhandler
-macro p set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
+macro d set browser "dmenuhandler"; open-in-browser ; set browser linkhandler
 macro c set browser "xsel -b <<<" ; open-in-browser ; set browser linkhandler
 macro m set browser "setsid -f mpv" ; open-in-browser ; set browser linkhandler
-macro d set browser "yt-dlp"; open-in-browser ; set browser linkhandler
 macro a set browser "yt-dlp --embed-metadata -xic -f bestaudio/best %u" ; open-in-browser ; set browser linkhandler
 macro u pipe-to "urlscan"
 

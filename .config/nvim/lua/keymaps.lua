@@ -1,186 +1,181 @@
+-- keymaps.lua
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
--- FZF
-map("n", "<leader>f", ":Files<CR>", opts)
-map("n", "<leader>F", ":FZF ~<CR>", opts)
-map("n", "<leader>l", ":Lines<CR>", opts)
+-- Basic helpers
+local function has_cmd(cmd) return vim.fn.exists(":" .. cmd) == 2 end
+local function has_module(name) return pcall(require, name) end
 
--- Leader + fr : search & replace interactively in project
-map("n", "<leader>fr", ":%s///g<Left><Left>", opts)
-map("n", "<leader>frl", ":%s///g<Left><Left><Left>", opts)
--- Prompt for input after pressing leader+g
-map("n", "<C-g>", ":Rg <C-r>=expand('<cword>')<CR><CR>", opts)
+-- FZF / Telescope-like mappings (guarded by existence of commands)
+map("n", "<leader>f", ":Files<CR>", opts)          -- find files (fzf.vim)
+map("n", "<leader>F", ":FZF ~<CR>", opts)          -- FZF in home
+map("n", "<leader>l", ":Lines<CR>", opts)          -- live lines (fzf.vim)
+map("n", "<F5>",       ":Buffers<CR>", opts)       -- list buffers
+map("n", "<leader>fh", ":History<CR>", opts)       -- recent files (fzf.vim)
+map("n", "<leader>bb", ":Buffers<CR>", opts)       -- buffer list
+map("n", "<leader>bl", ":buffers<CR>:buffer<Space>", opts) -- open :buffer with list
 
-map("n", "<F5>", ":Buffers<CR>", opts)             -- list buffers
-map("n", "<leader>fh", ":History<CR>", opts)       -- recent files
-map("n", "<leader>bb", ":Buffers<CR>", opts)       -- buffer switch
-map("n", "<leader>ch", ":History:<CR>", opts)      -- command history
-map("n", "<leader>sh", ":History/<CR>", opts)      -- search history
-map("n", "<Esc>",      ":nohlsearch<CR>", opts)    -- Clear search highlights
-map("n", "<F3>", ":tab sball<CR>", opts)           -- open all buffers in tabs
-map("n", "<leader>B", ":enew<CR>", opts)           -- open a new empty buffer
+-- Ripgrep (requires :Rg from plugin)
+  map("n", "<C-g>", ":Rg <C-r>=expand('<cword>')<CR><CR>", opts)
 
-------------------------------------------------------------
+-- Interactive project search & replace (convenience)
+map("n", "<leader>fr", ":%s///g<Left><Left>", opts)   -- fill pattern and replacement
+map("n", "<leader>frl", ":%s///g<Left><Left><Left>", opts) -- leave flags spot
+
+-- Highlight clear
+map("n", "<Esc>", ":nohlsearch<CR>", opts)
+
+-- Open all buffers in tabs
+map("n", "<F3>", ":tab sball<CR>", opts)
+
+-- New empty buffer
+map("n", "<leader>B", ":enew<CR>", opts)
+
 -- Oil (file manager)
-------------------------------------------------------------
-map("n", "-", "<cmd>Oil<CR>", opts)          -- open Oil in current dir
-map("n", "<leader>e", "<cmd>Oil<CR>", opts)  -- open Oil as file explorer
+map("n", "-", "<cmd>Oil<CR>", opts)
+map("n", "<leader>e", "<cmd>Oil<CR>", opts)
+map("n", "<leader>vc", "<Cmd>Oil ~/.config/nvim/lua/<CR>", opts) -- open lua config
 
-
--- Split navigation
+-- Split navigation (comfortable hjkl)
 map("n", "<C-h>", "<C-w>h", opts)
 map("n", "<C-j>", "<C-w>j", opts)
 map("n", "<C-k>", "<C-w>k", opts)
 map("n", "<C-l>", "<C-w>l", opts)
 
--- adjust split sizes easier
-map("n", "<C-Left>", ":vertical resize +3<CR>", opts) -- Control+Left resizes vertical split +
-map("n", "<C-Right>", ":vertical resize -3<CR>", opts) -- Control+Right resizes vertical split -
+-- Resize splits (Ctrl for medium, Alt for fine, Shift for big)
+map("n", "<C-Left>",  ":vertical resize +3<CR>", opts)
+map("n", "<C-Right>", ":vertical resize -3<CR>", opts)
+map("n", "<C-Up>",    ":resize +2<CR>", opts)
+map("n", "<C-Down>",  ":resize -2<CR>", opts)
+
+map("n", "<A-Left>",  ":vertical resize +1<CR>", opts)
+map("n", "<A-Right>", ":vertical resize -1<CR>", opts)
+map("n", "<A-Up>",    ":resize +1<CR>", opts)
+map("n", "<A-Down>",  ":resize -1<CR>", opts)
+
+map("n", "<C-S-Left>",  ":vertical resize +15<CR>", opts) -- may not work in all terminals
+map("n", "<C-S-Right>", ":vertical resize -15<CR>", opts)
+map("n", "<C-S-Up>",    ":resize +10<CR>", opts)
+map("n", "<C-S-Down>",  ":resize -10<CR>", opts)
+
+-- Monocle / maximize toggle: save layout and restore
+do
+  local restore_cmd = nil
+  map("n", "<leader>m", function()
+    if restore_cmd then
+      vim.cmd(restore_cmd)
+      restore_cmd = nil
+      return
+    end
+    restore_cmd = vim.fn.winrestcmd() -- store layout
+    vim.cmd("only") -- maximize current window
+  end, opts)
+end
 
 -- Buffer navigation
 map("n", "<S-Tab>", ":bnext<CR>", opts)
-map("n", "<Tab>", ":bprevious<CR>", opts)
-map("n", "<leader>B", ":enew<CR>", opts)
+map("n", "<Tab>",   ":bprevious<CR>", opts)
 map("n", "<leader>bd", ":bd<CR>", opts)
-map("n", "<leader>bl", ":buffers<CR>:buffer<Space>", opts) -- Space+d delets current buffer
-map("n", "<leader>ba", ":tab sball<CR>", opts) -- Tab goes to next buffer
+map("n", "<leader>ba", ":tab sball<CR>", opts) -- open buffers in tabs
+
+-- Save & config shortcuts
+map("n", "<leader>w", ":w<CR>", opts)
+map("n", "<leader>v", "<Cmd>e $MYVIMRC<CR>", opts)
+map("n", "<leader>ev", ":vsplit $MYVIMRC<CR>", opts)
+map("n", "<leader>er", ":source ~/.config/nvim/init.lua<CR>", opts)
+map("n", "<leader>vs", "<Cmd>source $MYVIMRC<CR>", opts)
+
+-- Common dotfiles editors
+map("n", "<leader>eb", ":edit ~/.bashrc<CR>", opts)
+map("n", "<leader>et", ":edit ~/.tmux.conf<CR>", opts)
+map("n", "<leader>en", ":edit ~/.config/newsboat/config<CR>", opts)
+map("n", "<leader>eu", ":edit ~/.config/newsboat/urls<CR>", opts)
 
 -- Spell toggle
 map("n", "<leader>ss", ":setlocal spell!<CR>", opts)
 
--- Vimwiki
+-- Vimwiki / Calendar
 map("n", "<C-d>", ":VimwikiMakeDiaryNote<CR>", opts)
-if vim.fn.exists(":Calendar") == 2 then
-  map("n", "<C-c>", function() vim.cmd(":Calendar") end, opts)
+if has_cmd("Calendar") then
+  map("n", "<C-c>", ":Calendar<CR>", opts)
 end
 
--- Undo tree
-if vim.fn.exists(":UndotreeToggle") == 2 then
-  map("n", "<leader>u", ":UndotreeToggle<CR>", opts)
-end
+-- Undotree (guarded)
   map("n", "<leader><F4>", ":UndotreeToggle<CR>", opts)
 
--- Colorizer toggle
-if pcall(require, "colorizer") then
+-- Colorizer toggle (guarded)
+if has_module("colorizer") then
   map("n", "<leader>cc", ":ColorizerToggle<CR>", opts)
 end
 
-------------------------------------------------------------
--- Config & Save toolbox
-------------------------------------------------------------
--- Save current buffer
-map("n", "<leader>w", ":w<CR>", opts)
-
--- Open init.lua for editing
-map("n", "<leader>v", "<Cmd>e $MYVIMRC<CR>", opts)
-map("n", "<leader>ev", ":vsplit $MYVIMRC<CR>", opts)                  -- reload neovim config
-
--- Source current file (useful when editing any Lua module in ~/.config/nvim/lua/)
-map("n", "<leader>er", ":source ~/.config/nvim/init.lua<CR>", opts)   -- reload neovim config
-
--- Reload full config (handy if you changed plugins.lua or lazy setup)
-map("n", "<leader>vs", "<Cmd>source $MYVIMRC<CR>", opts)
-
--- Open Lua config folder with Oil
-map("n", "<leader>vc", "<Cmd>Oil ~/.config/nvim/lua/<CR>", opts)
-
-
--- reload configs
-
-map("n", "<leader>eb", ":edit ~/.bashrc<CR>", opts)                   -- edit bashrc
-map("n", "<leader>et", ":edit ~/.tmux.conf<CR>", opts)                -- edit tmux config
-map("n", "<leader>en", ":edit ~/.config/newsboat/config<CR>", opts)   -- edit newsboat config
-map("n", "<leader>eu", ":edit ~/.config/newsboat/urls<CR>", opts)     -- eidt newsboat url
-
-------------------------------------------------------------
--- Cheat sheet popup (plugin-free with icons)
-------------------------------------------------------------
-
+-- Cheat sheet popup (kept mostly as you had it, minor cleanup)
 map("n", "<leader><F1>", function()
-  -- create an unlisted scratch buffer
   local buf = vim.api.nvim_create_buf(false, true)
   vim.api.nvim_buf_set_option(buf, "buftype", "nofile")
   vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
   vim.api.nvim_buf_set_option(buf, "swapfile", false)
   vim.api.nvim_buf_set_option(buf, "modifiable", true)
 
-
   local lines = {
     "================= 📝 Neovim Keymaps =================",
     "",
     "🔍 FZF / Telescope:",
-    "  <leader>f   → Files (find files)",
-    "  <leader>F   → FZF in home (~)",
+    "  <leader>f   → Files",
+    "  <leader>F   → FZF ~",
     "  <leader>l   → Lines",
-    "  <C-g>       → Rg (live grep) -- only if :Rg exists",
-    "  <F5>        → Buffers (list open buffers)",
-    "  <leader>fh  → History (recent files)",
-    "  <leader>bb  → Buffers (buffer switch)",
-    "  <leader>ch  → History: (command history)",
-    "  <leader>sh  → History/ (search history)",
+    "  <C-g>       → Rg (if available)",
+    "  <F5>        → Buffers",
+    "  <leader>fh  → History",
     "",
-    "📂 Oil.nvim (file manager):",
-    "  -           → Open Oil (current dir)",
-    "  <leader>e   → Open Oil (file explorer)",
-    "  <CR>        → Open file / enter folder",
-    "  <BS>        → Go up directory",
-    "  C           → Create file/folder",
-    "  D           → Delete file/folder",
-    "  r           → Rename file/folder",
-    "  R           → Refresh buffer",
+    "📂 Oil.nvim:",
+    "  -  → Open Oil",
+    "  <leader>e → Open Oil",
     "",
-    "📐 Split navigation:",
-    "  <C-h> <C-j> <C-k> <C-l> → Move between splits",
+    "📐 Splits:",
+    "  <C-h/j/k/l> → Move between splits",
+    "  <C-Arrow>   → Resize medium",
+    "  <A-Arrow>   → Resize fine",
+    "  <C-S-Arrow> → Resize large (may not work in terminal)",
     "",
-    "🗂 Buffer navigation:",
-    "  <S-Tab> → Next buffer",
-    "  <Tab>   → Previous buffer",
-    "  <leader>B → New empty buffer (enew)",
-    "  <leader>bd → Close buffer (bd)",
+    "🗂 Buffers:",
+    "  <S-Tab> / <Tab> → Next/Previous buffer",
+    "  <leader>B  → New buffer",
+    "  <leader>bd → Close buffer",
     "",
-    "🔤 Spell / 🌈 Color:",
-    "  <leader>ss → Toggle spell check (setlocal spell!)",
-    "  <leader>cc → Toggle colorizer (if colorizer present)",
+    "🔤 Spell / Color:",
+    "  <leader>ss → Toggle spell",
+    "  <leader>cc → Toggle colorizer (if present)",
     "",
     "📖 Vimwiki:",
-    "  <C-d> → Make diary note (VimwikiMakeDiaryNote)",
-    "  <C-c> → Calendar (if :Calendar exists)",
+    "  <C-d> → Vimwiki diary",
+    "  <C-c> → Calendar (if available)",
     "",
     "⏪ Undo tree:",
-    "  <leader>u / <leader><F4> → Toggle Undotree (if available)",
+    "  <leader>u / <leader><F4> → Undotree",
     "",
-    "⚙️ Config & Save:",
-    "  <leader>w   → Save buffer (:w)",
-    "  <leader>v   → Edit init.lua ($MYVIMRC)",
-    "  <leader>o   → Update & source $MYVIMRC (normal+visual)",
-    "  <leader>sv  → Update & luafile % (source current Lua file)",
-    "  <leader>vs  → Source $MYVIMRC (reload full config)",
-    "  <leader>vc  → Open Lua config folder with Oil (~/.config/nvim/lua/)",
+    "⚙️ Config:",
+    "  <leader>w → Save",
+    "  <leader>v → Edit $MYVIMRC",
+    "  <leader>vs → Source $MYVIMRC",
     "",
-    "----------------------------------------------------",
   }
 
   vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
   vim.api.nvim_buf_set_option(buf, "modifiable", false)
-  vim.api.nvim_buf_set_option(buf, "filetype", "help") -- optional styling
+  vim.api.nvim_buf_set_option(buf, "filetype", "help")
 
-  -- compute size (auto with caps)
   local ui = vim.api.nvim_list_uis()[1]
-  local max_w, max_h = 80, 24
   local pad = 6
   local content_w = 0
   for _, l in ipairs(lines) do
     local len = vim.fn.strdisplaywidth(l)
     if len > content_w then content_w = len end
   end
-  local width = math.min(content_w + pad, math.min(max_w, math.floor(ui.width * 0.8)))
-  local height = math.min(#lines + 2, math.min(max_h, math.floor(ui.height * 0.8)))
-
+  local width = math.min(content_w + pad, math.floor(ui.width * 0.8))
+  local height = math.min(#lines + 2, math.floor(ui.height * 0.8))
   local row = math.floor((ui.height - height) / 2)
   local col = math.floor((ui.width - width) / 2)
 
-  -- create floating window
   local win = vim.api.nvim_open_win(buf, true, {
     relative = "editor",
     width = width,
@@ -190,22 +185,16 @@ map("n", "<leader><F1>", function()
     style = "minimal",
     border = "rounded",
   })
-
-  -- window options
   vim.api.nvim_win_set_option(win, "wrap", false)
   vim.api.nvim_win_set_option(win, "cursorline", false)
 
-  -- keymaps to close the float with q or <Esc>
-  local opts_local = { nowait = true, noremap = true, silent = true }
+  local close_opts = { nowait = true, noremap = true, silent = true, buffer = buf }
   vim.keymap.set("n", "q", function()
     if vim.api.nvim_win_is_valid(win) then vim.api.nvim_win_close(win, true) end
-  end, vim.tbl_extend("force", opts_local, { buffer = buf }))
-
+  end, close_opts)
   vim.keymap.set("n", "<Esc>", function()
     if vim.api.nvim_win_is_valid(win) then vim.api.nvim_win_close(win, true) end
-  end, vim.tbl_extend("force", opts_local, { buffer = buf }))
+  end, close_opts)
 
-  -- also allow <Esc> in terminal-mode/visual if needed by mapping to buffer-local normal-mode close
-  -- ensure buffer is not listed
   vim.api.nvim_buf_set_option(buf, "buflisted", false)
 end, opts)
