@@ -58,20 +58,6 @@ map("n", "<C-S-Right>", ":vertical resize -15<CR>", opts)
 map("n", "<C-S-Up>",    ":resize +10<CR>", opts)
 map("n", "<C-S-Down>",  ":resize -10<CR>", opts)
 
--- Monocle / maximize toggle: save layout and restore
-do
-  local restore_cmd = nil
-  map("n", "<leader>m", function()
-    if restore_cmd then
-      vim.cmd(restore_cmd)
-      restore_cmd = nil
-      return
-    end
-    restore_cmd = vim.fn.winrestcmd() -- store layout
-    vim.cmd("only") -- maximize current window
-  end, opts)
-end
-
 -- Buffer navigation
 map("n", "<S-Tab>", ":bnext<CR>", opts)
 map("n", "<Tab>",   ":bprevious<CR>", opts)

@@ -17,6 +17,7 @@ text/plain=org.x.editor.desktop
 x-scheme-handler/discord-1038970224050962582=nuclear.desktop
 image/x-raf=sxiv.desktop
 inode/directory=sxiv.desktop
+text/javascript=nvim.desktop
 
 [Added Associations]
 text/plain=vim.desktop;org.x.editor.desktop;xed.desktop;
@@ -31,5 +32,6 @@ image/webp=userapp-sxiv-58TE21.desktop;vimiv.desktop;
 application/x-shellscript=xed.desktop;
 text/x-log=org.x.editor.desktop;
 application/fits=userapp-st -e nvim-TRWK12.desktop;userapp-nvim-DKBZ12.desktop;
+text/javascript=nvim.desktop;
 
 [Removed Associations]

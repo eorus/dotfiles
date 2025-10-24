@@ -74,7 +74,6 @@ return {
     keys = { "<leader>ww", "<leader>wt" },
     lazy = false,
     init = function()
-    print("Setting up vimwiki!")
       vim.g.vimwiki_folding = ""
       vim.g.vimwiki_list = {
         {
