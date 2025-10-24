@@ -89,7 +89,21 @@ alias windows='sudo mount -t cifs //192.168.0.26/Ortak /mnt/ortak'
 alias notgit='rsync -chavzP --stats --delete Documents/Notes/vimwiki eorus-home:~/Documents/notes/'
 alias notgel='rsync -chavzP --stats --delete eorus-home:~/Documents/notes/vimwiki /home/eorus/Documents/Notes/'
 
-alias yedek="sudo rsync -aAXv --delete --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" --exclude="/home/$USER/.cache" --exclude="/home/$USER/Downloads" --exclude="/home/$USER/.VirtualBoxVMs"--exclude="/home/$USER/.ecryptfs" --exclude=/home/$USER/Desktop --exclude=/home/$USER/.cache --exclude=/home/$USER/.debug --exclude=/home/$USER/.dbus --exclude=/home/$USER/.gvfs --exclude=/home/$USER/.local/share/gvfs-metadata --exclude=/home/$USER/.local/share/Trash --exclude=/home/$USER/.recently-used --exclude=/home/$USER/.thumbnails --exclude=/home/$USER/.xsession-errors --exclude=/home/$USER/.Trash --exclude=/home/$USER/.steam --exclude=/home/$USER/Videos --exclude=/home/$USER/Steam / /mnt/backup"
+# Safer, fixed alias for backups (exclude Steam/game data)
+alias yedek='sudo rsync -aAXv --delete --log-file="'"$HOME"'/.local/share/rsync-backup.log" \
+  --exclude=/dev/* --exclude=/proc/* --exclude=/sys/* --exclude=/tmp/* --exclude=/run/* \
+  --exclude=/mnt/* --exclude=/media/* --exclude="swapfile" --exclude="lost+found" \
+  --exclude="/home/'"$USER"'/.cache" --exclude="/home/'"$USER"'/Downloads" \
+  --exclude="/home/'"$USER"'/.VirtualBoxVMs" --exclude="/home/'"$USER"'/.ecryptfs" \
+  --exclude="/home/'"$USER"'/Desktop" --exclude="/home/'"$USER"'/.debug" \
+  --exclude="/home/'"$USER"'/.dbus" --exclude="/home/'"$USER"'/.gvfs" \
+  --exclude="/home/'"$USER"'/.local/share/gvfs-metadata" --exclude="/home/'"$USER"'/.local/share/Trash" \
+  --exclude="/home/'"$USER"'/.recently-used" --exclude="/home/'"$USER"'/.thumbnails" \
+  --exclude="/home/'"$USER"'/.xsession-errors" --exclude="/home/'"$USER"'/.Trash" \
+  --exclude="/home/'"$USER"'/.steam" --exclude="/home/'"$USER"'/Videos" --exclude="/home/'"$USER"'/Steam" \
+  --exclude="/home/'"$USER"'/.local/share/Steam" \
+  --exclude='*/node_modules/*' --exclude='*/venv/*' --exclude='*/.venv/*' \
+  / /mnt/backup'
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d" # Use neovim for vim if present.
 alias fzf='fzf --preview="head -$LINES {}"'
