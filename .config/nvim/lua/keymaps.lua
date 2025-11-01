@@ -82,9 +82,8 @@ map("n", "<leader>ss", ":setlocal spell!<CR>", opts)
 
 -- Vimwiki / Calendar
 map("n", "<C-d>", ":VimwikiMakeDiaryNote<CR>", opts)
-if has_cmd("Calendar") then
-  map("n", "<C-c>", ":Calendar<CR>", opts)
-end
+map("n", "<C-c>", ":Calendar<CR>", opts)
+map('n', '<leader>p', ":MarkdownPreviewToggle<CR>", opts) -- Toggle Markdown HTML preview
 
 -- Undotree (guarded)
   map("n", "<leader><F4>", ":UndotreeToggle<CR>", opts)

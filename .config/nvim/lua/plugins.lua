@@ -88,7 +88,10 @@ return {
         [".markdown"] = "markdown",
         [".mdown"] = "markdown",
       }
-    end
+vim.keymap.set("n", "<leader>we", function()
+  vim.cmd("!wiki2html && xdg-open ~/Documents/Notes/vimwiki/html/index.html")
+end, { desc = "Export Vimwiki Markdown to HTML" })
+  end
   },
 
   -- Undotree
